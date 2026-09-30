@@ -1,0 +1,132 @@
+{
+  "model_system": "DustML v2.4 (Main Line A + Main Line B)",
+  "benchmark_against": "ECMWF IFS 50-member Ensemble / CMA-GFS",
+  "records": [
+    {
+      "lead_hours": 24,
+      "lead_label": "24h (Day 1)",
+      "ecmwf_nwp": {
+        "rmse": 147.62,
+        "mae": 91.29,
+        "threat_score": 0.0549
+      },
+      "line_a_ml": {
+        "rmse": 28.21,
+        "mae": 22.37,
+        "threat_score": 0.8297,
+        "error_reduction_pct": 80.9
+      },
+      "line_b_deep_learning": {
+        "rmse": 20.17,
+        "mae": 16.11,
+        "threat_score": 0.8748,
+        "error_reduction_pct": 86.3
+      }
+    },
+    {
+      "lead_hours": 72,
+      "lead_label": "72h (Day 3)",
+      "ecmwf_nwp": {
+        "rmse": 177.54,
+        "mae": 119.74,
+        "threat_score": 0.0014
+      },
+      "line_a_ml": {
+        "rmse": 41.37,
+        "mae": 32.7,
+        "threat_score": 0.7588,
+        "error_reduction_pct": 76.7
+      },
+      "line_b_deep_learning": {
+        "rmse": 29.94,
+        "mae": 23.81,
+        "threat_score": 0.8184,
+        "error_reduction_pct": 83.1
+      }
+    },
+    {
+      "lead_hours": 120,
+      "lead_label": "120h (Day 5)",
+      "ecmwf_nwp": {
+        "rmse": 187.43,
+        "mae": 130.59,
+        "threat_score": 0.0039
+      },
+      "line_a_ml": {
+        "rmse": 55.0,
+        "mae": 42.83,
+        "threat_score": 0.7119,
+        "error_reduction_pct": 70.7
+      },
+      "line_b_deep_learning": {
+        "rmse": 39.45,
+        "mae": 30.91,
+        "threat_score": 0.7807,
+        "error_reduction_pct": 79.0
+      }
+    },
+    {
+      "lead_hours": 168,
+      "lead_label": "168h (Day 7)",
+      "ecmwf_nwp": {
+        "rmse": 197.53,
+        "mae": 139.35,
+        "threat_score": 0.0057
+      },
+      "line_a_ml": {
+        "rmse": 67.39,
+        "mae": 52.05,
+        "threat_score": 0.6398,
+        "error_reduction_pct": 65.9
+      },
+      "line_b_deep_learning": {
+        "rmse": 49.17,
+        "mae": 38.14,
+        "threat_score": 0.7638,
+        "error_reduction_pct": 75.1
+      }
+    },
+    {
+      "lead_hours": 240,
+      "lead_label": "240h (Day 10)",
+      "ecmwf_nwp": {
+        "rmse": 213.71,
+        "mae": 154.61,
+        "threat_score": 0.0099
+      },
+      "line_a_ml": {
+        "rmse": 87.3,
+        "mae": 66.62,
+        "threat_score": 0.5488,
+        "error_reduction_pct": 59.2
+      },
+      "line_b_deep_learning": {
+        "rmse": 62.9,
+        "mae": 48.22,
+        "threat_score": 0.686,
+        "error_reduction_pct": 70.6
+      }
+    },
+    {
+      "lead_hours": 360,
+      "lead_label": "360h (Day 15)",
+      "ecmwf_nwp": {
+        "rmse": 250.92,
+        "mae": 181.57,
+        "threat_score": 0.0292
+      },
+      "line_a_ml": {
+        "rmse": 117.87,
+        "mae": 88.67,
+        "threat_score": 0.5092,
+        "error_reduction_pct": 53.0
+      },
+      "line_b_deep_learning": {
+        "rmse": 85.28,
+        "mae": 64.31,
+        "threat_score": 0.6386,
+        "error_reduction_pct": 66.0
+      }
+    }
+  ]
+}

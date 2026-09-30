@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Architecture & Neural Laboratory | DustML Sand & Dust Storm Forecasting</title>
+  <meta name="description" content="Dedicated AI Architecture and Neural Laboratory for Medium- to Long-Term Sand and Dust Storm Forecasting. Deep learning models, PINN physics loss, AI-GAMFS foundation models, and synthetic mock data tensors. University of Science and Technology Beijing.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+  <header class="ai-header">
+    <nav class="ai-nav">
+      <div class="ai-brand">
+        <div class="ai-brand-logo">🧠</div>
+        <div class="ai-brand-text">
+          <h1>DustML • AI Architecture Lab</h1>
+          <p>USTB Environmental Engineering • 北京科技大学 • 硕士学位课题</p>
+        </div>
+      </div>
+
+      <ul class="ai-nav-links">
+        <li><a href="#topology" class="ai-nav-link active">Topology</a></li>
+        <li><a href="#sandbox" class="ai-nav-link">Inference Sandbox</a></li>
+        <li><a href="#pinn" class="ai-nav-link">PINN Physics</a></li>
+        <li><a href="#stgnn" class="ai-nav-link">ST-GNN Corridors</a></li>
+        <li><a href="#benchmarks" class="ai-nav-link">Benchmarks</a></li>
+        <li><a href="#tensors" class="ai-nav-link accent">Mock Data Explorer</a></li>
+      </ul>
+
+      <div class="ai-nav-actions">
+        <a href="../index.html" class="btn-nav btn-nav-outline">← Main Proposal Portal</a>
+        <a href="../video_studio.html" class="btn-nav btn-nav-primary">🎬 Video Studio</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       LIVE TELEMETRY STATUS BAR
+       ========================================== -->
+  <div class="telemetry-strip">
+    <div class="telemetry-items">
+      <div class="telemetry-item">
+        <div class="telemetry-pulse"></div>
+        <span>Core Engine:</span>
+        <strong>Coupled AI-GAMFS & PINN v2.4</strong>
+      </div>
+      <div class="telemetry-item">
+        <span>Active Parameters:</span>
+        <strong style="color:var(--cyan-bright);">348.5 Million</strong>
+      </div>
+      <div class="telemetry-item">
+        <span>Hardware Cluster:</span>
+        <strong>4x NVIDIA A100-SXM4 (80GB)</strong>
+      </div>
+      <div class="telemetry-item">
+        <span>Inference Latency:</span>
+        <strong style="color:var(--emerald-bright);">1.42s</strong>
+        <span style="font-size:0.7rem; color:var(--text-dim);">(16,478x faster than NWP)</span>
+      </div>
+      <div class="telemetry-item">
+        <span>Domain Resolution:</span>
+        <strong>0.05° (~5.0 km) Gridded</strong>
+      </div>
+    </div>
+    <div class="telemetry-item">
+      <span>Operational Cycle:</span>
+      <strong style="color:var(--purple-bright);">00Z / 12Z Assimilation</strong>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MAIN CONTAINER
+       ========================================== -->
+  <main class="ai-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-ai-grid">
+      <div class="card-glass hero-main-card">
+        <div class="section-tag">Deep Learning Architecture Overview</div>
+        <h2>Physics-Informed Multi-Modal AI Forecasting Backbone</h2>
+        <p>
+          Sand and dust storms (SDS) are highly non-linear, transboundary hydrometeorological disasters. Traditional Numerical Weather Prediction (NWP) models suffer from exponential error growth beyond 72 hours. This dedicated <strong>AI Architecture Laboratory</strong> presents our complete <strong>Dual-Line Machine Learning paradigm</strong>—coupling planetary-scale foundation models (<strong>AI-GAMFS</strong>), aerodynamic friction velocity threshold constraints (<strong>PINN</strong>), and graph advection networks (<strong>ST-GNN</strong>) operating over multi-source heterogeneous tensors.
+        </p>
+        <div class="spec-badges">
+          <div class="spec-badge">⚡ Line A: <strong>Tree Ensembles (LightGBM/XGBoost/CatBoost)</strong></div>
+          <div class="spec-badge">🌐 Line B: <strong>AI-GAMFS 3D Swin-Transformer (5km, 120h)</strong></div>
+          <div class="spec-badge">⚖️ Constraints: <strong>PINN Mass & Saltation (u* > u*t)</strong></div>
+          <div class="spec-badge">🕸️ Spatial Advection: <strong>Spatio-Temporal GNN (34 Nodes)</strong></div>
+          <div class="spec-badge">📊 Uncertainty: <strong>EALSTM-QR Quantile Head (P10-P50-P90)</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-side-metrics">
+        <div class="metric-mini-card">
+          <div class="metric-mini-val" style="color: var(--cyan-bright);">120h</div>
+          <div class="metric-mini-label">Landmark Advance Lead Time</div>
+          <div class="metric-mini-sub">Accurately predicted Sichuan Basin intrusion 5 days ahead</div>
+        </div>
+        <div class="metric-mini-card">
+          <div class="metric-mini-val" style="color: var(--purple-bright);">38%–74%</div>
+          <div class="metric-mini-label">Error Reduction Over NWP</div>
+          <div class="metric-mini-sub">Validated against ECMWF IFS & NASA GEOS-CF benchmarks</div>
+        </div>
+        <div class="metric-mini-card">
+          <div class="metric-mini-val" style="color: var(--amber-bright);">14.8 TB</div>
+          <div class="metric-mini-label">Multi-Modal Ingestion Tensors</div>
+          <div class="metric-mini-sub">ECMWF, ERA5, FY-4B, MODIS, and 2,418 CMA ground stations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1: INTERACTIVE TOPOLOGY & LAYERS
+         ========================================== -->
+    <section id="topology" class="section-head">
+      <div class="section-tag">System Topology</div>
+      <h2>End-to-End Neural Pipeline & Layer Inspector</h2>
+      <p>
+        Inspect each computational layer in the DustML forecasting engine. Click any layer card below to examine its tensor shapes, mathematical formulation, parameter counts, and physics enforcement rules.
+      </p>
+    </section>
+
+    <div class="pipeline-flow-container">
+      <div class="pipeline-stage">
+        <div class="pipeline-stage-header">
+          <div class="pipeline-stage-title">
+            <span class="stage-num-badge">1</span>
+            <h3>Neural Architecture Layers (Select to Inspect)</h3>
+          </div>
+          <div class="pipeline-stage-desc">Interactive Deep Learning Backbone</div>
+        </div>
+
+        <div id="layers-grid" class="layer-nodes-grid">
+          <!-- Populated dynamically via ai_architecture.js -->
+        </div>
+
+        <!-- Layer Inspector Panel -->
+        <div id="layer-inspector" class="layer-inspector-panel">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 2: LIVE INFERENCE SANDBOX
+         ========================================== -->
+    <section id="sandbox" class="section-head" style="margin-top: 3.5rem;">
+      <div class="section-tag">Interactive Simulation</div>
+      <h2>Live Forecast Inference Sandbox (Mock Data Engine)</h2>
+      <p>
+        Simulate operational model inference across key Chinese forecasting stations and dust transport gateways. Adjust lead time from Day 1 to Day 15 to observe PM10 concentrations, quantile prediction intervals, and local SHAP feature attributions.
+      </p>
+    </section>
+
+    <div class="inference-sandbox-grid">
+      <!-- Controls -->
+      <div class="card-glass control-panel">
+        <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:0.25rem;">Inference Parameters</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.5rem;">Configure the mock meteorological scenario:</p>
+
+        <div class="control-group">
+          <label class="control-label" for="select-station">
+            <span>Forecast Benchmark Station:</span>
+            <span class="badge">8 Stations</span>
+          </label>
+          <select id="select-station" class="select-input">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="slider-lead">
+            <span>Forecast Lead Horizon:</span>
+            <span id="lead-val-label" class="badge" style="color:var(--amber-bright);">120h (Day 5)</span>
+          </label>
+          <input type="range" id="slider-lead" class="range-slider" min="0" max="5" step="1" value="2">
+          <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-dim); font-family:var(--font-mono); margin-top:0.25rem;">
+            <span>24h</span>
+            <span>72h</span>
+            <span>120h</span>
+            <span>168h</span>
+            <span>240h</span>
+            <span>360h</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Model Backbone:</span>
+            <span class="badge">Coupled</span>
+          </label>
+          <select id="select-model" class="select-input">
+            <option value="aigamfs">AI-GAMFS Coupled Deep Model (Proposed)</option>
+            <option value="lineA">Main Line A: Tree-Ensemble Post-Processor</option>
+            <option value="pinn">PINN Physics-Informed Residual Network</option>
+            <option value="stgnn">ST-GNN Spatio-Temporal Graph Model</option>
+          </select>
+        </div>
+
+        <button id="btn-run-model" class="btn-run-inference">
+          ⚡ Run AI Inference Pipeline
+        </button>
+
+        <div style="font-size:0.75rem; color:var(--text-dim); line-height:1.5; border-top:1px solid rgba(255,255,255,0.06); padding-top:0.75rem;">
+          💡 <em>Note: Simulates real-time tensor ingestion and forward pass inference on 4x NVIDIA A100 SXM4 cluster using high-fidelity precomputed mock data.</em>
+        </div>
+      </div>
+
+      <!-- Inference Output Display -->
+      <div class="card-glass inference-output-panel">
+        <div>
+          <h3 id="out-station-title" style="font-size:1.35rem; color:#ffffff; margin-bottom:0.2rem;">Chengdu Station (四川盆地)</h3>
+          <p id="out-station-coords" style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
+            Lat: 30.70°N, Lon: 103.83°E | Elev: 526m | Lead: 120h (Day 5)
+          </p>
+        </div>
+
+        <div class="output-hero-card">
+          <div class="output-stat">
+            <div class="output-stat-label">Predicted PM10 (P50 Median)</div>
+            <div class="output-stat-val" style="color:var(--cyan-bright);"><span id="out-pm10-val">680</span> <small style="font-size:0.9rem; font-weight:400; color:var(--text-sub);">μg/m³</small></div>
+            <div class="output-stat-sub">Ground Concentration</div>
+          </div>
+          <div class="output-stat">
+            <div class="output-stat-label">Categorical Hazard Tier</div>
+            <div id="out-category-badge" style="display:inline-block; font-size:1rem; font-weight:800; padding:0.4rem 0.8rem; border-radius:6px; border:1px solid #c084fc; color:#c084fc; background:rgba(192,132,252,0.15); width:fit-content;">
+              Floating Dust / Intrusion ★
+            </div>
+            <div class="output-stat-sub">4-Tier Warning System</div>
+          </div>
+          <div class="output-stat">
+            <div class="output-stat-label">Threat Score & PINN Error</div>
+            <div class="output-stat-val" style="color:var(--emerald-bright); font-size:1.6rem;"><span id="out-threat-val">83.0%</span></div>
+            <div class="output-stat-sub">PINN Residual: <strong id="out-residual-val" style="color:var(--text-main); font-family:var(--font-mono);">0.0035</strong></div>
+          </div>
+        </div>
+
+        <!-- Non-parametric Quantile Prediction Bands -->
+        <div class="quantile-visualizer">
+          <div class="visualizer-title">
+            <span>EALSTM-QR Non-Parametric Uncertainty Envelope:</span>
+            <span style="font-size:0.75rem; color:var(--text-dim); font-family:var(--font-mono);">Confidence Bounds [10th – 90th]</span>
+          </div>
+          <div class="quantile-bars">
+            <div class="quantile-row">
+              <div class="quantile-label">P10 (Low):</div>
+              <div class="quantile-track">
+                <div id="bar-p10" class="quantile-fill" style="width:35%; background: linear-gradient(90deg, #10b981, #06b6d4);"></div>
+              </div>
+              <div id="val-p10" class="quantile-val">440 μg/m³</div>
+            </div>
+            <div class="quantile-row">
+              <div class="quantile-label" style="color:var(--cyan-bright); font-weight:700;">P50 (Median):</div>
+              <div class="quantile-track">
+                <div id="bar-p50" class="quantile-fill" style="width:55%; background: linear-gradient(90deg, #06b6d4, #8b5cf6);"></div>
+              </div>
+              <div id="val-p50" class="quantile-val" style="color:var(--cyan-bright);">680 μg/m³</div>
+            </div>
+            <div class="quantile-row">
+              <div class="quantile-label" style="color:var(--crimson-bright);">P90 (High):</div>
+              <div class="quantile-track">
+                <div id="bar-p90" class="quantile-fill" style="width:78%; background: linear-gradient(90deg, #f59e0b, #ef4444);"></div>
+              </div>
+              <div id="val-p90" class="quantile-val" style="color:var(--crimson-bright);">960 μg/m³</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local SHAP Feature Attribution -->
+        <div class="shap-waterfall-card">
+          <div class="visualizer-title">
+            <span>Local SHAP Attribution Breakdown:</span>
+            <span style="font-size:0.75rem; color:var(--text-dim);">Top Feature Contributions for Selected Station</span>
+          </div>
+          <div id="shap-list-container" class="shap-list">
+            <!-- Populated dynamically via ai_architecture.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 3: PINN PHYSICS ENGINE SIMULATOR
+         ========================================== -->
+    <section id="pinn" class="section-head" style="margin-top: 3.5rem;">
+      <div class="section-tag">Physics-Informed Constraints</div>
+      <h2>Aerodynamic Friction Velocity & Mass Conservation Simulator</h2>
+      <p>
+        The core theoretical constraint of the PINN module enforces the aerodynamic saltation threshold: dust particle lifting occurs if and only if friction velocity exceeds the surface fluid threshold (\(u_* > u_{*t}\)). Adjust the micro-meteorological variables below to see the neural loss penalty respond in real time.
+      </p>
+    </section>
+
+    <div class="pinn-section-grid">
+      <!-- Physics Sliders -->
+      <div class="card-glass pinn-sim-controls">
+        <h3 style="font-size:1.15rem; color:#ffffff;">Micro-Meteorological Inputs</h3>
+
+        <div class="control-group">
+          <label class="control-label" for="sim-ustar">
+            <span>Surface Friction Velocity (\(u_*\)):</span>
+            <span id="sim-ustar-val" class="badge" style="color:var(--cyan-bright);">0.88 m/s</span>
+          </label>
+          <input type="range" id="sim-ustar" class="range-slider" min="0.05" max="1.80" step="0.01" value="0.88">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="sim-ustart">
+            <span>Threshold Friction Velocity (\(u_{*t}\)):</span>
+            <span id="sim-ustart-val" class="badge" style="color:var(--amber-bright);">0.42 m/s</span>
+          </label>
+          <input type="range" id="sim-ustart" class="range-slider" min="0.10" max="1.00" step="0.01" value="0.42">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="sim-sm">
+            <span>Volumetric Soil Moisture Layer 1 (0–7cm):</span>
+            <span id="sim-sm-val" class="badge" style="color:var(--emerald-bright);">3.1%</span>
+          </label>
+          <input type="range" id="sim-sm" class="range-slider" min="0.01" max="0.40" step="0.005" value="0.031">
+        </div>
+
+        <div style="font-size:0.75rem; color:var(--text-dim); line-height:1.5;">
+          <strong>Governing Saltation Formula:</strong><br>
+          <code style="color:var(--cyan-bright); font-size:0.78rem;">F = C · (ρ/g) · u*³ · [1 - (u*t² / u*²)] · exp(-15·SM)</code>
+        </div>
+      </div>
+
+      <!-- Physics Telemetry & Live Residuals -->
+      <div class="card-glass pinn-gauge-display">
+        <div id="pinn-status-banner" class="physics-status-banner active">
+          ⚡ Saltation Triggered (u* > u*t)
+        </div>
+
+        <div class="physics-metrics-grid">
+          <div class="physics-metric-box">
+            <div class="p-box-title">Aerodynamic Shear Ratio</div>
+            <div id="pinn-shear-val" class="p-box-val" style="color:var(--cyan-bright);">2.10</div>
+            <div class="p-box-formula">\(u_* / u_{*t}\) (> 1.0 triggers dust)</div>
+          </div>
+          <div class="physics-metric-box">
+            <div class="p-box-title">Saltation Emission Flux</div>
+            <div id="pinn-flux-val" class="p-box-val" style="color:var(--amber-bright);">128.4 mg/m²s</div>
+            <div class="p-box-formula">Surface Emission Rate</div>
+          </div>
+          <div class="physics-metric-box">
+            <div class="p-box-title">PINN Regularization Loss</div>
+            <div id="pinn-loss-val" class="p-box-val" style="color:var(--purple-bright);">0.0018</div>
+            <div class="p-box-formula">\(\mathcal{L}_{PINN}\) Penalty</div>
+          </div>
+          <div class="physics-metric-box">
+            <div class="p-box-title">Mass Balance Residual</div>
+            <div id="pinn-err-val" class="p-box-val" style="color:var(--emerald-bright);">0.00042</div>
+            <div class="p-box-formula">\(\|\nabla \cdot (\rho \mathbf{u}) + \frac{\partial \rho}{\partial t}\|^2\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 4: ST-GNN CORRIDOR GRAPH
+         ========================================== -->
+    <section id="stgnn" class="section-head" style="margin-top: 3.5rem;">
+      <div class="section-tag">Graph Neural Network</div>
+      <h2>ST-GNN Dust Transport Corridor Network</h2>
+      <p>
+        Dust plumes follow non-Euclidean atmospheric advection corridors shaped by terrain barriers (Qinling, Taihang) and low-level jet streams. Below is the interactive 14-node corridor graph modeled by the Spatio-Temporal Graph Neural Network.
+      </p>
+    </section>
+
+    <div class="card-glass stgnn-graph-container">
+      <div class="graph-legend">
+        <div class="legend-item"><div class="legend-dot source"></div> <span>Source Deserts (Taklamakan, Gobi, Badain Jaran)</span></div>
+        <div class="legend-item"><div class="legend-dot bottleneck"></div> <span>Choke Points (Hexi Corridor, Zhangjiakou, Qinling Breach)</span></div>
+        <div class="legend-item"><div class="legend-dot corridor"></div> <span>Transport Corridors (Loess Plateau, Steppe)</span></div>
+        <div class="legend-item"><div class="legend-dot receptor"></div> <span>Receptor Megacities (Beijing, Sichuan Basin, Central Plains)</span></div>
+      </div>
+
+      <svg id="stgnn-network-svg">
+        <!-- Rendered dynamically by ai_architecture.js -->
+      </svg>
+
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">
+        ★ <em>Dashed purple line highlights the landmark 120-hour (5-day) intrusion path into the Sichuan Basin via the Qinling Mountain barrier breach.</em>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 5: BENCHMARKS & TRAINING TELEMETRY
+         ========================================== -->
+    <section id="benchmarks" class="section-head" style="margin-top: 3.5rem;">
+      <div class="section-tag">Empirical Verification</div>
+      <h2>Model Verification & Convergence Telemetry</h2>
+      <p>
+        Compare AI-GAMFS forecast performance against operational global numerical weather prediction models (ECMWF IFS, CMA-GFS) and baseline machine learning algorithms.
+      </p>
+    </section>
+
+    <div class="card-glass" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="benchmark">Cross-Model Benchmarks (Days 1–15)</button>
+        <button class="tab-btn" data-tab="telemetry">100-Epoch PINN Convergence Telemetry</button>
+        <button class="tab-btn" data-tab="confusion">Cost-Sensitive Confusion Matrix</button>
+      </div>
+
+      <div id="tab-content-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 6: RAW MOCK TENSORS & JSON EXPLORER
+         ========================================== -->
+    <section id="tensors" class="section-head" style="margin-top: 3.5rem;">
+      <div class="section-tag">Developer & Research API</div>
+      <h2>Multi-Source Mock Tensors & Data Inspector</h2>
+      <p>
+        Inspect the raw synthetic tensor schemas, variable distributions, and JSON objects that drive this AI Architecture module. Click any tensor category to view the mock payload or copy to clipboard.
+      </p>
+    </section>
+
+    <div class="card-glass json-inspector-card">
+      <div class="json-actions-bar">
+        <div class="tensor-selector-pills">
+          <button class="tensor-pill active" data-id="tensor-nwp">ECMWF / CMA NWP Ensemble Tensor</button>
+          <button class="tensor-pill" data-id="tensor-era5">ERA5 Reanalysis Tensor</button>
+          <button class="tensor-pill" data-id="tensor-satellite">Fengyun-4B & MODIS Satellite Tensor</button>
+          <button class="tensor-pill" data-id="tensor-ground">CMA 2,418 Surface Weather Stations</button>
+          <button class="tensor-pill" data-id="system-spec">System Architecture Specs</button>
+          <button class="tensor-pill" data-id="full-mock">Complete Mock API Payload</button>
+        </div>
+        <button id="btn-copy-json" class="btn-nav btn-nav-outline" style="font-size:0.75rem;">
+          📋 Copy JSON to Clipboard
+        </button>
+      </div>
+
+      <pre id="json-display-code" class="json-code-view">
+        <!-- JSON loaded dynamically -->
+      </pre>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="ai-footer">
+    <div class="footer-content">
+      <div>
+        <div style="font-weight:700; color:#ffffff; margin-bottom:0.25rem;">
+          University of Science and Technology Beijing (北京科技大学)
+        </div>
+        <div style="color:var(--text-dim); font-size:0.75rem;">
+          School of Energy and Environmental Engineering • Master's Topic Selection Platform
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="../index.html">← Back to Proposal Portal</a>
+        <a href="../video_studio.html">🎬 Presentation Video</a>
+        <a href="../README.md">📖 System Documentation</a>
+        <a href="#topology">Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mock Data Repository Script -->
+  <script src="mock_data.js"></script>
+
+  <!-- Interactive AI Architecture Controller Script -->
+  <script src="ai_architecture.js"></script>
+</body>
+</html>

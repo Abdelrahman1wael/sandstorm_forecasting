@@ -1,0 +1,385 @@
+{
+  "stations": [
+    {
+      "id": "station-minqin",
+      "code": "52681",
+      "name": "Minqin Station (民勤)",
+      "region": "Gansu • Hexi Corridor Gateway (河西走廊咽喉)",
+      "type": "Primary Dust Transport Bottleneck",
+      "lat": 38.63,
+      "lon": 103.08,
+      "elevation_m": 1367,
+      "is_source": false,
+      "u_star_t": 0.42,
+      "roughness_z0": 0.0012
+    },
+    {
+      "id": "station-hotan",
+      "code": "51828",
+      "name": "Hotan Station (和田)",
+      "region": "Xinjiang • Southern Taklamakan Desert Rim (塔克拉玛干南缘)",
+      "type": "Major Source Desert Origin",
+      "lat": 37.13,
+      "lon": 79.93,
+      "elevation_m": 1375,
+      "is_source": true,
+      "u_star_t": 0.32,
+      "roughness_z0": 0.0005
+    },
+    {
+      "id": "station-beijing",
+      "code": "54511",
+      "name": "Beijing Mega-Station (北京奥体)",
+      "region": "Beijing-Tianjin-Hebei High-Density Urban Zone (京津冀核心受体)",
+      "type": "Dense Receptor Urban Node",
+      "lat": 39.98,
+      "lon": 116.38,
+      "elevation_m": 43,
+      "is_source": false,
+      "u_star_t": 0.65,
+      "roughness_z0": 0.85
+    },
+    {
+      "id": "station-chengdu",
+      "code": "56187",
+      "name": "Chengdu Station (成都温江)",
+      "region": "Sichuan Basin • Complex Topography Receptor (四川盆地受体)",
+      "type": "120h Remote Incursion Terminal",
+      "lat": 30.7,
+      "lon": 103.83,
+      "elevation_m": 547,
+      "is_source": false,
+      "u_star_t": 0.7,
+      "roughness_z0": 0.6
+    },
+    {
+      "id": "station-erenhot",
+      "code": "53068",
+      "name": "Erenhot Station (二连浩特)",
+      "region": "Inner Mongolia • Sino-Mongolian Border (中蒙边境戈壁通道)",
+      "type": "Northern Inflow Corridor Gateway",
+      "lat": 43.65,
+      "lon": 111.97,
+      "elevation_m": 965,
+      "is_source": true,
+      "u_star_t": 0.38,
+      "roughness_z0": 0.002
+    },
+    {
+      "id": "station-lanzhou",
+      "code": "52889",
+      "name": "Lanzhou Station (兰州皋兰)",
+      "region": "Gansu • Western Loess Plateau Valley (黄土高原西缘)",
+      "type": "Loess Plateau Advection Transit",
+      "lat": 36.05,
+      "lon": 103.88,
+      "elevation_m": 1517,
+      "is_source": false,
+      "u_star_t": 0.5,
+      "roughness_z0": 0.05
+    },
+    {
+      "id": "station-dunhuang",
+      "code": "52418",
+      "name": "Dunhuang Station (敦煌)",
+      "region": "Gansu • Kumtag Desert Confluence (库姆塔格沙漠汇流区)",
+      "type": "Hexi Western Portal",
+      "lat": 40.15,
+      "lon": 94.68,
+      "elevation_m": 1139,
+      "is_source": true,
+      "u_star_t": 0.35,
+      "roughness_z0": 0.001
+    },
+    {
+      "id": "station-hohhot",
+      "code": "53463",
+      "name": "Hohhot Station (呼和浩特)",
+      "region": "Inner Mongolia • Daqing Mountains Southern Foothills (大青山南麓)",
+      "type": "Northern Grassland Incursion Node",
+      "lat": 40.82,
+      "lon": 111.68,
+      "elevation_m": 1063,
+      "is_source": false,
+      "u_star_t": 0.48,
+      "roughness_z0": 0.02
+    },
+    {
+      "id": "station-badain",
+      "code": "52576",
+      "name": "Badain Jaran Desert Core (巴丹吉林沙漠中心)",
+      "region": "Alxa League • Mega-dune Dust Source",
+      "type": "Active Megadune Source",
+      "lat": 39.75,
+      "lon": 102.35,
+      "elevation_m": 1210,
+      "is_source": true,
+      "u_star_t": 0.3,
+      "roughness_z0": 0.0003
+    },
+    {
+      "id": "station-tengger",
+      "code": "53512",
+      "name": "Tengger Desert Rim (腾格里沙漠边缘)",
+      "region": "Ningxia/Inner Mongolia • Shapotou",
+      "type": "Active Sandfield Source",
+      "lat": 37.5,
+      "lon": 105.1,
+      "elevation_m": 1240,
+      "is_source": true,
+      "u_star_t": 0.33,
+      "roughness_z0": 0.0006
+    },
+    {
+      "id": "station-zhangye",
+      "code": "52652",
+      "name": "Zhangye Station (张掖)",
+      "region": "Gansu • Middle Hexi Oasis",
+      "type": "Hexi Corridor Middle Station",
+      "lat": 38.93,
+      "lon": 100.45,
+      "elevation_m": 1482,
+      "is_source": false,
+      "u_star_t": 0.45,
+      "roughness_z0": 0.015
+    },
+    {
+      "id": "station-yinchuan",
+      "code": "53614",
+      "name": "Yinchuan Station (银川)",
+      "region": "Ningxia • Helan Mountains Gap",
+      "type": "Yellow River Plain Transit",
+      "lat": 38.47,
+      "lon": 106.27,
+      "elevation_m": 1111,
+      "is_source": false,
+      "u_star_t": 0.48,
+      "roughness_z0": 0.03
+    },
+    {
+      "id": "station-xian",
+      "code": "57036",
+      "name": "Xi'an Station (西安)",
+      "region": "Shaanxi • Guanzhong Plain (关中平原)",
+      "type": "Northern Flank of Qinling Mountains",
+      "lat": 34.3,
+      "lon": 108.93,
+      "elevation_m": 397,
+      "is_source": false,
+      "u_star_t": 0.6,
+      "roughness_z0": 0.45
+    },
+    {
+      "id": "station-taiyuan",
+      "code": "53772",
+      "name": "Taiyuan Station (太原)",
+      "region": "Shanxi • Fenhe Valley Basin",
+      "type": "Loess Plateau Eastern Passage",
+      "lat": 37.78,
+      "lon": 112.55,
+      "elevation_m": 778,
+      "is_source": false,
+      "u_star_t": 0.55,
+      "roughness_z0": 0.2
+    }
+  ],
+  "lead_times": [
+    24,
+    72,
+    120,
+    168,
+    240,
+    360
+  ],
+  "lead_time_labels": [
+    "24h (Day 1)",
+    "72h (Day 3)",
+    "120h (Day 5)",
+    "168h (Day 7)",
+    "240h (Day 10)",
+    "360h (Day 15)"
+  ],
+  "hazard_classes": [
+    {
+      "id": 0,
+      "name": "Clean / Normal",
+      "pm10_range": [
+        0,
+        150
+      ],
+      "weight": 1.0
+    },
+    {
+      "id": 1,
+      "name": "Floating Dust (浮尘)",
+      "pm10_range": [
+        150,
+        500
+      ],
+      "weight": 2.5
+    },
+    {
+      "id": 2,
+      "name": "Blowing Sand (扬沙)",
+      "pm10_range": [
+        500,
+        1000
+      ],
+      "weight": 5.0
+    },
+    {
+      "id": 3,
+      "name": "Sandstorm (沙尘暴)",
+      "pm10_range": [
+        1000,
+        2000
+      ],
+      "weight": 10.0
+    },
+    {
+      "id": 4,
+      "name": "Severe Sandstorm (强沙尘暴)",
+      "pm10_range": [
+        2000,
+        99999
+      ],
+      "weight": 25.0
+    }
+  ],
+  "corridor_edges": [
+    {
+      "src_code": "51828",
+      "tgt_code": "52418",
+      "src_idx": 1,
+      "tgt_idx": 6,
+      "distance_km": 1200,
+      "transit_hours": 18,
+      "coupling_strength": 0.9,
+      "weight": 0.4251298974669132
+    },
+    {
+      "src_code": "52418",
+      "tgt_code": "52652",
+      "src_idx": 6,
+      "tgt_idx": 10,
+      "distance_km": 600,
+      "transit_hours": 10,
+      "coupling_strength": 0.85,
+      "weight": 0.5603545356703772
+    },
+    {
+      "src_code": "52576",
+      "tgt_code": "52681",
+      "src_idx": 8,
+      "tgt_idx": 0,
+      "distance_km": 320,
+      "transit_hours": 6,
+      "coupling_strength": 0.95,
+      "weight": 0.7398607439178346
+    },
+    {
+      "src_code": "52652",
+      "tgt_code": "52681",
+      "src_idx": 10,
+      "tgt_idx": 0,
+      "distance_km": 280,
+      "transit_hours": 5,
+      "coupling_strength": 0.88,
+      "weight": 0.7145039846125587
+    },
+    {
+      "src_code": "53512",
+      "tgt_code": "53614",
+      "src_idx": 9,
+      "tgt_idx": 11,
+      "distance_km": 180,
+      "transit_hours": 4,
+      "coupling_strength": 0.85,
+      "weight": 0.7195094661570219
+    },
+    {
+      "src_code": "52681",
+      "tgt_code": "52889",
+      "src_idx": 0,
+      "tgt_idx": 5,
+      "distance_km": 310,
+      "transit_hours": 7,
+      "coupling_strength": 0.82,
+      "weight": 0.6125543502545546
+    },
+    {
+      "src_code": "53068",
+      "tgt_code": "53463",
+      "src_idx": 4,
+      "tgt_idx": 7,
+      "distance_km": 380,
+      "transit_hours": 8,
+      "coupling_strength": 0.88,
+      "weight": 0.6305475533049346
+    },
+    {
+      "src_code": "53463",
+      "tgt_code": "54511",
+      "src_idx": 7,
+      "tgt_idx": 2,
+      "distance_km": 420,
+      "transit_hours": 9,
+      "coupling_strength": 0.85,
+      "weight": 0.5841958869723264
+    },
+    {
+      "src_code": "53614",
+      "tgt_code": "53772",
+      "src_idx": 11,
+      "tgt_idx": 13,
+      "distance_km": 560,
+      "transit_hours": 12,
+      "coupling_strength": 0.78,
+      "weight": 0.4730939145758541
+    },
+    {
+      "src_code": "53772",
+      "tgt_code": "54511",
+      "src_idx": 13,
+      "tgt_idx": 2,
+      "distance_km": 450,
+      "transit_hours": 10,
+      "coupling_strength": 0.8,
+      "weight": 0.527392504160355
+    },
+    {
+      "src_code": "52889",
+      "tgt_code": "57036",
+      "src_idx": 5,
+      "tgt_idx": 12,
+      "distance_km": 520,
+      "transit_hours": 12,
+      "coupling_strength": 0.75,
+      "weight": 0.45489799478447507
+    },
+    {
+      "src_code": "57036",
+      "tgt_code": "56187",
+      "src_idx": 12,
+      "tgt_idx": 3,
+      "distance_km": 650,
+      "transit_hours": 24,
+      "coupling_strength": 0.65,
+      "weight": 0.23912163676143752
+    }
+  ],
+  "feature_names": [
+    "wind_u10",
+    "u_star",
+    "u_star_t",
+    "soil_moisture",
+    "temp_k",
+    "blh",
+    "aod",
+    "nwp_pm10",
+    "visibility_km",
+    "elevation_m",
+    "lat",
+    "lon"
+  ]
+}

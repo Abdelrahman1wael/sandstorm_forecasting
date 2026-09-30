@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applying Machine Learning to Sand & Dust Storm Medium- to Long-Term Forecasting | USTB Research Portal</title>
+  <meta name="description" content="Comprehensive research platform for applying machine learning algorithms to improve the accuracy of medium- to long-term sand and dust storm forecasting. University of Science and Technology Beijing (北京科技大学).">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- D3.js v7 Library from Official CDN with Local Fallback -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION HEADER
+       ========================================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-badge">
+        <div class="brand-icon">🌪️</div>
+        <div class="brand-titles">
+          <span class="brand-title">DustML • USTB Research Portal</span>
+          <span class="brand-sub">北京科技大学 • Environmental Engineering • 硕士学位研究生选题</span>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#overview" class="nav-link active">Overview</a></li>
+        <li><a href="ai_architecture/index.html" class="nav-link" style="color: #c084fc; font-weight: 700;">🧠 AI Architecture Lab</a></li>
+        <li><a href="video_studio.html" class="nav-link" style="color: #38bdf8; font-weight: 700;">🎬 Presentation Video</a></li>
+        <li><a href="#simulations" class="nav-link">D3 Simulations</a></li>
+        <li><a href="#research-core" class="nav-link">Research Core</a></li>
+        <li><a href="#ai-role" class="nav-link">AI Architecture</a></li>
+        <li><a href="#statistics" class="nav-link">Statistics & Metrics</a></li>
+        <li><a href="#data-system" class="nav-link">Data Types</a></li>
+        <li><a href="#references" class="nav-link">61 References</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="ai_architecture/index.html" class="btn btn-primary" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); border: none;">🧠 AI Architecture</a>
+        <a href="video_studio.html" class="btn btn-primary" style="background: linear-gradient(135deg, #0284c7, #2563eb); border: none;">🎬 Watch Video</a>
+        <a href="#simulations" class="btn btn-primary">⚡ Live D3 Models</a>
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Export PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO & EXECUTIVE SUMMARY
+       ========================================== -->
+  <main>
+    <section id="overview" class="hero-section">
+      <div class="container">
+        <div class="hero-header-badge">
+          <span>🏛️ Master's Degree Topic Selection Report (文献总结及选题报告)</span>
+          <span>•</span>
+          <span>Enrollment: 2025.9</span>
+          <span>•</span>
+          <span style="color: #38bdf8; font-weight: 600;"><a href="video_studio.html" style="color: inherit; text-decoration: none;">▶ 1080p Presentation Video Ready</a></span>
+        </div>
+
+        <h1 class="hero-title">
+          Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting
+        </h1>
+
+        <p class="hero-subtitle">
+          Overcoming the predictability bottleneck of traditional physical Numerical Weather Prediction (NWP) across <strong>3–15 day extended-range</strong> and sub-seasonal horizons. Integrating multi-source heterogeneous observations, physics-informed neural constraints (PINN), graph spatial networks (GNN), and aerosol-meteorology coupled large models.
+        </p>
+
+        <!-- Video Feature Callout Card -->
+        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid #1e3a8a; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 14px 20px; margin: 16px 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="font-size: 32px;">🎬</div>
+            <div>
+              <div style="color: #f8fafc; font-weight: 700; font-size: 1.05rem;">Official Academic Presentation Video (10 Scenes • ~8.5 Min)</div>
+              <div style="color: #94a3b8; font-size: 0.85rem;">Includes English neural voiceover, synchronized closed captions, empirical diagrams, and timeline analysis.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <a href="video_studio.html" class="btn btn-primary" style="background: linear-gradient(135deg, #0284c7, #2563eb); border: none; padding: 10px 18px; font-weight: 700;">▶ Launch Video Studio</a>
+            <a href="sand_dust_storm_ml_presentation.mp4" download class="btn btn-secondary" style="background: #1e293b; border: 1px solid #334155; padding: 10px 14px;">⬇️ MP4 (1080p)</a>
+          </div>
+        </div>
+
+        <!-- AI Architecture Feature Callout Card -->
+        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid #6b21a8; border-left: 4px solid #c084fc; border-radius: 10px; padding: 14px 20px; margin: 0 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="font-size: 32px;">🧠</div>
+            <div>
+              <div style="color: #f8fafc; font-weight: 700; font-size: 1.05rem;">Interactive AI Architecture Laboratory & Mock Data Explorer</div>
+              <div style="color: #94a3b8; font-size: 0.85rem;">Dedicated sub-system featuring the coupled AI-GAMFS foundation model, PINN aerodynamic saltation loss simulator, ST-GNN transport network, and synthetic multi-source mock tensors.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <a href="ai_architecture/index.html" class="btn btn-primary" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); border: none; padding: 10px 18px; font-weight: 700;">🚀 Open AI Architecture Lab</a>
+          </div>
+        </div>
+
+        <div class="hero-tags">
+          <div class="tag-pill"><strong>University:</strong> 北京科技大学 (USTB)</div>
+          <div class="tag-pill"><strong>Major:</strong> Environmental Engineering (环境工程)</div>
+          <div class="tag-pill"><strong>Scale:</strong> Medium- to Long-Term (3–15 Days & Monthly/Seasonal)</div>
+          <div class="tag-pill"><strong>Key Models:</strong> AI-GAMFS, PINN, Spatio-Temporal GNN, Transformer, AutoGluon</div>
+          <div class="tag-pill"><strong>Dual Lines:</strong> Line A (NWP Bias Correction) + Line B (End-to-End Spatiotemporal Modeling)</div>
+        </div>
+
+        <!-- Empirical Numerical Highlights Grid -->
+        <div id="stats-cards-grid" class="numerical-grid">
+          <!-- Populated dynamically by app.js from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         D3.JS INTERACTIVE VISUALIZATIONS SHOWCASE
+         ========================================== -->
+    <section id="simulations" class="viz-showcase">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Interactive Simulation Suite</span>
+          <h2 class="section-title">D3.js Dynamic Meteorological & Algorithmic Engines</h2>
+          <p class="section-desc">
+            Directly visualizing the spatial transport corridors of East Asian sandstorms, multi-source tensor pipelines, empirical lead-time forecast decay benchmarks, and real-time threshold-calibrated ROC confusion matrices.
+          </p>
+        </div>
+
+        <!-- Visual 1: East Asia Sandstorm Dynamic Trajectory Map -->
+        <div class="viz-card glass-panel" style="margin-bottom: 2rem;">
+          <div class="viz-toolbar">
+            <div class="viz-title-box">
+              <h3>🗺️ East Asia Dust Storm Spatiotemporal Trajectory & Receptor Simulation</h3>
+              <p>Source Deserts (Taklamakan, Badain Jaran, Tengger, Gobi) → Hexi Corridor → Jing-Jin-Ji → Remote 120h Sichuan Basin Incursion</p>
+            </div>
+            <div class="viz-controls">
+              <span class="stat-badge" style="background:rgba(245,158,11,0.2); color:#fde68a;">Active Flow: Northwest & Northern Paths</span>
+              <span class="stat-badge" style="background:rgba(168,85,247,0.2); color:#d8b4fe;">★ Landmark: 120h Sichuan Case</span>
+            </div>
+          </div>
+          <div id="dust-map-viz" class="viz-container"></div>
+        </div>
+
+        <!-- Visual 2: Forecast Skill Decay & Error Reduction Benchmark -->
+        <div class="grid-2col" style="margin-bottom: 2rem;">
+          <div class="viz-card glass-panel">
+            <div class="viz-toolbar">
+              <div class="viz-title-box">
+                <h3>📈 Lead-Time Skill Decay Benchmark (Days 1–15)</h3>
+                <p>AI-GAMFS vs Traditional Numerical Models (ECMWF/CMA) vs Baseline ML</p>
+              </div>
+              <div class="viz-controls">
+                <button class="viz-btn skill-metric-btn active" data-metric="csi">CSI (Threat Score)</button>
+                <button class="viz-btn skill-metric-btn" data-metric="pod">POD (Hit Rate)</button>
+                <button class="viz-btn skill-metric-btn" data-metric="far">FAR (False Alarm)</button>
+                <button class="viz-btn skill-metric-btn" data-metric="error_red">Error Reduction %</button>
+              </div>
+            </div>
+            <div id="forecast-skill-viz" class="viz-container" style="min-height: 320px;"></div>
+          </div>
+
+          <!-- Visual 3: Feature Importance & SHAP Attribution -->
+          <div class="viz-card glass-panel">
+            <div class="viz-toolbar">
+              <div class="viz-title-box">
+                <h3>🔍 Feature Attribution & SHAP Value Explorer</h3>
+                <p>Quantifying physical contributions of surface, dynamic, and memory factors</p>
+              </div>
+              <div class="viz-controls">
+                <button class="viz-btn shap-cat-btn active" data-cat="all">All Factors</button>
+                <button class="viz-btn shap-cat-btn" data-cat="emission">Emission</button>
+                <button class="viz-btn shap-cat-btn" data-cat="dynamic">Dynamics</button>
+                <button class="viz-btn shap-cat-btn" data-cat="memory">Memory</button>
+              </div>
+            </div>
+            <div id="shap-viz" class="viz-container" style="min-height: 320px;"></div>
+          </div>
+        </div>
+
+        <!-- Visual 4: Multi-Source Data Ingestion & Tensor Processing Pipeline -->
+        <div class="viz-card glass-panel" style="margin-bottom: 2rem;">
+          <div class="viz-toolbar">
+            <div class="viz-title-box">
+              <h3>🧬 Multi-Modal Data Ingestion, Regridding & Tensor Fusion Pipeline</h3>
+              <p>From Heterogeneous Environmental Observations to Dual-Pathway Deep Learning Models (Hover nodes to inspect specifications)</p>
+            </div>
+            <div class="viz-controls">
+              <span class="stat-badge" style="background:rgba(6,182,212,0.15); color:#22d3ee;">5-Stage End-to-End Pipeline</span>
+            </div>
+          </div>
+          <div id="pipeline-flow-viz" class="viz-container" style="min-height: 380px;"></div>
+        </div>
+
+        <!-- Visual 5: Interactive ROC & Confusion Matrix Threshold Simulator -->
+        <div class="viz-card glass-panel" style="margin-bottom: 2rem;">
+          <div class="viz-toolbar">
+            <div class="viz-title-box">
+              <h3>⚖️ Interactive Decision Threshold & Confusion Matrix Simulator</h3>
+              <p>Adjust classification probability threshold &tau; to simulate operational cost-sensitive trade-offs between disaster detection and false alarms.</p>
+            </div>
+            <div class="viz-controls" style="display:flex; align-items:center; gap:1rem;">
+              <span style="font-size:0.85rem; color:#e2e8f0;">Threshold &tau;: <strong id="threshold-val-label" style="color:var(--accent-amber); font-size:1.1rem;">0.45</strong></span>
+              <input type="range" id="threshold-slider" min="0.10" max="0.90" step="0.05" value="0.45" style="cursor:pointer; accent-color:var(--accent-amber); width:150px;">
+            </div>
+          </div>
+
+          <div class="grid-2col">
+            <!-- Left: D3 ROC Curve with moving operating point -->
+            <div id="roc-sim-viz" class="viz-container" style="min-height: 300px;"></div>
+
+            <!-- Right: Dynamic Confusion Matrix & Statistical Metrics Table -->
+            <div style="display:flex; flex-direction:column; justify-content:center; gap:1.25rem;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                <div class="detail-card glass-panel" style="border-left:3px solid #10b981; padding:1rem;">
+                  <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase;">True Positives (Hits)</div>
+                  <div id="cm-hits" style="font-size:1.8rem; font-weight:800; color:#10b981;">89</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Severe sandstorm correctly warned</div>
+                </div>
+                <div class="detail-card glass-panel" style="border-left:3px solid #f59e0b; padding:1rem;">
+                  <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase;">False Alarms (Type I)</div>
+                  <div id="cm-false-alarms" style="font-size:1.8rem; font-weight:800; color:#f59e0b;">54</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Warning issued but calm weather</div>
+                </div>
+                <div class="detail-card glass-panel" style="border-left:3px solid #ef4444; padding:1rem;">
+                  <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase;">Misses (Type II / Missed Disaster)</div>
+                  <div id="cm-misses" style="font-size:1.8rem; font-weight:800; color:#ef4444;">11</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Catastrophic unpredicted dust event</div>
+                </div>
+                <div class="detail-card glass-panel" style="border-left:3px solid #06b6d4; padding:1rem;">
+                  <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase;">Correct Rejections</div>
+                  <div id="cm-correct-rejects" style="font-size:1.8rem; font-weight:800; color:#06b6d4;">846</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Calm condition accurately verified</div>
+                </div>
+              </div>
+
+              <!-- Derived Metrics Bar -->
+              <div class="glass-panel" style="padding:1rem; display:grid; grid-template-columns:repeat(5, 1fr); text-align:center; gap:0.5rem;">
+                <div>
+                  <div style="font-size:0.7rem; color:#94a3b8;">Hit Rate (POD)</div>
+                  <div id="stat-pod" style="font-size:1.15rem; font-weight:700; color:#22d3ee;">89.0%</div>
+                </div>
+                <div>
+                  <div style="font-size:0.7rem; color:#94a3b8;">False Alarm (FAR)</div>
+                  <div id="stat-far" style="font-size:1.15rem; font-weight:700; color:#f59e0b;">37.8%</div>
+                </div>
+                <div>
+                  <div style="font-size:0.7rem; color:#94a3b8;">Threat Score (CSI)</div>
+                  <div id="stat-csi" style="font-size:1.15rem; font-weight:700; color:#10b981;">0.578</div>
+                </div>
+                <div>
+                  <div style="font-size:0.7rem; color:#94a3b8;">Precision</div>
+                  <div id="stat-precision" style="font-size:1.15rem; font-weight:700; color:#818cf8;">62.2%</div>
+                </div>
+                <div>
+                  <div style="font-size:0.7rem; color:#94a3b8;">F1-Score</div>
+                  <div id="stat-f1" style="font-size:1.15rem; font-weight:700; color:#ec4899;">0.732</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual 6: 7-Phase Research Roadmap Gantt Timeline -->
+        <div class="viz-card glass-panel">
+          <div class="viz-toolbar">
+            <div class="viz-title-box">
+              <h3>📅 7-Phase Research Roadmap Gantt Timeline (Sep 2025 – Jun 2027)</h3>
+              <p>Master's Thesis Execution Schedule at Beijing University of Science & Technology (Hover bars for tasks)</p>
+            </div>
+            <div class="viz-controls">
+              <span class="stat-badge" style="background:rgba(16,185,129,0.15); color:#34d399;">22 Months Duration</span>
+            </div>
+          </div>
+          <div id="gantt-viz" class="viz-container" style="min-height: 380px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         COMPREHENSIVE RESEARCH SECTIONS (1 TO 6)
+         ========================================== -->
+    <section id="research-core" class="container tabs-wrapper">
+      <div class="section-head">
+        <span class="section-tag">Thesis Document Chapters</span>
+        <h2 class="section-title">Complete Research Proposal Breakdown</h2>
+        <p class="section-desc">
+          Structured according to the University of Science and Technology Beijing (北京科技大学) Master's Thesis Topic Selection standards, covering background, literature evolution, methodology, steps, and timeline.
+        </p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="tab-intro">1. Introduction & Background</button>
+        <button class="tab-btn" data-tab="tab-status">2. Research Status & Literature</button>
+        <button class="tab-btn" data-tab="tab-content">3. Research Content</button>
+        <button class="tab-btn" data-tab="tab-methods">4. Research Methods</button>
+        <button class="tab-btn" data-tab="tab-steps">5. Research Steps</button>
+        <button class="tab-btn" data-tab="tab-schedule">6. Time Schedule</button>
+      </div>
+
+      <!-- Tab 1: Introduction -->
+      <div id="tab-intro" class="tab-pane active">
+        <div class="grid-2col" style="margin-bottom:1.5rem;">
+          <div class="detail-card glass-panel">
+            <h4>1.1 Research Background & Problem Formulation</h4>
+            <p>
+              Against the backdrop of global climate change, extreme sandstorms pose severe transnational threats. Research indicates that <strong>over 330 million people across 151 countries</strong> are directly affected. In China, arid and semi-arid regions in the north act as principal sources, where dust plumes transport across continents to central, eastern, and southern China.
+            </p>
+            <p>
+              Between 2010 and 2013 alone, direct economic losses reached <strong>~US$1.0 billion</strong> in northern China. Impacts include catastrophic visibility drops endangering aviation and highway transit, severe PM10/PM2.5 inhalation triggering respiratory and cardiovascular illnesses, and soil desertification.
+            </p>
+            <div class="formula-box">
+              Traditional NWP Bottleneck: Supercomputers take hours for single high-res run; physical parameterization errors accumulate exponentially; skill drops steeply for extended-range (3–15 days) and seasonal forecasts.
+            </div>
+            <p>
+              The emergence of data-driven machine learning, exemplified by China's independently developed <strong>AI-GAMFS large model</strong> (5km resolution, 2x daily update, 38%–74% error reduction vs ECMWF & NASA), proves that AI can capture complex non-linear dynamics and extend lead times to <strong>120 hours (5 days)</strong>.
+            </p>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>1.2 Theoretical & Practical Significance</h4>
+            <div style="margin-bottom:1rem;">
+              <strong style="color:var(--accent-cyan); display:block; margin-bottom:0.25rem;">Theoretical Significance:</strong>
+              <ul>
+                <li><strong>Cross-Scale Driving Mechanisms:</strong> Quantifying how sub-seasonal to seasonal forcing (ENSO, Arctic Oscillation, blocking highs, snowmelt, vegetation phenology) modulates synoptic cold fronts.</li>
+                <li><strong>New Algorithmic Paradigms:</strong> Advancing spatiotemporal sequence modeling via LSTM, Transformers, and Graph Neural Networks (GNN) combined with Physics-Informed Machine Learning (PINN mass conservation).</li>
+                <li><strong>Unified Benchmark:</strong> Establishing standardized open datasets and 3–15 day forecast labels with rigorous meteorological verification.</li>
+              </ul>
+            </div>
+            <div>
+              <strong style="color:var(--accent-amber); display:block; margin-bottom:0.25rem;">Practical Significance:</strong>
+              <ul>
+                <li><strong>Proactive Defense:</strong> Transitioning from "passive post-event response" to "proactive outlooks" (watering, dust suppression, healthcare logistics).</li>
+                <li><strong>Sector Meteorological Support:</strong> Optimizing aviation flight plans, protecting photovoltaic solar energy panels from soiling, and reinforcing agricultural greenhouses.</li>
+                <li><strong>Ecological Civilization:</strong> Distinguishing natural desert dust from anthropogenic industrial emissions, guiding the "Three-North" Shelter Forest Program (三北防护林).</li>
+                <li><strong>International Competitiveness:</strong> Elevating national leadership in environmental meteorological AI systems.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Research Status & Literature Review -->
+      <div id="tab-status" class="tab-pane">
+        <div class="card-grid" style="margin-bottom:1.5rem;">
+          <div class="detail-card glass-panel">
+            <h4>2.1 Evolution of Sandstorm AI Forecasting</h4>
+            <p><strong>Early ANN & SVM Explorations:</strong> Huang et al. [3] (2006) introduced stepwise regression + multi-layer perceptron across 4 stations. Lu et al. [4] (2006) utilized SVM with 500 hPa geopotential height and wind fields, highlighting severe class imbalance issues.</p>
+            <p><strong>Imbalance Handling & Ensembles:</strong> Xie et al. [5] (2015) designed hybrid adaptive sampling. Zhang et al. [6] (2015) coupled SMOTE with AdaBoost random forest. Kaboodvandpour et al. [7] (2015) compared ANN, SVM, and gradient boosting with PM10 data.</p>
+            <p><strong>Deep Learning & Hybrid Models:</strong> Li et al. [10] (2019) proposed INB-CNN fusing spatial CNN with Naive Bayes for land cover. Harba et al. [11] (2020) used Feature Pyramid Networks on satellite imagery. Ren et al. [12] (2020) demonstrated transfer learning, and Ren et al. [16] (2022) applied Stacking ensembles fusing LSTM and CNN.</p>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>2.2 Weather Machine Learning in Parallel Domains</h4>
+            <p><strong>Disastrous Weather:</strong> Song (2024) [25, 26] achieved <strong>96.72% hit rate</strong> in thunderstorm gales via AutoGluon and AutoFeat-TPOT for fog [27]. Zhao et al. (2025) [29] built AeolusStorm + Random Forest for rocket launch safety.</p>
+            <p><strong>Key Physical Quantities:</strong> Bai et al. (2024) [35] modeled Zenith Tropospheric Delay (ZTD). Bai et al. (2025) [36] estimated Boundary Layer Height (PBLH) with XGBoost. Liu (2022) [38] created EALSTM-QR for wind interval prediction. Google NeuralGCM [40] demonstrated hybrid planetary modeling.</p>
+            <p><strong>Cross-Industry Applications:</strong> Power load forecasting (Zhao 2025 [41], Zheng 2023 [42]), wind power (Zhang 2024 [43]), rail passenger flow via GCNN+Transformer (Chen 2024 [50]), and agricultural yield models across Pakistan [53], Rwanda [56], and Thailand [39].</p>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>2.3 Research Gaps & Proposed Innovation</h4>
+            <div style="background:rgba(239, 68, 68, 0.1); border:1px solid rgba(239, 68, 68, 0.3); border-radius:6px; padding:0.75rem; margin-bottom:0.75rem;">
+              <strong style="color:#fca5a5; font-size:0.85rem;">Identified Scientific Gaps:</strong>
+              <ul style="font-size:0.8rem; color:#cbd5e1; margin-top:0.25rem;">
+                <li>Prevailing research restricted to short-term/nowcasting; medium- to long-term (3–15d) ignored.</li>
+                <li>Over-reliance on single station data; lack of multi-source heterogeneous fusion (satellite + NWP + ERA5).</li>
+                <li>Absence of spatiotemporal GNN and Physics-Informed Neural Network (PINN) architectures.</li>
+                <li>Lack of unified benchmark datasets and physical interpretability.</li>
+              </ul>
+            </div>
+            <p>
+              <strong>This Study's Target:</strong> Bridge these gaps by constructing a multi-source spatiotemporal tensor system, a dual-line machine learning framework, and embedding mass conservation laws.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Research Content -->
+      <div id="tab-content" class="tab-pane">
+        <div class="card-grid">
+          <div class="detail-card glass-panel">
+            <h4>(1) Sandstorm Data System Construction</h4>
+            <ul>
+              <li><strong>Target Scales:</strong> 3–15 days medium-to-long term forecasts + monthly/seasonal trend outlooks.</li>
+              <li><strong>Multi-Source Acquisition:</strong> Numerical forecast ensembles (ECMWF, CMA), climate reanalysis (ERA5), satellite remote sensing (MODIS, Himawari, FY-4), and surface environmental sensor arrays.</li>
+              <li><strong>Spatiotemporal Alignment:</strong> Regridding onto unified 0.125° grid, spatial interpolation, missing data imputation via Kriging, and multi-level z-score standardization.</li>
+              <li><strong>Sample Labeling:</strong> Categorical event occurrence (0/1), 4-tier intensity levels (floating dust, blowing sand, sandstorm, severe storm), and spatial polygon boundaries.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>(2) Dual Machine Learning Forecasting Pathways</h4>
+            <ul>
+              <li><strong>Main Line A: NWP Statistical Post-Processing:</strong> Utilizing multi-model numerical outputs as primary inputs, training Random Forest, XGBoost, and EALSTM-QR models for systematic bias correction and probabilistic quantile estimation.</li>
+              <li><strong>Main Line B: Multi-Source End-to-End Deep Learning:</strong> Formulating spatiotemporal sequence models (LSTM, Earthformer, PredRNN, GNN) mapping environmental tensors directly to sandstorm risk probabilities.</li>
+              <li><strong>Class Imbalance Remedies:</strong> Integrating SMOTE oversampling, cost-sensitive loss penalties, and focal loss to guarantee high recall on rare extreme events.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>(3) Model Validation & Interpretability</h4>
+            <ul>
+              <li><strong>Multi-Dimensional Validation:</strong> Categorical verification (POD, FAR, CSI), regression accuracy (RMSE, MAE, R²), and probabilistic discrimination (AUC-ROC, Brier score).</li>
+              <li><strong>Retrospective Case Studies:</strong> Diagnosing performance across landmark historical events (e.g. April 2025 Sichuan remote intrusion).</li>
+              <li><strong>Mechanistic Transparency:</strong> Utilizing SHAP values and cross-attention weight heatmaps to verify compliance with aerodynamic and thermodynamic principles.</li>
+              <li><strong>Operational Evaluation:</strong> Lead-time performance decay curves and inference stability on high-resolution 5km grids.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Research Methods -->
+      <div id="tab-methods" class="tab-pane">
+        <div class="card-grid">
+          <div class="detail-card glass-panel">
+            <h4>Method 1: Critical Literature Review</h4>
+            <p>
+              Systematic synthesis of domestic and international literature spanning sandstorm numerical simulations, classical statistical forecasts, and frontier deep learning. Avoids redundant efforts and pinpoints the unexplored 3–15 day extended-range predictability horizon.
+            </p>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>Method 2: Physics-Informed Machine Learning</h4>
+            <p>
+              Bypasses rigid numerical parameterization while preserving physical realism by incorporating aerodynamic thresholds ($u_* > u_{*t}$) and atmospheric mass conservation laws directly into the neural loss function:
+            </p>
+            <div class="formula-box">
+              L_total = L_data + &lambda;_1 &bull; L_mass_conservation + &lambda;_2 &bull; L_threshold(u* &minus; u*t)
+            </div>
+            <p>
+              Captures complex nonlinear couplings between land surface phenology, synoptic cold vortices, and aerosol saltation.
+            </p>
+          </div>
+
+          <div class="detail-card glass-panel">
+            <h4>Method 3: Case Study & Mechanistic Diagnostics</h4>
+            <p>
+              Transcends macro-statistical metrics by conducting deep retrospective diagnoses of 1–2 typical severe dust storm processes. Compares machine learning spatial forecasts against operational NWP baselines, visualizing attention weights across upstream source regions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: Research Steps -->
+      <div id="tab-steps" class="tab-pane">
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div class="detail-card glass-panel" style="border-left:4px solid var(--accent-cyan);">
+            <h4>Step 1: Multi-Source Data Collection & Standardized Preprocessing</h4>
+            <p>Acquisition of ECMWF, CMA, ERA5, MODIS, and 2,400+ CMA station records &rarr; Quality control &rarr; Spatiotemporal regridding onto 0.125° grid &rarr; Kriging missing value imputation &rarr; Z-score tensor normalization &rarr; 3-tier label generation.</p>
+          </div>
+
+          <div class="detail-card glass-panel" style="border-left:4px solid var(--accent-amber);">
+            <h4>Step 2: Feature Engineering & Input Representation</h4>
+            <p>
+              Construction of three core feature tensors:
+              <strong>(a) Dust Emission Tensor:</strong> Friction wind speed $u_*$, volumetric soil moisture (0–7cm), bare soil fraction, seasonal snow cover, roughness length $z_0$.
+              <strong>(b) Dynamic Transport Tensor:</strong> 10m wind velocity vectors, vertical shear, 500hPa geopotential height, boundary layer height PBLH, cold front advection pathways.
+              <strong>(c) Upstream Memory Tensor:</strong> Historical 72h dust concentration accumulation, spatial neighborhood graph adjacency matrix.
+            </p>
+          </div>
+
+          <div class="detail-card glass-panel" style="border-left:4px solid var(--accent-indigo);">
+            <h4>Step 3: Dual Model Construction & Training</h4>
+            <p>Main Line A (NWP Bias Correction via RF, XGBoost, EALSTM-QR) + Main Line B (End-to-End Spatiotemporal Sequence Modeling via LSTM, Earthformer, GNN, PINN).</p>
+          </div>
+
+          <div class="detail-card glass-panel" style="border-left:4px solid var(--accent-rose);">
+            <h4>Step 4: Probability Calibration & Rare Event Optimization</h4>
+            <p>Applying SMOTE synthetic oversampling on severe dust storm days + Cost-sensitive focal loss to heavily penalize disaster misses + Platt scaling probability calibration.</p>
+          </div>
+
+          <div class="detail-card glass-panel" style="border-left:4px solid var(--accent-emerald);">
+            <h4>Step 5: Model Evaluation, Retrospective Review & Operational Product Generation</h4>
+            <p>Validation across POD, FAR, CSI, AUC, RMSE &rarr; Comparison against baseline NWP models &rarr; Case review of April 2025 Sichuan intrusion &rarr; SHAP interpretability &rarr; Generation of 5km risk probability contours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6: Time Schedule -->
+      <div id="tab-schedule" class="tab-pane">
+        <div class="card-grid">
+          <div class="detail-card glass-panel" style="border-top:3px solid #38bdf8;">
+            <h4>Phase 1: Sep 2025 – Dec 2025</h4>
+            <p><strong>Literature Review & Preparatory Work:</strong> Comprehensive literature analysis, technical roadmap finalization, GPU environment setup, data access agreements.</p>
+          </div>
+          <div class="detail-card glass-panel" style="border-top:3px solid #818cf8;">
+            <h4>Phase 2: Jan 2026 – Apr 2026</h4>
+            <p><strong>Data System Construction:</strong> Data collection, spatiotemporal regridding, missing data filling, feature engineering of emission tensors, labeled dataset creation.</p>
+          </div>
+          <div class="detail-card glass-panel" style="border-top:3px solid #f59e0b;">
+            <h4>Phase 3: May 2026 – Aug 2026</h4>
+            <p><strong>Model Development & Baseline Experiments:</strong> RF and XGBoost baseline implementation, preliminary LSTM/Transformer architectures, SMOTE imbalance evaluation.</p>
+          </div>
+          <div class="detail-card glass-panel" style="border-top:3px solid #ec4899;">
+            <h4>Phase 4: Sep 2026 – Dec 2026</h4>
+            <p><strong>Advanced Modeling & Mid-term Review:</strong> Stacking ensemble architectures, Spatiotemporal Graph Neural Networks (GNN), PINN physical loss constraints, mid-term defense.</p>
+          </div>
+          <div class="detail-card glass-panel" style="border-top:3px solid #10b981;">
+            <h4>Phase 5: Jan 2027 – Mar 2027</h4>
+            <p><strong>Case Studies, Interpretability & Paper:</strong> Retrospective historical case analysis, SHAP feature attribution, academic manuscript submission, thesis first draft.</p>
+          </div>
+          <div class="detail-card glass-panel" style="border-top:3px solid #a855f7;">
+            <h4>Phases 6 & 7: Apr 2027 – Jun 2027</h4>
+            <p><strong>Thesis Finalization, Pre-Defense & Graduation:</strong> Full dissertation integration, committee revisions, pre-defense, formal oral defense, graduation deliverables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         DEEP DIVE: THE AI ROLE & PARADIGMS
+         ========================================== -->
+    <section id="ai-role" class="container">
+      <div class="section-head">
+        <span class="section-tag">Artificial Intelligence Architecture</span>
+        <h2 class="section-title">The Role of Artificial Intelligence in Sandstorm Prediction</h2>
+        <p class="section-desc">
+          How modern machine learning algorithms break computational bottlenecks, extract high-dimensional nonlinear patterns, and enforce physical conservation principles.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <div class="detail-card glass-panel">
+          <h4>🌟 AI-GAMFS Coupled Large Model</h4>
+          <p>
+            Developed by a premier Chinese research team, AI-GAMFS is the world's first aerosol-meteorology coupled forecasting large model. It operates at <strong>5-kilometer spatial resolution</strong> with twice-daily operational cycles.
+          </p>
+          <p>
+            Reduces East Asia forecast errors by <strong>38% to 74%</strong> compared to ECMWF and NASA GEOS-CF. Demonstrated a landmark <strong>120-hour (5-day) advance warning</strong> of severe northern dust invading the Sichuan Basin in April 2025.
+          </p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>⚛️ Physics-Informed Neural Networks (PINN)</h4>
+          <p>
+            Pure data-driven models risk generating unphysical predictions (e.g. dust spontaneously generating without wind). PINN embeds physical prior laws directly into the objective function:
+          </p>
+          <div class="formula-box">
+            &part;C/&part;t + &nabla; &bull; (u C) = K &nabla;&sup2;C + S(u* &minus; u*t) &minus; D_dry &minus; D_wet
+          </div>
+          <p>
+            Penalizes violations of mass continuity and ensures dust initiation only occurs when friction velocity exceeds aerodynamic saltation thresholds ($u_* > u_{*t}$).
+          </p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>🕸️ Spatio-Temporal Graph Neural Networks (GNN)</h4>
+          <p>
+            Atmospheric dust transport is fundamentally a topological spatial flow governed by pressure gradients and prevailing wind corridors.
+          </p>
+          <p>
+            GNN constructs nodes representing meteorological stations and desert grid points, with dynamic edge weights determined by 10m wind direction and 500hPa geopotential height differences, modeling dust propagation along the Hexi Corridor and Qinling mountain gaps.
+          </p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>⌛ Spatio-Temporal Transformers & Memory Networks</h4>
+          <p>
+            Unlike short-term nowcasting, extended-range (3–15 days) forecasting demands models that capture low-frequency climate variations and sub-seasonal memory.
+          </p>
+          <p>
+            Employs architectures derived from PredRNN (Wang 2017 [22]) and Earthformer (Gao 2022 [24]) with cuboid self-attention, isolating slow-varying soil moisture anomalies and upstream desert accumulation.
+          </p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>🤖 Automated Machine Learning (AutoGluon & AutoFeat)</h4>
+          <p>
+            Proven by Song (2024) [25, 26] to achieve a <strong>96.72% hit rate</strong> in severe convective gale prediction. Automates deep feature synthesis and multi-layer model stacking, drastically reducing engineering cycle time.
+          </p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>💡 Explainable AI (SHAP & Attention Weight Mapping)</h4>
+          <p>
+            Unpacks the "black box" of deep learning. SHAP (SHapley Additive exPlanations) values quantitatively attribute each forecast decision to specific physical drivers (e.g. 42% friction velocity, 31% soil moisture deficit, 27% upper-level trough).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         DEEP DIVE: STATISTICAL METHODOLOGY & METRICS
+         ========================================== -->
+    <section id="statistics" class="container">
+      <div class="section-head">
+        <span class="section-tag">Statistical Methodology</span>
+        <h2 class="section-title">Statistical Formulations & Meteorological Verification</h2>
+        <p class="section-desc">
+          Rigorous mathematical standards used for class imbalance mitigation, probability calibration, and multi-dimensional forecast verification.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <div class="detail-card glass-panel">
+          <h4>1. Critical Success Index (CSI / Threat Score)</h4>
+          <div class="formula-box">CSI = Hits / (Hits + FalseAlarms + Misses)</div>
+          <p>The gold standard categorical metric in meteorological disaster verification. Penalizes both missed sandstorm events and unwarranted false alarms.</p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>2. Probability of Detection (POD / Hit Rate)</h4>
+          <div class="formula-box">POD = Hits / (Hits + Misses)</div>
+          <p>Measures the proportion of actual dust storm occurrences that were successfully forecast in advance. Critical for safeguarding lives and public health.</p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>3. False Alarm Ratio (FAR)</h4>
+          <div class="formula-box">FAR = FalseAlarms / (Hits + FalseAlarms)</div>
+          <p>Measures the fraction of issued warnings that did not materialize. Minimizing FAR prevents "warning fatigue" and unnecessary economic disruption.</p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>4. SMOTE (Synthetic Minority Over-sampling)</h4>
+          <div class="formula-box">x_synth = x_i + &lambda; &bull; (x_neighbor &minus; x_i), &lambda; &isin; [0, 1]</div>
+          <p>Synthesizes realistic minority class feature vectors in high-dimensional space, overcoming severe historical sample imbalance where calm days exceed sandstorm days by 50:1.</p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>5. Cost-Sensitive Loss Function</h4>
+          <div class="formula-box">L_cost = &minus; [ w_pos &bull; y &bull; log(p) + w_neg &bull; (1 &minus; y) &bull; log(1 &minus; p) ]</div>
+          <p>Assigns $w_{pos} \gg w_{neg}$ (e.g. 10:1 ratio) to penalize missed disasters significantly harder than false alarms during model backpropagation.</p>
+        </div>
+
+        <div class="detail-card glass-panel">
+          <h4>6. Quantile Regression (EALSTM-QR)</h4>
+          <div class="formula-box">min_&theta; &Sigma; &rho;_&tau; (y &minus; f_&tau;(x)), &rho;_&tau;(u) = u &bull; (&tau; &minus; I(u &lt; 0))</div>
+          <p>Generates non-parametric prediction intervals (&tau; = 0.05, 0.50, 0.95), providing decision-makers with quantified uncertainty bounds for PM10 dust concentrations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         DEEP DIVE: DATA TYPES & MULTI-SOURCE SYSTEM
+         ========================================== -->
+    <section id="data-system" class="container">
+      <div class="section-head">
+        <span class="section-tag">Observation & Simulation Data</span>
+        <h2 class="section-title">Multi-Modal Environmental Data Architecture</h2>
+        <p class="section-desc">
+          Four primary data modalities fused across spatial, temporal, and atmospheric dimensions.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <div class="detail-card glass-panel" style="border-top:3px solid #38bdf8;">
+          <h4>1. Numerical Weather Prediction (NWP)</h4>
+          <p><strong>Providers:</strong> ECMWF, CMA, NASA GEOS-CF Ensemble</p>
+          <p><strong>Parameters:</strong> 500hPa & 850hPa geopotential height, zonal ($u$) and meridional ($v$) wind velocity vectors, surface temperature ($T_{2m}$), mean sea level pressure (MSLP), boundary layer height (PBLH).</p>
+          <p><strong>Spatiotemporal Spec:</strong> 0.125°–0.25° grid, 3h–6h intervals, 3–15 days lead time.</p>
+        </div>
+
+        <div class="detail-card glass-panel" style="border-top:3px solid #818cf8;">
+          <h4>2. Atmospheric Climate Reanalysis</h4>
+          <p><strong>Providers:</strong> ECMWF ERA5 Reanalysis, NCEP/NCAR</p>
+          <p><strong>Parameters:</strong> 1979–Present continuous atmospheric state, sub-seasonal indices (ENSO, Arctic Oscillation), multi-depth volumetric soil water (0–7cm, 7–28cm, 28–100cm), soil temperature layers.</p>
+          <p><strong>Spatiotemporal Spec:</strong> Hourly/daily, 0.25° grid, 45-year continuous climate history.</p>
+        </div>
+
+        <div class="detail-card glass-panel" style="border-top:3px solid #f59e0b;">
+          <h4>3. Satellite Remote Sensing</h4>
+          <p><strong>Platforms:</strong> NASA MODIS (Terra/Aqua), Himawari-8/9, FY-4A/B (CMA)</p>
+          <p><strong>Parameters:</strong> Normalized Difference Vegetation Index (NDVI) [Rouse 1974 [14]], bare soil fraction, Aerosol Optical Depth (AOD at 550nm), Dust Storm Index (DSI), snow cover extent.</p>
+          <p><strong>Spatiotemporal Spec:</strong> 250m–1km spatial resolution, 10-minute geostationary scanning cadence.</p>
+        </div>
+
+        <div class="detail-card glass-panel" style="border-top:3px solid #10b981;">
+          <h4>4. Surface In-Situ Observations</h4>
+          <p><strong>Networks:</strong> 2,400+ CMA national weather stations, CNEMC air quality network</p>
+          <p><strong>Parameters:</strong> 10m surface wind speed and gusts, friction velocity $u_*$, horizontal visibility (meters), PM10 and PM2.5 concentrations (&mu;g/m&sup3;), verified sandstorm event logs.</p>
+          <p><strong>Spatiotemporal Spec:</strong> 10-minute / hourly continuous ground observations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         COMPLETE 61 REFERENCES EXPLORER
+         ========================================== -->
+    <section id="references" class="container">
+      <div class="section-head">
+        <span class="section-tag">Scientific Literature Catalog</span>
+        <h2 class="section-title">Complete 61 Academic References & Citations</h2>
+        <p class="section-desc">
+          Every citation referenced in the proposal, complete with authors, journals, years, DOIs, category tags, and instant BibTeX generation.
+        </p>
+      </div>
+
+      <div class="glass-panel" style="padding:1.5rem;">
+        <!-- Search and Filter Bar -->
+        <div class="ref-search-bar">
+          <input type="text" id="ref-search-input" class="search-input" placeholder="🔍 Search citations by title, author, journal, keyword, or [ID]...">
+          <div style="display:flex; align-items:center;">
+            <span id="ref-count-label" style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Showing 61 of 61 Citations</span>
+          </div>
+        </div>
+
+        <!-- Category Pill Filters -->
+        <div id="ref-category-filters" class="category-filter">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- References Table -->
+        <div style="overflow-x:auto;">
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">ID</th>
+                <th>Title & Authors</th>
+                <th>Journal & Volume</th>
+                <th style="width:160px;">Action / Tag</th>
+              </tr>
+            </thead>
+            <tbody id="ref-table-body">
+              <!-- Populated dynamically by app.js from data.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       CITATION DETAILS & BIBTEX MODAL
+       ========================================== -->
+  <div id="ref-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeRefModal()">&times;</button>
+      <div id="modal-ref-content">
+        <!-- Injected via openRefModal() in app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SITE FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <div style="font-weight:700; color:#fff; font-size:1rem; margin-bottom:0.25rem;">
+          北京科技大学 (University of Science and Technology Beijing)
+        </div>
+        <div>School of Energy and Environmental Engineering • 环境工程专业硕士学位研究生选题报告</div>
+      </div>
+
+      <div style="text-align:right;">
+        <div style="color:var(--text-secondary);">Master's Thesis Research Proposal Web Platform</div>
+        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">
+          Built with HTML5 • Vanilla CSS3 • Vanilla ES6 JS • D3.js v7 Interactive Engines
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="data.js"></script>
+  <script src="d3-visualizations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

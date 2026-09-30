@@ -1,0 +1,413 @@
+北 京 科 技 大 学
+
+硕士学位研究生
+
+文献总结及选题报告
+
+论文题目：Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting
+
+指 导 教 师：_________________________
+
+202461024202461024Environmental EngineeringEnvironmental Engineering单　   　位：_________________________
+
+202461024
+
+202461024
+
+Environmental Engineering
+
+Environmental Engineering
+
+语嫣语嫣学　   　号：_________________________
+
+语嫣
+
+语嫣
+
+Environmental EngineeringEnvironmental Engineering作　   　者：_________________________
+
+Environmental Engineering
+
+Environmental Engineering
+
+专 业 名 称：_________________________
+
+2025.92025.9
+
+2025.9
+
+2025.9
+
+入 学 时 间：_________________________
+
+contents
+
+1Introduction3
+
+1.1Research Background3
+
+1.2 Research Significance5
+
+2 Research Status9
+
+2.1 Research Status on Sandstorm Prediction Methods9
+
+2.2 Research Status on the Application of Machine Learning in Weather Prediction13
+
+2.3 Literature Review20
+
+3 Research Content22
+
+4 Research Methods23
+
+5 Research Steps25
+
+6 Time Schedule26
+
+References28
+
+1Introduction
+
+1.1Research Background
+
+Against the backdrop of global climate change, extreme weather and climate events are occurring more frequently. Among them, sandstorms, as a severe natural disaster, pose an increasingly prominent threat. Sandstorms are not local phenomena; their impacts can span across continents. Research indicates that nearly 330 million people across 151 countries worldwide are affected by sandstorms. In China, the vast arid and semi-arid regions in the north serve as the primary sources of sandstorms. The activities of sandstorms not only cause damage to the ecological environment of the source areas but can also, through long-distance transport, affect central, eastern, and even southern regions of China, posing severe challenges to economic and social operations. According to statistics, from 2010 to 2013 alone, sandstorms caused economic losses of approximately US$1 billion in northern China. The rampant sandstorms lead to a sharp decline in visibility, seriously threatening aviation and road traffic safety. High concentrations of particulate matter pollute the air, triggering respiratory and cardiovascular diseases and endangering public health. Additionally, sand deposition can affect crop growth and exacerbate land degradation. Therefore, accurate medium- to long-term forecasts of sandstorms, particularly regarding their occurrence time, intensity, and path, are urgently needed for disaster prevention and mitigation, as well as for safeguarding people's lives, property, and ecological security.
+
+However, traditional sandstorm forecasting primarily relies on numerical weather prediction models based on physical mechanisms. These models make predictions by solving complex sets of equations that describe atmospheric dynamics, thermodynamics, and chemical processes. While they hold irreplaceable value in understanding the intrinsic mechanisms of the weather and climate system, they face multiple bottlenecks in practical operational forecasting. First, the occurrence of sandstorms results from highly nonlinear and coupled interactions among atmospheric dynamic conditions, surface conditions (soil moisture, vegetation cover, snow cover), and aerosol microphysical processes such as sand initiation, transport, and deposition. Traditional numerical models still exhibit uncertainties in depicting these complex interactions and have extremely high computational costs. A single high-precision global forecast often requires a supercomputer to run for several hours, making it difficult to meet the needs of rapid updates and emergency responses. Second, for extended-range and seasonal forecasts, the influence of initial conditions diminishes, while the roles of internal variability within the climate system and boundary forcings increase, leading to a significant decline in the forecasting skill of traditional dynamical models. Finally, the traditional "post-event response" warning mode, due to insufficient lead time and accuracy in forecasts, often results in a tight emergency response window and passive prevention and control measures.
+
+It is precisely under this background that data-driven machine learning technologies offer revolutionary opportunities for breaking through the bottlenecks in sandstorm forecasting. Machine learning algorithms, especially deep learning models, possess powerful capabilities for nonlinear fitting, high-dimensional feature extraction, and complex pattern recognition. They can directly learn the statistical laws and underlying features of sandstorm development from vast amounts of historical observational and simulated data, thereby constructing efficient forecasting models. In recent years, remarkable progress has been made in this field. For example, the "Intelligent Sensing of Environmental Meteorological Multi-Elements and Large-Model Forecasting System" independently developed by a Chinese research team, along with its core component—the world's first aerosol-meteorology coupled forecasting AI large model (AI-GAMFS)—has demonstrated outstanding performance in practical operations. This system can achieve sandstorm forecasts with twice-daily updates and a resolution of 5 kilometers, reducing forecast errors in East Asia by 38% to 74% compared to the systems of the internationally leading European Centre for Medium-Range Weather Forecasts and the National Aeronautics and Space Administration. A landmark case is that the system accurately forecasted the time and intensity of a strong sandstorm from northern China remotely invading the Sichuan Basin 120 hours (i.e., 5 days) in advance, winning precious time for local authorities to implement effective protective measures. Furthermore, cutting-edge academic research is also emerging. For instance, physics-informed neural networks (PINNs), which combine physical laws with neural networks, have been used for sandstorm event modeling, showing high-precision simulation potential in specific regions. Meanwhile, hybrid models that fuse convolutional neural networks with long short-term memory networks (CNN-LSTM) have demonstrated excellent performance in predicting the 24-hour movement paths of sandstorms.
+
+Nevertheless, the systematic application of machine learning to medium- to long-term sandstorm forecasting remains a challenging frontier topic. Current research mostly focuses on short-term monitoring, identification, or classification forecasting. For extended-range and longer time-scale predictions, scientific challenges such as more complex forecasting factors, weaker predictable signals, and sparse extreme events in training samples (highlighting the issue of class imbalance) persist. Meanwhile, how to effectively integrate multi-modal and heterogeneous data, including numerical model products, multi-source satellite remote sensing, reanalysis data, and surface environmental information, to construct a dedicated data system and a robust machine learning model framework for medium- to long-term forecasting remains to be thoroughly explored. This study is proposed against the backdrop of intersecting practical needs, technological opportunities, and scientific challenges. It aims to explore and establish a medium- to long-term intelligent sandstorm forecasting methodology system based on multi-source data and advanced machine learning algorithms, striving to significantly extend the "lead time" of forecasts while maintaining or improving forecast accuracy, thereby providing more powerful scientific and technological support for proactive responses to sandstorm risks.
+
+1.2 Research Significance
+
+(1) Theoretical Significance
+
+This study holds significant theoretical value for deepening the understanding of sandstorm weather processes and promoting the cross-integration of meteorological forecasting disciplines and artificial intelligence.
+
+Firstly, by constructing a multi-source data fusion system for medium- to long-term sandstorm forecasting, this study helps reveal the cross-scale driving mechanisms of sandstorm activities. The medium- to long-term frequency and intensity of sandstorms are not only related to short-term weather systems (such as cold fronts and cyclones) but are also modulated by sub-seasonal to seasonal climate forcing signals, including sea surface temperature anomalies (e.g., ENSO), atmospheric circulation patterns (e.g., blocking highs), seasonal snowmelt, and vegetation phenological changes. This study systematically collects and fuses data such as extended-range forecast products from numerical models, climate reanalysis data, and long-term time series of surface parameters retrieved from satellites. Essentially, it integrates environmental forcing factors across different time scales. Through importance ranking and correlation analysis of these high-dimensional features by machine learning models, it can quantitatively identify the dominant physical factors influencing medium- to long-term sandstorm activities in different sand source regions and key affected areas in China, as well as their contributions. This deepens the scientific understanding of the sources of sandstorm climate predictability.
+
+Secondly, the development of machine learning models for medium- to long-term forecasting contributes to exploring and advancing new algorithmic paradigms suitable for meteorological spatiotemporal sequence prediction. Unlike short-term forecasting, medium- to long-term forecasting requires models with stronger capabilities to remember long-term dependencies, capture low-frequency variation signals, and handle high levels of uncertainty. This study plans to investigate sequence models such as Long Short-Term Memory networks and Transformers, as well as the application of Graph Neural Networks in depicting the spatiotemporal propagation network relationships of sandstorms. In particular, exploring how to embed physical prior knowledge in the meteorological field (such as mass conservation and the critical wind speed threshold for sand initiation) into data-driven deep learning models in the form of constraints or loss functions (i.e., physics-informed machine learning) is a cutting-edge direction. This attempt not only enhances the generalization ability and physical rationality of extrapolative forecasts of the models but also provides theoretical and methodological cases for the application of "explainable artificial intelligence" in complex Earth system sciences.
+
+Finally, this study helps promote the establishment of a unified benchmark for sandstorm intelligent forecasting research. Currently, research in this field shows significant differences in data usage, forecast target definitions, and evaluation criteria, which are not conducive to outcome comparison and cumulative progress. By constructing a relatively standardized and open dataset and problem definition (e.g., designing sample labels for 3-15-day forecasts) and adopting rigorous forecast verification methods, this study can provide a reference framework for subsequent research. This promotes the formation of a common research language and evaluation standards within the field, accelerating knowledge accumulation and technological iteration.
+
+(2) Practical Significance
+
+The outcomes of this study will directly serve national disaster prevention and mitigation strategies and sustainable economic and social development, possessing significant application value and broad social benefits.
+
+Firstly, it enhances the proactive defense capabilities against sandstorm disaster risks and safeguards public safety. By establishing medium- to long-term risk probability forecasts and intensity trend predictions for sandstorms several days to weeks in advance, it provides critical decision support for governments at all levels, emergency management departments, and public health institutions. For example, meteorological departments can issue "sandstorm process outlooks" in advance to remind the public and relevant departments to pay attention. Urban management departments can plan watering and dust suppression operations and construction site controls in advance based on forecasts. The healthcare system can stock up on relevant medications and issue health protection guidelines in advance. This shift from "passive emergency response" to "proactive defense" can minimize casualties and property losses to the greatest extent. For instance, the AI-GAMFS model has been operationalized in multiple provinces in central and eastern China, and its early warnings have won more than five days of preparation time for sandstorm defense in the Sichuan Basin in April 2025.
+
+Secondly, it supports fine-grained meteorological support services for key industries and major events. Sandstorms have far-reaching impacts on several key national economic sectors, including transportation, energy, and agriculture. For aviation and road transportation, sandstorm visibility forecasts several days in advance help airlines optimize flight plans and traffic management departments implement traffic control plans. For the new energy power industry, sandstorms significantly reduce the power generation efficiency of photovoltaic power stations and contaminate panels. Accurate forecasts assist power grids in making more reliable power forecasts and dispatching. For agriculture, sandstorm forecasts can guide farmers to take measures such as reinforcing greenhouses and protecting crops. The high spatiotemporal resolution forecast products produced by this study can be deeply coupled with industry management systems to develop customized professional service modules, enhancing the resilience of relevant industries in coping with climate risks.
+
+Thirdly, it serves national ecological civilization construction and environmental governance. Sandstorms are an important source affecting regional air quality. Accurate medium- to long-term sandstorm forecasts help ecological environment departments more accurately distinguish the contributions of natural sand sources from those of anthropogenic industrial pollution, thereby scientifically evaluating the real effects of emission reduction measures and formulating more precise pollution prevention and control strategies. Meanwhile, long-term predictions of sandstorm source region activity trends can also provide scientific bases for the planning, construction, and benefit evaluation of ecological projects such as the "Three-North" Shelter Forest Program, contributing to the consolidation of the ecological barrier in northern sand prevention belts.
+
+Fourthly, it promotes international competitiveness in the field of environmental meteorology and artificial intelligence. Currently, leveraging AI to enhance meteorological forecasting capabilities has become a new frontier in global technological competition. The independently developed AI-GAMFS system has reached international leading levels in terms of forecast accuracy and speed. This study focuses on the more challenging medium- to long-term forecasting, serving as an important complement and extension to existing short-term forecasting capabilities. Its successful implementation will further improve the seamless intelligent meteorological forecasting business system from short-term to extended-range forecasts, consolidating and expanding the advantageous position in this field and contributing Chinese wisdom and solutions to global sandstorm disaster response.
+
+2 Research Status
+
+2.1 Research Status on Sandstorm Prediction Methods
+
+In recent years, with the rapid development of artificial intelligence (AI) technology, especially the demonstration of powerful capabilities of deep learning in numerous scientific fields, the field of meteorological prediction has also embraced new opportunities for transformation [1]. Applying AI, particularly machine learning and deep learning models, to sandstorm prediction centers on constructing computational models capable of capturing the complex non-linear relationships between sandstorm occurrences and various environmental factors, thereby enabling probabilistic or intensity forecasts of future sandstorm events. However, compared to predictions of other meteorological disasters, research on sandstorm prediction that comprehensively utilizes multi-source data such as remote sensing and AI technology is still in the exploratory and developmental stages, with a limited number of relevant publicly available results [2]. This section aims to systematically review representative research methods and progress in this field based on AI technology.
+
+Early explorations introduced classical artificial neural network (ANN) models to the problem of sandstorm prediction. Huang et al. [3] conducted pioneering work by constructing an ANN model based on a multi-layer perceptron. In this study, the authors first assigned values to sandstorm occurrence days and non-occurrence days, creating a time series for modeling. To screen key influencing factors, the researchers employed stepwise multiple linear regression, using the aforementioned sandstorm sequence as the dependent variable and selecting major independent variables from numerous meteorological elements such as daily average air pressure, temperature, humidity, wind speed, soil temperature, precipitation, and evaporation, which were then used as input features for the neural network. Experiments based on data from four meteorological stations demonstrated that this ANN model outperformed traditional regression models in terms of prediction performance. Lu et al. [4] attempted another classical machine learning algorithm—support vector machine (SVM). Their innovation lay in introducing atmospheric potential field information, selecting data such as the 500 hPa geopotential height field, zonal wind field, meridional wind field, and temperature field as input data for the model. In model evaluation, they used recall as an indicator. However, this study also revealed a common challenge: due to the significantly fewer sandstorm weather samples than normal weather samples in the training data, the model struggled to fully learn the characteristics of rare events (sandstorms), resulting in less than ideal prediction performance.
+
+To address the model bias caused by sample category imbalance mentioned above, subsequent studies proposed various solutions. Xie et al. [5] designed a hybrid adaptive sampling strategy that effectively improved data distribution by targeted sampling of minority class (sandstorm weather) samples in the training set, enabling the SVM model to better capture sandstorm characteristics and thus enhancing forecast accuracy. Zhang et al. [6] employed synthetic minority oversampling technique to balance the dataset and constructed a random forest classification model based on the AdaBoost ensemble learning framework for sandstorm prediction in China. This approach combining oversampling and ensemble learning also significantly improved the model's accuracy in identifying sandstorm events. In addition to directly processing data, some studies enhanced robustness by integrating multiple models. Kaboodvandpour et al. [7] compared the performance of various machine learning algorithms, including artificial neural networks, support vector machines, conditional inference random forests, and stochastic gradient boosting, in predicting the number of sandstorm occurrences in Iran. Their model inputs included both conventional meteorological observation data and PM10 concentration data.
+
+Meanwhile, researchers have also been attempting to construct hybrid models by combining different methodologies. Al Murayziq et al. [8], considering multiple types of meteorological and environmental factors related to sandstorms such as wind speed, air pressure, temperature and humidity, and surface coverage, proposed a hybrid prediction model combining Bayesian networks with case-based reasoning. Shaiba et al. [9] systematically compared multiple machine learning algorithms, including CART decision trees, naive Bayes, and logistic regression, and selected the best model through performance evaluation for predicting the presence or absence of sandstorms in the coming hours.
+
+With the rise of deep learning technology, research on sandstorm prediction has also begun to incorporate more complex neural network architectures. Li et al. [10] conducted an in-depth analysis of the causes of sandstorms, considering the dual influences of atmospheric dynamic processes and underlying surface characteristics. Based on this, they proposed an INB-CNN model that integrates naive Bayes and convolutional neural networks. In this fusion framework, the CNN is specifically used to learn spatial features from atmospheric circulation data, while the naive Bayes model handles features such as surface coverage types. Experiments have shown that this strategy of combining the advantages of different models can more effectively capture the occurrence patterns of sandstorms and improve forecast accuracy. In terms of using satellite imagery for sandstorm monitoring, Harba et al. [11] applied deep neural networks to predict the movement direction of sandstorms. They used image processing techniques to detect the minimum bounding rectangle of the sandstorm area to determine its orientation and then infer the movement direction. Specifically, the study utilized feature pyramid networks for image segmentation, combined with region proposal networks for target registration and classification, and employed a ground truth estimation algorithm for position and angle detection, ultimately inferring the wind direction based on the sand density distribution.
+
+Migration learning, as a technology for effectively utilizing pre-trained knowledge, has also been introduced into sandstorm prediction. Ren et al. [12] took infrared satellite cloud image datasets as the research object and adopted a convolutional neural network algorithm based on migration learning to construct prediction models to explore the outbreak patterns of sandstorms in Inner Mongolia. The study compared different learning strategies, and the results showed that using model parameters pre-trained on large-scale image datasets to initialize the network not only accelerated the convergence speed of model training but also significantly improved the model's prediction accuracy and generalization ability, verifying the effectiveness and potential of migration learning in this field.
+
+A more comprehensive consideration of sandstorm influencing factors is another important research direction. Ebrahimi-Khusfi et al. [13] conducted an in-depth exploration of the impact degrees of multi-dimensional factors such as climatic conditions, soil characteristics, normalized difference vegetation index [14], land use, and land types on sandstorms. Based on this, they used various machine learning methods to predict the monthly-scale number of sandstorm days in Saudi Arabia and Iran. Mahmoudi et al. [15] collected sandstorm data from 28 stations in high-incidence areas of sandstorms in Iran over a 29-year period. After standardizing temperature, sand concentration, and precipitation data, they used an adaptive network-based fuzzy inference system and a model centered on radial basis functions for modeling to predict the future trends of sandstorm activities. Finally, the study used the TOPSIS multi-criteria decision-making model to prioritize the sandstorm risks at each station and presented the results spatially using ArcGIS software.
+
+In recent years, ensemble learning and sequence prediction models have shown strong advantages in time series analysis and have also been applied to sandstorm forecasting. Ren et al. [16] adopted the Stacking ensemble algorithm to fuse long short-term memory neural networks and convolutional neural networks to construct a stronger sandstorm prediction model. They used fully connected networks and support vector machines as meta-classifiers to construct two LSTM-CNN integrated models. The experimental results of applying this ensemble model to sandstorm forecasting in Inner Mongolia showed that compared to single LSTM or CNN models, the Stacking ensemble model achieved comprehensive improvements in multiple performance evaluation indicators.
+
+In summary, existing research has extensively explored the application potential of various AI technologies, from traditional machine learning to deep learning, in the field of sandstorm prediction and has achieved many meaningful results. However, overall, research in this direction is still in its initial stages, and there are several bottleneck problems that urgently need to be overcome: First, most existing work still relies on traditional machine learning technologies such as support vector machines and random forests and has not fully followed up and utilized advanced deep learning architectures with excellent performance in image and sequence prediction in recent years. Second, in terms of model input features, the considered factors are still not comprehensive and in-depth enough, mainly relying on ground meteorological station data, and failing to fully integrate and mine the rich information contained in multi-source, multi-modal observation data such as atmospheric reanalysis data and hyperspectral satellite remote sensing products. There is also a lack of in-depth research on efficient fusion methods for multi-modal data. Third, the data sources, spatiotemporal resolutions, prediction targets (presence or absence, intensity, frequency), and problem definition forms used in current research vary greatly, and there is a lack of a widely recognized, unified benchmark dataset and clear problem definition standards in the field, which is not conducive to fair comparisons between different methods and technological accumulation. Finally, it is worth noting that in other sub-fields of meteorological prediction, such as typhoon track and intensity prediction [17-20] and short-term precipitation forecasting [21-24], researchers have successfully transformed the problems into spatiotemporal sequence prediction problems, that is, using historical continuous-time weather data to predict future states, and have developed numerous advanced deep learning models.
+
+2.2 Research Status on the Application of Machine Learning in Weather Prediction
+
+With the intensification of global climate change and the frequent occurrence of extreme weather events, traditional numerical weather prediction models based on physical mechanisms face challenges in terms of computational cost, spatiotemporal resolution, and the simulation of certain complex non-linear processes. In recent years, machine learning technology, centered on data-driven approaches, has opened up new paths for weather prediction research with its powerful non-linear fitting, feature mining, and pattern recognition capabilities. Machine learning can not only be directly used to predict various meteorological elements and disastrous weather but also be deeply integrated with numerical weather prediction models for bias correction, downscaling, and uncertainty quantification, significantly improving the accuracy, timeliness, and practicality of forecasts. This subsection will systematically review and summarize the current research status in the application of machine learning technology in the meteorological field from three aspects: direct prediction of disastrous weather, prediction of key meteorological parameters, and prediction applications of weather elements in related fields.
+
+(1) Direct Application of Machine Learning in Disastrous Weather Prediction
+
+Disastrous weather, due to its sudden onset and strong destructive power, has always been a focus and difficulty in the field of meteorology. Many scholars have attempted to introduce machine learning algorithms into this field and have constructed various prediction models for different types of disastrous weather, such as severe convective weather, fog, and extreme winds, achieving significant progress.
+
+In terms of thunderstorm and gale prediction, Song Hongkai (2024) proposed an automatic machine learning-based prediction method for thunderstorm and gale weather in Liaoning Province[25]. This study constructed a dataset using historical reanalysis data and ground observation data, performed feature engineering using a deep feature synthesis algorithm, and finally established a prediction model using the AutoGluon automatic machine learning framework. The results showed high hit rates and low false alarm and miss alarm rates. Another study by Song Hongkai et al. (2024) further verified the effectiveness of the AutoGluon method in thunderstorm and gale prediction, with a model hit rate reaching 96.72%[26]. This demonstrates the potential of automated machine learning processes in simplifying the modeling process and improving model performance. For fog weather, Song Hongkai (2024) designed the AutoFeat-TPOT combination algorithm, which combines the automatic feature synthesis algorithm (AutoFeat) with the tree-based pipeline optimization algorithm (TPOT), in his doctoral dissertation to address the problem of short-term neighboring fog level prediction[27]. This algorithm achieves accurate classification prediction of fog levels in different time periods from 0.5 to 3 hours in the future, with higher accuracy than traditional machine learning methods.
+
+In the field of severe convective and extreme wind field prediction, Tao Tianyou et al. (2025) systematically reviewed the application progress of machine learning in short-term prediction of extreme wind fields, summarized the principles and characteristics of time series models, machine learning models, and hybrid models in the prediction of normal strong winds, typhoons, and thunderstorm winds, and pointed out the research status and future directions in this field[28]. Zhao Xuanze et al. (2025) focused on the safety of aerospace launch sites and proposed a severe convective weather warning method based on the AeolusStorm model and random forest regression algorithm[29]. They constructed an atmospheric instability risk index and a future change trend index, effectively improving the identification ability of severe convective weather in tropical coastal areas. Luo Huan and Duan Bolong (2023) introduced the support vector machine algorithm and combined it with the firefly optimization algorithm for parameter optimization to construct a multi-scale prediction model for disastrous weather, achieving good prediction results in an example in Chengdu[30]. Pu Xiushu et al. (2024) focused on road meteorological safety and used a decision tree model to establish a correspondence between numerical weather prediction results and various road conditions such as icing and wetness, achieving effective prediction of road meteorological conditions for the next continuous 24 hours[31].
+
+Machine learning has also been applied in the prediction of compound or derivative disasters. Guan Donghe and Su Bo (2025) explored a general weather prediction model based on big data and artificial intelligence, improving the prediction ability to cope with the uncertainties of climate change by integrating regression analysis and decision tree algorithms[32]. Zhao Peng et al. (2025) combined a multi-layer perceptron with blockchain technology to construct a flood prediction model, selected key indicators for prediction through correlation analysis, and achieved reliable release of early warning information through blockchain[33]. Zhang Yuanding et al. (2019) applied CART decision trees and deep learning models in series to construct a model for predicting daily snow depth and its presence or absence during strong rain and snow weather processes, demonstrating the advantages of machine learning in handling complex non-linear relationships of meteorological elements[34].
+
+(2) Application of Machine Learning in the Prediction of Key Meteorological Parameters and Elements
+
+In addition to directly predicting disastrous weather phenomena, machine learning is also widely used to predict various key meteorological parameters and physical quantities, which are important components of the weather and climate system and also the basis for many industry applications.
+
+In the prediction of tropospheric delay, a key parameter affecting satellite navigation accuracy, Bai Ziyi et al. (2024) used BP neural networks, support vector machines, and long short-term memory networks to construct long- and short-term prediction models for zenith tropospheric delay with time windows of one year and 24 hours, respectively, effectively improving prediction accuracy and making up for the deficiencies of numerical weather prediction models in this regard[35]. In the prediction of atmospheric boundary layer height, Bai Jiayi et al. (2025) based on the XGBoost algorithm, used ground meteorological observations and wind profile radar data to achieve continuous estimation and prediction of the atmospheric boundary layer height in Beijing, with better performance than multiple linear regression and support vector regression algorithms, providing new ideas for boundary layer research[36]. An Wenhan et al. (2025) compared the performance of various machine learning models, including support vector machine regression, Elman neural networks, and long short-term memory networks, in solar irradiance prediction and analyzed the importance of different input variables, providing technical support for the assessment and utilization of solar energy resources[37].
+
+In the prediction of conventional but crucial meteorological elements such as wind speed and precipitation, Liu Fangjie (2022) proposed an improved upper and lower bound estimation model and an EALSTM-QR neural network model combining numerical weather prediction for the problem of wind speed/power interval prediction, significantly improving the quality of prediction intervals and the reliability of probability prediction[38]. Mahavik et al. (2025), to improve the accuracy of rainfall prediction during the monsoon season in central Thailand, evaluated the ability of various machine learning algorithms, including linear regression, decision trees, and random forests, to correct the bias of weather radar quantitative precipitation estimates and found that the random forest model performed best in hourly precipitation prediction[39]. Shi Junbin (2024) reported on the NeuralGCM machine learning model developed by Google, which shows potentia some existing models in weather prediction and climate simulation and has higher computational efficiency, representing a cutting-edge research direction[40].
+
+(3) Cross-Application Prediction of Machine Learning in Weather-Related Fields
+
+Weather conditions profoundly affect many aspects of social and economic activities. Therefore, using weather forecast results as input features, combining them with domain data, and using machine learning for cross-domain prediction has become a research hotspot in fields such as smart energy, transportation, and agriculture.
+
+In the energy field, power load prediction is closely related to weather. Zhao Zekun et al. (2025) explored the use of various machine learning algorithms for regional building power load prediction and found that XGBoost and LSTM models had high prediction accuracy[41], and the LSTM model could better resist input errors caused by weather forecast uncertainties. Zheng Xinshi et al. (2023), to improve the accuracy of load prediction in small-sample scenarios such as extreme weather, proposed an interpretable load prediction framework combining a Bayesian time-varying coefficient model and a CatBoost model[42], effectively integrating expert experience with data-driven capabilities. Zhang Siyi (2024) [43]and Liu Fangjie (2022) [44]both focused on wind power prediction. The former proposed an encoder-decoder model based on Bi-GRU and an attention mechanism for ultra-short-term multi-step prediction and a short-term prediction method combining multi-objective optimization and error correction; the latter focused on probability prediction. Liao Wenxi (2025) applied models such as CatBoost and LightGBM to the prediction of wind and solar power generation and improved prediction accuracy by combining feature engineering and error compensation strategies[45]. In the field of heating, Wang Wei et al. (2025) [46]and Zhang Zhihao (2024)[47]respectively used random forests and other machine learning models to fuse weather factors, operating parameters, and historical data to achieve accurate prediction and optimized control of user room temperature or secondary pipe network water supply temperature. Zhang Zhihao (2024) further proposed a model predictive control strategy coupling physical models with data-driven models in his doctoral dissertation[48]. Zhao Kai (2024) studied natural gas load prediction based on a machine learning ensemble model, optimizing the GRU prediction model through variational mode decomposition and an attention mechanism-optimized wolf pack algorithm to improve the accuracy of long-term load prediction[49].
+
+In the transportation field, weather is a key factor affecting safety and traffic flow. Chen Duo (2024) dedicated his doctoral dissertation to the uncertainty prediction of rail transit passenger flow and proposed a deep learning framework combining decomposition-ensemble and graph convolutional neural networks and Transformers, effectively capturing the spatiotemporal correlations of passenger flow affected by weather and other factors[50]. Zhao Xiaohua et al. (2022) constructed a traffic risk prediction model for expressway interchange exits based on the XGBoost algorithm and the SHAP interpretable framework and quantitatively analyzed the influences of various causal factors including weather[51]. Brandt et al. (2024) incorporated weather data into machine learning models to predict maritime accident risks and found that the prediction ability of models such as LightGBM significantly improved after introducing weather variables such as wind and sea level air pressure[52].
+
+In the agricultural field, crop yield is closely related to weather conditions, and machine learning provides powerful analytical tools for this. Haider et al. (2024) proposed an ensemble machine learning framework RFXG to predict cotton yield in Pakistan using weather parameters, with better performance than traditional models[53]. Thayanandeswari et al. (2024) [54]and Ramadhan et al. (2024)[55] respectively applied algorithms such as decision tree-random forest combinations, K-nearest neighbors, and random forests to predict crop yield and recommend suitable crops based on weather conditions. Mugemangango et al. (2025) used models such as XGBoost to predict rice yield conditions in Rwanda by comprehensively considering weather and soil parameters[56]. Kammerlander et al. (2025) combined satellite imagery, weather data, and yield data to construct machine learning models to predict soil nutrient parameters, serving precision agriculture[57]. Ajith et al. (2024) systematically reviewed statistical and machine learning crop yield prediction models based on weather indices[58], pointing out that non-linear models such as artificial neural networks and support vector regression usually perform better. Chana et al. (2023) developed a system combining Internet of Things sensors and random forest algorithms that can recommend suitable crops in real-time based on soil fertility and weather forecasts[59].
+
+In addition, in the fields of environment and health, Du Jiali (2025) applied K-nearest neighbors, decision trees, and random forest algorithms to construct a PM2.5 concentration level prediction model[60]. Che Xiang (2024) used long short-term memory networks, combining numerical weather prediction and enterprise activity data, to construct a volatile organic compound concentration prediction model in industrial areas and analyzed the influences of abnormal emissions and meteorological conditions[61].
+
+In summary, the application of machine learning technology in weather prediction and its related fields has presented a thriving scene. From directly predicting disastrous weather such as thunderstorm and gale, fog, and extreme winds, to finely predicting key meteorological parameters such as atmospheric boundary layer height, tropospheric delay, and solar irradiance, and then deeply integrating weather forecasts as important input factors into prediction and decision-making models in industries such as power, transportation, and agriculture, machine learning is constantly expanding its application boundaries and deepening its influence. Current research presents several distinct characteristics: First, model architectures are evolving from traditional single machine learning algorithms (such as support vector machines and random forests) to more complex deep learning models (such as LSTM, GRU, Transformers, and graph neural networks) and automated machine learning frameworks. Second, in terms of methods, there is an emphasis on integration and complementarity with traditional numerical weather prediction and physical models, rather than simple replacement. Third, there is a focus on innovation in feature engineering and interpretability to better understand the complex mechanisms of the weather system. Fourth, application scenarios are becoming increasingly vertical and specialized, with customized models built for specific regions, types of weather problems, or industry needs.
+
+However, this field still faces some challenges: Machine learning models have a strong dependence on high-quality, long-sequence training data; the physical interpretability of models still needs to be improved; the prediction ability for extremely rare weather events is limited; and how to more effectively embed prior knowledge in the meteorological field into data-driven models. Future research is expected to delve into the following directions: developing physics-informed machine learning models; exploring small-sample learning and migration learning in meteorology; constructing "meteorological large models" that integrate multi-source data (satellites, radars, ground stations, and Internet of Things devices); improving the ability of medium- and long-term forecasting and uncertainty quantification in ensemble forecasting; and promoting the transformation and implementation of research results into operational forecasting systems. With the continuous progress of algorithms and the continuous accumulation of meteorological data, machine learning will undoubtedly play an increasingly crucial role in improving weather forecast accuracy, especially in addressing complex medium- and long-term forecasting challenges such as sandstorms.
+
+2.3 Literature Review
+
+A comprehensive review of existing research reveals that the application of machine learning in the fields of sandstorm and meteorological forecasting has demonstrated immense potential and accumulated a wealth of achievements. In terms of sandstorm forecasting, research has evolved from the early use of classic models such as Artificial Neural Networks (ANN) and Support Vector Machines (SVM) to the exploration of various paradigms, including ensemble learning, deep learning, and transfer learning. Additionally, beneficial attempts have been made in feature engineering and handling sample imbalance, significantly enhancing the capabilities of short-term and imminent identification and classification forecasting. In the broader context of meteorological forecasting, machine learning is not only directly employed for predicting various severe weather events and meteorological elements but also proves its effectiveness in addressing complex nonlinear problems and mining the value of high-dimensional data by integrating with numerical models and driving industry applications. However, when it comes to the specific yet crucial objective of systematically applying machine learning to the medium- to long-term forecasting of sandstorms, the existing research framework still exposes significant limitations and gaps.
+
+Firstly, research has primarily focused on short-term monitoring, identification, or classification, with insufficient attention given to forecasting problems at sub-seasonal to seasonal scales (e.g., 3-15 days and monthly-seasonal trends). There is a lack of specialized designs targeting core challenges such as the construction of forecasting factors for these time scales, modeling long-term dependencies in the model, and handling the sparsity of extreme events. Secondly, although deep learning has been introduced into the model architecture, overall exploration of advanced models that are more adept at capturing temporal dependencies, such as Long Short-Term Memory (LSTM) and Transformer, as well as Graph Neural Networks (GNNs) that can effectively represent spatial heterogeneity and transport relationships, remains insufficiently in-depth and systematic. Thirdly, at the data utilization level, most studies rely on single or limited types of data sources (e.g., ground station data) and fail to fully integrate and mine the cross-scale environmental forcing information embedded in multi-modal data, such as extended-range forecast products from numerical models, multi-source satellite remote sensing retrieval parameters, and reanalysis data. There is a lack of a standardized multi-source data fusion framework tailored for medium- to long-term forecasting. Finally, the field has yet to establish widely accepted benchmark datasets and problem definitions, and the physical interpretability of models is generally weak, hindering fair comparisons, effective accumulation of research findings, and operational translation.
+
+Therefore, to overcome these bottlenecks, this study intends to conduct systematic exploration based on existing work. This study will explicitly focus on improving the accuracy of medium- to long-term forecasting of sandstorms, with the core task being to construct a machine learning model framework that integrates multi-source data. Specifically, the research will: first, systematically collect and fuse multi-modal data, including numerical model forecasts, reanalysis data, satellite remote sensing, and surface environmental data, to construct a unified spatiotemporal dataset specifically designed for 3-15 day and monthly-seasonal trend forecasting; second, go beyond traditional machine learning models by deeply developing and comparing advanced architectures suitable for spatiotemporal sequence prediction, designing optimization strategies for sample imbalance, and constructing an end-to-end sandstorm risk and intensity forecasting model; third, strive to enhance the interpretability of the model and establish a rigorous forecast verification process. Through these efforts, this study aims to fill the current gaps in targeted medium- to long-term forecasting, in-depth multi-source data fusion, and systematic application of advanced models, providing new solutions for the development of accurate, reliable, and physically interpretable intelligent medium- to long-term sandstorm forecasting technologies.
+
+3 Research Content
+
+(1) Construction of a Sandstorm Forecasting Data System
+
+Select medium- to long-term forecasting scales (3–15 days and monthly/seasonal trends).
+
+Collect multi-source data: numerical forecasts (multi-model/ensemble), reanalysis, satellite remote sensing, surface environmental factors, etc.
+
+Conduct spatiotemporal alignment, missing data handling, and standardization to construct a unified trainable dataset.
+
+Design a sample labeling system (event occurrence, intensity levels, impact scope).
+
+(2) Development of Machine Learning Forecasting Models
+
+Research and construct two model directions:
+
+Statistical post-processing models for numerical models.
+
+Multi-source-driven end-to-end sandstorm risk probability and intensity forecasting models.
+
+Research algorithms suitable for spatiotemporal meteorological sequences: Random Forest, XGBoost, LSTM, Transformer, Graph Neural Networks, etc.
+
+Design solutions for class imbalance handling (resampling/cost-sensitive learning/event augmentation).
+
+(3) Model Validation and Interpretability Analysis
+
+Adopt event validation, regression error analysis, and probability validation (AUC).
+
+Conduct case studies on typical sandstorm processes.
+
+Perform feature contribution and mechanistic interpretation (attention weights).
+
+Evaluate the model's operational application potential (stability, generalization, performance degradation over lead time).
+
+4 Research Methods
+
+(1) Literature Review Method
+
+The literature review method involves critically reading and integrating existing research findings to comprehensively grasp the historical evolution, mainstream paradigms, established consensus, and core controversies in the field of sandstorm prediction. This approach helps avoid redundant research and ensures that this study builds upon theoretical foundations while summarizing the cutting-edge knowledge. In this study, during the topic selection and problem formulation stage, a systematic analysis of domestic and international literature on sandstorm numerical simulation, traditional statistical forecasting, and early intelligent prediction methods was conducted. This enabled the precise identification of current research gaps in "medium- to long-term forecasting," "multi-source data fusion," and "application of advanced deep learning models," thereby clarifying the core focus of this paper on "applying machine learning to improve medium- to long-term forecasting accuracy." During the方案设计 (methodology design) stage, reviewing successful applications and frontier model architectures of machine learning in the meteorological field provided direct theoretical references and technical selection bases for the design of this study's technical route and model framework, ensuring the advanced nature and feasibility of the research methods.
+
+(2) Machine Learning Method
+
+Machine learning algorithms possess powerful feature representation capabilities for automatically learning and extracting complex patterns from high-dimensional, nonlinear, and spatiotemporal data. They can bypass some complex processes that are difficult to precisely parameterize in traditional physical models and directly establish end-to-end mappings from multi-source forecasting factors to sandstorm events and intensities. In this study, at the model construction level, ensemble algorithms such as Random Forest and XGBoost will be specifically applied for bias correction and ensemble post-processing of multi-model numerical forecast outputs. The focus will be on developing end-to-end forecasting models based on sequence models like LSTM and Transformer, as well as Graph Neural Networks, to respectively capture the temporal dependencies and spatial heterogeneities of sandstorm evolution. At the feature engineering level, domain knowledge will be utilized to construct and input multi-dimensional feature tensors, including dust emission conditions and dynamic transport features. At the model optimization level, techniques such as SMOTE oversampling and cost-sensitive learning will be applied to address class imbalance issues caused by the rarity of sandstorm events, and probability calibration will be used to enhance the reliability of forecast results.
+
+(3) Case Study Method
+
+The case study method involves in-depth, detailed, and comprehensive analyses of typical individual cases, enabling it to transcend the limitations of macro-statistical indicators. It can intuitively reveal the forecasting performance, advantages, and shortcomings of models in specific, real-world complex weather processes, thereby providing targeted diagnostic evidence for model improvement and enhancing the persuasiveness and practicality of research conclusions. In this study, during the model validation phase, 1-2 representative severe sandstorm weather processes will be selected to comparatively analyze the performance of the machine learning models constructed in this paper and operational numerical forecasting models in key forecasting elements. Through specific cases, the operational application potential and limitations of the models will be demonstrated. During the mechanistic interpretation phase, tools such as feature importance analysis and attention weight visualization provided by the models will be utilized, in combination with typical cases, to qualitatively and quantitatively interpret the basis for specific forecasting decisions made by the models, thereby enhancing the physical interpretability and credibility of the machine learning forecasting models.
+
+5 Research Steps
+
+Step 1: Data Collection and Preprocessing
+
+Multi-source data acquisition → Quality control → Spatiotemporal resampling and alignment → Missing data filling → Normalization/standardization → Generation of training samples and labels.
+
+Step 2: Feature Engineering and Input Representation
+
+Construct key features:
+
+Dust emission condition features (soil moisture/bare land proportion/vegetation/snow cover/friction wind speed).
+
+Dynamic and transport features (10 m wind/wind shear/pressure field/boundary layer height/cold air path).
+
+Historical sandstorm memory features (upstream concentration/persistence/temporal sequence encoding/spatial neighborhood information).
+
+Form meteorological spatiotemporal sequence tensors/multi-model ensemble statistical inputs/graph-structured neighborhood inputs.
+
+Step 3: Model Construction
+
+Main Line A: Numerical Forecast Enhancement
+
+Use NWP outputs as primary inputs → Train bias correction models (RF/XGBoost/MLP).
+
+Main Line B: End-to-End Sandstorm Risk and Intensity Forecasting
+
+LSTM/TCN/Transformer for time series processing.
+
+Step 4: Probability Calibration and Event Optimization
+
+Event sample augmentation/resampling (SMOTE).
+
+Cost-sensitive loss (to enhance event identification capability).
+
+Prediction probability calibration (to improve reliability).
+
+Step 5: Model Evaluation and Mechanistic Interpretation
+
+Multi-indicator validation → Comparison with baseline NWP → Typical process review → Interpretability analysis → Generation of risk probability areas and intensity level products.
+
+6 Time Schedule
+
+Phase 1: Literature Review and Preparatory Work (September 2025 – December 2025)
+
+The initial phase will be dedicated to conducting an in-depth literature review, focusing on key themes such as multi-source data fusion, medium- to long-term meteorological sequence forecasting, and physically interpretable machine learning. This will serve to refine the research proposal and technical roadmap. Concurrently, the software and hardware environment for machine learning model development will be established, and access to and preliminary evaluation of multi-source data (e.g., numerical forecast products from ECMWF and CMA, MODIS satellite data, ERA5 reanalysis data) will be confirmed.
+
+Phase 2: Data System Construction (January 2026 – April 2026)
+
+This phase involves the core work of building the foundational dataset. Tasks include the execution of data collection, quality control, spatiotemporal alignment (regridding and interpolation), handling of missing values, and standardization to complete the first version of a multi-source fused dataset. Following this, feature engineering will be performed to calculate and generate key feature fields related to dust emission conditions and dynamic transport. Finally, the dataset will be partitioned to create labeled training, validation, and test sample sets.
+
+Phase 3: Model Development and Preliminary Experiments (May 2026 – August 2026)
+
+The focus shifts to model implementation and initial testing. Baseline models, including traditional machine learning algorithms like Random Forest and XGBoost, will be established. Preliminary frameworks for deep learning models such as LSTM and Transformer will be constructed and trained. Subsequently, strategies to address class imbalance (e.g., SMOTE, cost-sensitive learning) will be applied and their effects compared. The first round of multi-model comparative experiments will be conducted through hyperparameter tuning to establish a preliminary performance benchmark.
+
+Phase 4: Advanced Modeling and Mid-term Review (September 2026 – December 2026)
+
+Research advances to more sophisticated modeling techniques. This includes developing ensemble models based on strategies like Stacking, exploring the application of Graph Neural Networks for spatial relationship modeling, and attempting to integrate physical constraints into the models (e.g., following the Physics-Informed Neural Networks approach). A large-scale, systematic model training and comparison experiment will be conducted. A mid-term research report will be compiled to summarize findings and define the direction for subsequent optimization.
+
+Phase 5: Case Studies, Interpretability, and Manuscript Preparation (January 2027 – March 2027)
+
+This phase involves in-depth evaluation and dissemination work. Selected historical dust storm events will be used for retrospective case study analysis to evaluate model performance in detail. Interpretability analysis of the optimal model(s) will be performed using methods like SHAP and attention weight visualization to explain feature contributions. Based on the core findings, a manuscript for an academic journal will be drafted and submitted. The initial draft of the dissertation will also be commenced.
+
+Phase 6: Dissertation Completion and Pre-defense (April 2027 – May 2027)
+
+The full draft of the dissertation, including all chapters, figures, and tables, will be completed and integrated. Following feedback from the supervisor, the draft will undergo multiple rounds of revision and refinement. Preparations will be made for the dissertation pre-defense.
+
+Phase 7: Final Defense and Graduation (June 2027)
+
+The final stage entails participating in and completing the dissertation oral defense. All required graduation materials will be submitted after incorporating any final amendments based on the defense committee's feedback.
+
+References
+
+KARIMIAN H, LI Q, WU C, et al. Evaluation of different machine learning approaches to forecasting PM2.5 mass concentrations[J]. Aerosol and Air Quality Research, 2019, 19(6): 1400-1410.
+
+Chen Siyu, Du Shikang, Bi Hongru, et al. A review of research on the identification and forecasting methods of sand-dust weather[J]. Journal of Desert Research, 2024, 44(01): 11-21.
+
+HUANG M, PENG G, ZHANG J, et al. Application of artificial neural networks to the prediction of dust storms in Northwest China[J]. Global and Planetary change, 2006, 52(1-4): 216-224.
+
+LU Z, ZHANG Q, ZHAO Z. SVM in the sand-dust storm forecasting[C]//2006 International Conference on Machine Learning and Cybernetics. IEEE, 2006: 3677-3681.
+
+XIE Y, LIU Y, FU Q. Imbalanced data sets classification based on SVM for sand-dust storm warning[J]. Discrete Dynamics in Nature and Society, 2015, 2: 1-8.
+
+ZHANG Z, MA C, XU J, et al. A novel combinational forecasting model of dust storms based on rare classes classification algorithm[C]//Geo-Informatics in Resource Management and Sustainable Ecosystem, 2015: 520-537.
+
+KABOODVANDPOUR S, AMANOLLAHI J, QHAVAMI S, et al. Assessing the accuracy of multiple regressions, ANFIS, and ANN models in predicting dust storm occurrences in Sanandaj, Iran[J]. Natural Hazards, 2015, 78: 879-893.
+
+AL MURAYZIQ T S, KAPETANAKIS S, PETRIDIS M. Intelligent signal processing for dust storm prediction using ensemble case-based reasoning[C]//2017 IEEE 29th International Conference on Tools with Artificial Intelligence (ICTAI). IEEE, 2017: 1267-1271.
+
+SHAIBA H A, ALAASHOUB N S, ALZAHRANI A A. Applying machine learning methods for predicting sand storms[C]//2018 1st International Conference on Computer Applications & Information Security (ICCAIS). IEEE, 2018: 1-5.
+
+LI T, REN Q, QIU Y. Application of improved naive bayesian-CNN classification algorithm in sandstorm prediction in inner mongolia[J]. Advances in Meteorology, 2019, 2019: 1-13.
+
+HARBA H S, HARBA E, FARTTOOS M. Prediction of dust storm direction from satellite images by utilized deep learning neural network[C]//2020 6th International Engineering Conference “Sustainable Technology and Development”(IEC). IEEE, 2020: 179-184.
+
+REN Q, QIU Y, LI T. Application of Convolution Neural Network Based on Transfer Learning in Sandstorm Prediction in Inner Mongolia[C]//2020 5th International Conference on Computer and Communication Systems (ICCCS). IEEE, 2020: 120-124.
+
+EBRAHIMI-KHUSFI Z, TAGHIZADEH-MEHRJARDI R, MIRAKBARI M. Evaluation of machine learning models for predicting the temporal variations of dust storm index in arid regions of Iran[J]. Atmospheric Pollution Research, 2021, 12(1): 134-147.
+
+ROUSE J W, HAAS R H, SCHELL J A, et al. Monitoring vegetation systems in the Great Plains with ERTS[J]. NASA Spec. Publ, 1974, 351(1): 309.
+
+MAHMOUDI L, DOUMARI S A, SAFARIANZENGIR V, et al. Monitoring and prediction of dust and investigating its environmental impacts in the western half of Iran and the eastern borders of Turkey and Iraq, using remote sensing and GIS[J]. Journal of the Indian Society of Remote Sensing, 2021, 49: 713-724.
+
+REN Q, LI N, ZHANG W. Research on sand-dust storm forecasting based on deep neural network with stacking ensemble learning[J]. IEEE Access, 2022, 10: 111855-111863.
+
+HUANG C, BAI C, CHAN S, et al. MMSTN: A Multi‐Modal Spatial‐Temporal Network for Tropical Cyclone Short‐Term Prediction[J]. Geophysical Research Letters, 2022, 49(4): e2021GL096898.
+
+HUANG C, BAI C, CHAN S, et al. MGTCF: multi-generator tropical cyclone forecasting with heterogeneous meteorological data[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2023, 37(4): 5096-5104.
+
+ALEMANY S, BELTRAN J, PEREZ A, et al. Predicting hurricane trajectories using a recurrent neural network[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2019, 33(01): 468-475.
+
+CHEN R, ZHANG W, WANG X. Machine learning in tropical cyclone forecast modeling: A review[J]. Atmosphere, 2020, 11(7): 676.
+
+SHI X, CHEN Z, WANG H, et al. Convolutional LSTM network: A machine learning approach for precipitation nowcasting[J]. Advances in neural information processing systems, 2015, 28: 802-810.
+
+WANG Y, LONG M, WANG J, et al. PredRNN: recurrent neural networks for predictive learning using spatiotemporal LSTMs[C]//Proceedings of the 31st International Conference on Neural Information Processing Systems. 2017: 879-888.
+
+BAI C, SUN F, ZHANG J, et al. Rainformer: Features extraction balanced network for radar‐based precipitation nowcasting[J]. IEEE Geoscience and Remote Sensing Letters, 2022, 19: 1-5.
+
+GAO Z, SHI X, WANG H, et al. Earthformer: Exploring space-time transformers for earth system forecasting[J]. Advances in Neural Information Processing Systems, 2022, 35: 25390-25403.
+
+Song Hongkai. Disaster Weather Prediction and Analysis Based on Automated Machine Learning[D]. Liaoning: Shenyang University of Technology, 2024.
+
+Pu Xiushu, Liu Xinchao, Song Yixuan, et al. Road Meteorological Condition Prediction Based on Numerical Weather Prediction and Machine Learning Technology[J]. Journal of Tropical Meteorology, 2024, 40(6): 993-1004.
+
+Tao Tianyou, Deng Peng, Wang Hao, et al. Research Progress and Reflections on Short-term Prediction of Extreme Wind Fields Based on Machine Learning[J]. Acta Aerodynamica Sinica, 2025, 43(5): 78-91.
+
+Luo Huan, Duan Bolong. Multi-scale Prediction Model of Disastrous Weather Based on Machine Learning[J]. Meteorology and Disaster Reduction Research, 2023, 46(3): 221-226.
+
+Guan Donghe, Su Bo. Research on Weather Prediction Model Based on Big Data and Artificial Intelligence[J]. Modern Information Technology, 2025, 9(6): 93-99,104.
+
+Zhao Zekun, Gao Yan, An Jingjing, et al. Research on Regional Building Electric Load Forecasting Based on Shallow and Deep Machine Learning Algorithms[J]. Building Science, 2025, 41(2): 229-236.
+
+Zhao Xuanze, Jiao Zilong, Jing Yongtao, et al. Analysis and Impact Risk Prediction of Strong Convective Weather at Aerospace Launch Sites Based on the AeolusStorm Model[J]. Spacecraft Environment Engineering, 2025, 42(5): 504-515.
+
+Bai Ziyi, Xu Ying, Feng Jian, et al. Long-term and Short-term Prediction Model of NWP ZTD Based on Machine Learning[J]. Journal of Navigation and Positioning, 2024, 12(4): 34-44.
+
+Liu Fangjie. Research on Wind Speed/Power Interval Prediction Based on Machine Learning and Numerical Weather Prediction[D]. Hubei: Huazhong University of Science and Technology, 2022.
+
+Bai Jiayi, Wei Wei, Zhang Hongsheng, et al. Research on Prediction Method of Atmospheric Boundary Layer Height Based on Machine Learning[J]. Journal of Atmospheric Sciences, 2025, 48(3): 404-416.
+
+An Wenhan, Liu Jianhua, Liu Jiying. Analysis of Predictive Capability of Solar Irradiance Machine Learning Models[J]. Gas & Heat, 2025, 45(1): 26-31.
+
+Liao Wenxi. Short-term Wind Power/Photovoltaic Power Prediction Method Based on Feature Engineering Optimization and Machine Learning[C]//Proceedings of the 2025 Smart Design and Construction Experience Exchange Conference. 2025: 1-4.
+
+Cao Ruizhe, Qin Anzhen. Research on Prediction of Reference Crop Evapotranspiration Based on Time Series and Machine Learning[J]. Journal of Irrigation and Drainage, 2025, 44(8): 45-52.
+
+Shi Junbin. Machine Learning Improves the Accuracy of Weather and Climate Prediction[J]. Henan Science and Technology, 2024, 51(14): 3.
+
+Zheng Xinshi, Liang Shouyu, Su Xiao, et al. Load Characteristic Analysis and Prediction Based on Bayesian Method and Interpretable Machine Learning[J]. Automation of Electric Power Systems, 2023, 47(13): 56-68.
+
+Liang Yicheng. Research on Prediction of the Highest Usable Frequency in Short-wave Communication Based on Machine Learning and Chaos Theory[J]. Communication Power Technology, 2025, 42(7): 46-48,97.
+
+Du Jiali. PM2.5 Level Prediction Based on Machine Learning K-nearest Neighbor and Decision Tree Algorithms[J]. Computer Era, 2025(7): 38-40,46.
+
+Che Xiang. Research on Prediction of Ambient Air VOCs Concentrations in Typical Industrial Areas Based on Machine Learning Algorithms[J]. Environmental Science Research, 2024, 37(8): 1694-1702.
+
+Wang Wei, Ren Xiufang, Dong Junyu. Design and Implementation of a Machine Learning Room Temperature Prediction Model in Intelligent Heating[J]. Shandong Industrial Technology, 2025(5): 73-79.
+
+Zhao Peng, Chai Rongmu, Yuan Fujiang, et al. Research on a Flood Prediction Model Based on the Combination of Blockchain and Machine Learning[J]. Information Technology & Informatization, 2025(4): 60-65.
+
+Zhang Zhihao, Cui Ping, Zhou Xinlei. Prediction of Supply Water Temperature in Secondary Pipe Networks Based on Machine Learning[J]. Gas & Heat, 2024, 44(12): 21-27.
+
+Zhao Xiaohua, Qi Hang, Yao Ying, et al. Risk Prediction and Cause Analysis of Expressway Interchange Exits Based on an Interpretable Machine Learning Framework[J]. Journal of Southeast University (Natural Science Edition), 2022, 52(1): 152-161.
+
+Song Hongkai, Duan Yong, Zhao Tingting. Prediction of Thunderstorm and Gale Weather in Liaoning Based on Automated Machine Learning[J]. Artificial Intelligence and Robotics Research, 2024, 13(1): 90-97.
+
+Zhang Siyi. Research on the Application of Machine Learning Methods in Short-term and Ultra-short-term Wind Power Prediction[D]. Guangdong: South China University of Technology, 2024.
+
+Zhang Zhihao. Research on Supply Water Temperature Prediction and Optimal Control of Civil Heat Exchange Stations Based on Machine Learning[D]. Shandong: Shandong Jianzhu University, 2024.
+
+Chen Duo. Research on Uncertainty Prediction of Rail Transit Passenger Flow Based on Big Data-driven and Machine Learning[D]. Lanzhou Jiaotong University, 2024.
+
+Zhao Kai. Research and Application of Natural Gas Load Forecasting Based on Machine Learning Combination Models[D]. Shaanxi: Xi'an University of Architecture and Technology, 2024.
+
+Zhang Yuanding, Gong Weiwei, Ye Yu, et al. Application of Machine Learning Technology to Predict Snow Accumulation during Strong Rain and Snow Weather Processes[J]. Science Technology and Engineering, 2019, 19(15): 58-69.
+
+Haider S T, Ge W, Li J, et al. An Ensemble Machine Learning Framework for Cotton Crop Yield Prediction Using Weather Parameters: A Case Study of Pakistan[J]. Access, IEEE, 2024, 12(000): 124045-124061.
+
+Thayanandeswari C S S, Jaya T, Ahamed S N, et al. A Machine Learning Approach for Crop Yield Prediction Using Weather Condition[J]. 2024 International Conference on Advancement in Renewable Energy and Intelligent Systems (AREIS), 2024: 1-5.
+
+Ramadhan A J, Priya S R K, Pavithra V, et al. Machine Learning Techniques for Sugarcane Yield Prediction Using Weather Variables[J]. BIO web of conferences, 2024, 97(000): 9.
+
+Mahavik N, Kangerd A, Masthawee F, et al. Optimizing rainfall prediction in central Thailand with weather radar and machine learning during the monsoon[J]. Environmental Earth Sciences, 2025, 84(5): 1-18.
+
+Kammerlander C, Kolb V, Luegmair M, et al. Machine Learning Models for Soil Parameter Prediction Based on Satellite, Weather, Clay and Yield Data[J]. 2025.
+
+Mugemangango C, Nzabanita J, Muhoza D N, et al. MACHINE LEARNING TECHNIQUES FOR PREDICTION OF RICE YIELD IN RWANDA BASED ON WEATHER AND SOIL PARAMETERS[J]. African Journal of Food, Agriculture, Nutrition & Development, 2025, 25(4).
+
+Ajith S, Debnath M K, Karthik R. Statistical and machine learning models for location-specific crop yield prediction using weather indices[J]. International Journal of Biometeorology, 2024, 68(12).
+
+Chana A M, Bernabé Batchakui, Nges B B. Real-Time Crop Prediction Based on Soil Fertility and Weather Forecast Using IoT and a Machine Learning Algorithm[J]. Journal of Agricultural Sciences (English), 2023, 14(5): 645-664.
+
+Brandt P, Munim Z H, Chaal M, et al. Maritime accident risk prediction integrating weather data using machine learning[J]. Transportation Research Part D, 2024, 136.
