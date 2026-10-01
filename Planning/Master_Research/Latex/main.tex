@@ -1,0 +1,253 @@
+\documentclass[12pt,a4paper,openany,twoside]{book}
+
+% ----------------------------------------------------------------------
+% Document Encoding and Fonts (Universal pdfLaTeX / XeLaTeX / LuaLaTeX)
+% ----------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ----------------------------------------------------------------------
+% Page Geometry & Standard Margins (Standard Thesis / Academic Format)
+% ----------------------------------------------------------------------
+\usepackage[
+  top=30mm,
+  bottom=25mm,
+  left=30mm,
+  right=25mm,
+  headheight=15pt,
+  headsep=8mm,
+  footskip=12mm
+]{geometry}
+
+% ----------------------------------------------------------------------
+% Mathematics & Science Packages
+% ----------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{siunitx}
+
+% ----------------------------------------------------------------------
+% Tables & Lists
+% ----------------------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\setlist{nosep}
+
+% ----------------------------------------------------------------------
+% Graphics & Figures
+% ----------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+
+% ----------------------------------------------------------------------
+% TikZ & High-Resolution Vector Graphics
+% ----------------------------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,fit,calc,backgrounds,shadows}
+
+% ----------------------------------------------------------------------
+% Headers, Footers & Typography
+% ----------------------------------------------------------------------
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\setstretch{1.3}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.75pt}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\small \nouppercase{\leftmark}}
+\fancyhead[LO]{\small \nouppercase{\rightmark}}
+
+% ----------------------------------------------------------------------
+% Hyperlinks & PDF Metadata
+% ----------------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{ustbblue}{RGB}{0,51,102}
+\definecolor{navyblue}{RGB}{0,32,96}
+\definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{brickred}{RGB}{178,34,34}
+
+\usepackage[
+  colorlinks=true,
+  linkcolor=ustbblue,
+  citecolor=navyblue,
+  urlcolor=forestgreen,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  pdfstartview=FitH
+]{hyperref}
+
+\hypersetup{
+  pdftitle={Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting},
+  pdfauthor={Master Degree Candidate},
+  pdfsubject={Master of Engineering Dissertation, University of Science and Technology Beijing},
+  pdfkeywords={Sand and Dust Storms, Extended-Range Forecasting, Physics-Informed Neural Networks, Spatiotemporal Graph Neural Networks, Spatial Exposure Mapping, Disaster Mitigation}
+}
+
+% ----------------------------------------------------------------------
+% Citation Style (Sequential Numeric Encoding)
+% ----------------------------------------------------------------------
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+
+% ----------------------------------------------------------------------
+% BEGIN DOCUMENT
+% ----------------------------------------------------------------------
+\begin{document}
+
+% Front Matter
+\frontmatter
+
+% --- Title Page ---
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+
+{\LARGE \textbf{UNIVERSITY OF SCIENCE AND TECHNOLOGY BEIJING}}\\[0.4cm]
+{\Large \textbf{School of Energy and Environmental Engineering}}\\[1.8cm]
+
+{\Large \textbf{DISSERTATION FOR MASTER OF ENGINEERING}}\\[2.0cm]
+
+\begin{spacing}{1.6}
+{\LARGE \textbf{Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting}}
+\end{spacing}
+
+\vfill
+
+\begin{minipage}{0.85\textwidth}
+\large
+\begin{tabular}{ll}
+\textbf{Candidate:} & Master Candidate \\
+\textbf{Major / Discipline:} & Environmental Engineering \\
+\textbf{Research Focus:} & Atmospheric Environmental Informatics \& Intelligent Meteorology \\
+\textbf{Degree Category:} & Master of Engineering \\
+\textbf{Submission Date:} & October 2026
+\end{tabular}
+\end{minipage}
+
+\vspace*{2.0cm}
+\end{titlepage}
+
+% --- Abstract ---
+\cleardoublepage
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Sand and Dust Storms (SDSs) represent severe meteorological, environmental, and socio-ecological hazards originating in arid and semi-arid regions. In East Asia, catastrophic SDS events trigger dramatic surges in atmospheric particulate concentrations ($\text{PM}_{10}$ and $\text{PM}_{2.5}$ frequently exceeding thousands of micrograms per cubic meter), causing severe acute respiratory morbidity, widespread grounding of civil aviation, grid insulation flashovers, and billions of dollars in recurring economic damages. Furthermore, transboundary dust plumes cross multiple provincial and national boundaries, threatening the ecological sustainability of regional shelterbelt barriers. Traditional Numerical Weather Prediction (NWP) systems, while anchored in hydrodynamic first principles, suffer from rapid skill degradation beyond 72 hours (the 3--15 day extended range) due to chaotic Lyapunov divergence, coarse-grid topographic smoothing over critical orographic corridors, and empirical parameterization uncertainties in dust emission schemes. Conversely, existing pure data-driven deep learning models are prone to unconstrained ``physical hallucinations'' that violate mass conservation and aerodynamic momentum laws.
+
+To overcome these fundamental challenges, this dissertation establishes an innovative, cross-disciplinary methodology entitled \textbf{DustML}, bridging atmospheric AI prediction, spatial risk exposure mapping, and societal psychological disaster response for medium- to long-term East Asian sandstorm mitigation:
+\begin{enumerate}
+    \item \textbf{Multi-Source Heterogeneous Data Harmonization}: Multi-modal data across numerical weather predictions (ECMWF IFS, CMA-GFS), climate reanalysis (ERA5), and hyperspectral satellite remote sensing (FY-4A, MODIS) are spatially re-gridded onto a unified 5\,km WGS84 grid. A standardized 4-tier physics feature store is constructed, capturing dust emission conditions, hydrodynamic transport fields, boundary layer thermodynamics, and upstream historical memory across 32 dimensional tensors.
+    \item \textbf{Dual-Line Predictive Framework with Physics-Informed Learning}: Main Line A leverages gradient-boosted decision trees (LightGBM, CatBoost) coupled with asymmetric quantile regression ($\text{P}_{10}, \text{P}_{50}, \text{P}_{90}$) to eliminate NWP systemic topographic residuals and provide calibrated uncertainty envelopes. Main Line B develops an end-to-end deep spatiotemporal architecture incorporating the AI-GAMFS aerosol foundation prior, a 14-node bidirectional Spatiotemporal Graph Neural Network (ST-GNN) mapping narrow transport corridors, and a Physics-Informed Neural Network (PINN) regularizer embedding Owen's (1964) saltation threshold and 2D advective mass continuity PDEs to guarantee physical law compliance ($>98\%$). An adaptive lead-time blending gate seamlessly transitions weight from numerical dynamics to deep physics representations as the forecast horizon extends.
+    \item \textbf{Spatial Analytics and Sociological Protective Action Modeling}: Spatial econometrics (Ordinary Kriging, Moran's $I$, LISA) identify High-High spatial hazard hotspots across northern China. Based on $N=842$ validated empirical survey responses, a Structural Equation Model (SEM) grounded in the Protective Action Decision Model (PADM) quantifies the transmission pathways between physical hazard cues, institutional trust, and public protective compliance, formulating an operational 4-tier municipal emergency playbook.
+\end{enumerate}
+
+Empirical retrospective evaluations demonstrate that the proposed framework successfully extends the reliable forecasting horizon of East Asian dust storms from 3 days to 10--15 days while maintaining strict thermodynamic and physical consistency, providing vital decision support for national disaster prevention, environmental management, and sustainable development.
+
+\vspace{1.5em}
+\noindent \textbf{Keywords}: Sand and Dust Storm; Extended-Range Forecasting; Physics-Informed Neural Networks (PINN); Spatiotemporal Graph Neural Networks (ST-GNN); Spatial Econometrics; Protective Action Decision Model (PADM)
+
+% --- Table of Contents, Figures, Tables ---
+\cleardoublepage
+\tableofcontents
+
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+% --- Nomenclature / List of Abbreviations ---
+\cleardoublepage
+\chapter*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Abbreviation} & \textbf{Full Name / Definition} \\
+\midrule
+ABL & Atmospheric Boundary Layer \\
+AI-GAMFS & Aerosol-Meteorology Coupled Large Model Forecasting System \\
+AMOS & Analysis of Moment Structures (SEM Software) \\
+ANN & Artificial Neural Network \\
+AUC & Area Under the Receiver Operating Characteristic Curve \\
+CatBoost & Categorical Boosting Algorithm \\
+CMA & China Meteorological Administration \\
+CMA-GFS & China Meteorological Administration Global Forecast System \\
+CNN & Convolutional Neural Network \\
+ECMWF & European Centre for Medium-Range Weather Forecasts \\
+ERA5 & ECMWF Reanalysis v5 \\
+GNN & Graph Neural Network \\
+GWR & Geographically Weighted Regression \\
+IFS & Integrated Forecasting System (ECMWF) \\
+LightGBM & Light Gradient Boosting Machine \\
+LISA & Local Indicators of Spatial Association \\
+LSTM & Long Short-Term Memory Network \\
+MODIS & Moderate Resolution Imaging Spectroradiometer \\
+MSE & Mean Squared Error \\
+NWP & Numerical Weather Prediction \\
+PADM & Protective Action Decision Model \\
+PDE & Partial Differential Equation \\
+PINN & Physics-Informed Neural Network \\
+PM$_{10}$ / PM$_{2.5}$ & Particulate Matter $\le 10\,\mu\text{m}$ / $\le 2.5\,\mu\text{m}$ \\
+RMSE & Root Mean Square Error \\
+SDS & Sand and Dust Storm \\
+SEM & Structural Equation Modeling \\
+SHAP & Shapley Additive Explanations \\
+SMOTE & Synthetic Minority Over-sampling Technique \\
+SPSS & Statistical Package for the Social Sciences \\
+ST-GNN & Spatiotemporal Graph Neural Network \\
+SVM & Support Vector Machine \\
+USTB & University of Science and Technology Beijing \\
+WRF-Chem & Weather Research and Forecasting model coupled with Chemistry \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Main Matter
+\mainmatter
+
+% --- Chapter 1: Introduction ---
+\include{chapter1}
+
+% --- Chapter 2: Literature Review & Theoretical Foundations ---
+\include{chapter2}
+
+% --- Chapter 3: Multi-Source Data Harmonization & Feature Engineering ---
+\include{chapter3}
+
+% --- Chapter 4: Dual-Line Machine Learning Predictive Framework & PINN ---
+\include{chapter4}
+
+% --- Chapter 5: Geospatial Exposure & Societal Vulnerability Analysis ---
+\include{chapter5}
+
+% --- Chapter 6: Historical Event Validation & Operational Playbooks ---
+\include{chapter6}
+
+% --- Chapter 7: Conclusions and Outlook ---
+\include{chapter7}
+
+% Back Matter
+\backmatter
+
+% --- Bibliography ---
+\cleardoublepage
+\addcontentsline{toc}{chapter}{References}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,241 @@
+% ======================================================================
+% CHAPTER 3: MULTI-SOURCE DATA HARMONIZATION & FEATURE ENGINEERING
+% ======================================================================
+
+\chapter{Multi-Source Heterogeneous Data Harmonization and Feature Engineering}
+\label{chap:data_harmonization}
+
+\section{Multi-Source Atmospheric and Remote Sensing Data Streams}
+\label{sec:data_sources}
+
+Predicting continental sand and dust storms (SDSs) across extended-range horizons (3 to 15 days) requires capturing multi-scale physical signals spanning transboundary land surfaces, boundary layer turbulence, and synoptic-scale baroclinic waves. To establish an authoritative data infrastructure for the proposed \textbf{DustML} architecture, this research ingests and integrates multi-modal datasets covering East Asia ($73^\circ\text{E}\text{--}135^\circ\text{E}, 18^\circ\text{N}\text{--}54^\circ\text{N}$) from January 1, 2018 to December 31, 2025. Table~\ref{tab:data_sources_summary} summarizes the multi-source data repositories.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Summary of Multi-Source Atmospheric, Remote Sensing, and In-Situ Datasets}
+\label{tab:data_sources_summary}
+\begin{tabularx}{\textwidth}{l p{2.5cm} p{2.2cm} p{2.0cm} X}
+\toprule
+\textbf{Category} & \textbf{Data Platform / Product} & \textbf{Spatial Resolution} & \textbf{Temporal Resolution} & \textbf{Key Target Parameters} \\
+\midrule
+NWP Forecasts & ECMWF IFS (HRES \& ENS) & $0.1^\circ \times 0.1^\circ$ & 3-hourly & 10m winds ($u_{10}, v_{10}$), MSLP, 2m temperature, PBLH, total column dust \\
+NWP Forecasts & CMA-GFS Operational & $0.25^\circ \times 0.25^\circ$ & 3-hourly & Geopotential height ($Z_{500}, Z_{850}$), surface pressure, horizontal advection \\
+Reanalysis & ERA5 (ECMWF) & $0.25^\circ \times 0.25^\circ$ & 1-hourly & Multi-level vertical wind profiles, relative humidity, vertical velocity ($\omega$) \\
+Satellite & MODIS (Terra/Aqua) & 1--10\,km & Twice daily & Deep Blue AOD (550\,nm), surface reflectance, 16-day composite NDVI \\
+Satellite & FY-4A/B AGRI (NSMC) & 2--4\,km & 15-minute & Dust detection split-window index ($12\,\mu\text{m} - 10.8\,\mu\text{m}$), cloud mask \\
+In-Situ & CNEMC National Network & Point stations & 1-hourly & Ground $\text{PM}_{10}, \text{PM}_{2.5}$ mass concentrations (1{,}500+ monitoring sites) \\
+In-Situ & CMA Synoptic Telemetry & Point stations & 1-hourly & Horizontal visibility, present weather codes, instantaneous 10m gust speeds \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Numerical Weather Prediction (NWP) Forecast Streams}
+\label{subsec:nwp_data}
+
+Operational numerical weather prediction models provide the primary hydrodynamic forcing driving particulate transport:
+\begin{enumerate}
+    \item \textbf{ECMWF Integrated Forecasting System (IFS)}: High-Resolution (HRES) deterministic forecasts and 51-member Ensemble Prediction System (ENS) outputs are archived from the European Centre for Medium-Range Weather Forecasts at 00:00 and 12:00 UTC cycle initialization. Model levels extracted include mean sea level pressure (MSLP), 10m $u$- and $v$-wind components, 2m air temperature, planetary boundary layer height (PBLH), and integrated total aerosol optical depth.
+    \item \textbf{China Meteorological Administration Global Forecast System (CMA-GFS)}: Operational forecasts on a $0.25^\circ$ grid provide complementary dynamic prognostic states, capturing mid-tropospheric trough evolution ($Z_{500}$) and low-level jet momentum over the Tibetan Plateau and Mongolian cold-surge corridors.
+\end{enumerate}
+
+\subsection{ERA5 Atmospheric Climate Reanalysis}
+\label{subsec:era5_data}
+
+Atmospheric reanalysis from the fifth-generation ECMWF atmospheric reanalysis of the global climate (ERA5) bridges the gap between discrete observational soundings and continuous physics fields. ERA5 ingests billions of planetary observations via four-dimensional variational (4D-Var) data assimilation, providing historical reanalysis grids at $0.25^\circ$ horizontal resolution across 37 vertical pressure levels (from 1{,}000\,hPa to 1\,hPa). Key extracted fields include vertical pressure velocity ($\omega = dp/dt$), atmospheric temperature lapsing, potential vorticity on isentropic surfaces, and specific humidity.
+
+\subsection{Satellite Remote Sensing: MODIS and FengYun-4A/B}
+\label{subsec:satellite_data}
+
+Satellite sensors provide spatially continuous coverage across unmonitored desert expanses:
+\begin{enumerate}
+    \item \textbf{MODIS Deep Blue Aerosol Products (Terra/Aqua)}: The Moderate Resolution Imaging Spectroradiometer (MODIS) Collection 6.1 Deep Blue algorithm retrieves Aerosol Optical Depth (AOD) at 550\,nm over bright desert surfaces where standard dark-target algorithms fail. Additionally, the 16-day composite Normalized Difference Vegetation Index (NDVI) at 250\,m resolution provides background vegetation cover metrics.
+    \item \textbf{FengYun-4A/B Geostationary Satellites (AGRI)}: The Advanced Geosynchronous Radiation Imager (AGRI) aboard China's FY-4A and FY-4B geostationary satellites yields multi-spectral thermal infrared imagery at 15-minute intervals. The brightness temperature difference between the $12.0\,\mu\text{m}$ and $10.8\,\mu\text{m}$ channels provides continuous daytime and nighttime tracking of airborne silicate dust plumes.
+\end{enumerate}
+
+\subsection{In-Situ Air Quality and Synoptic Weather Monitoring Networks}
+\label{subsec:insitu_data}
+
+Observational ground truth is acquired from two authoritative telemetry networks:
+\begin{enumerate}
+    \item \textbf{China National Environmental Monitoring Centre (CNEMC)}: Continuous hourly $\text{PM}_{10}$ and $\text{PM}_{2.5}$ mass concentrations ($\mu\text{g/m}^3$) are harvested from over 1{,}500 state-controlled ambient air quality monitoring stations utilizing tapered element oscillating microbalances (TEOM) and beta-attenuation monitors.
+    \item \textbf{China Meteorological Administration (CMA) Surface Synoptic Network}: Automated weather stations record horizontal optical visibility (meters), present weather phenomena codes (classifying blowing dust, floating dust, sandstorms, and severe sandstorms according to GB/T 20480-2017), and maximum wind gusts.
+\end{enumerate}
+
+---
+
+\section{Data Quality Control, Anomaly Screening, and Harmonization}
+\label{sec:quality_control}
+
+Environmental telemetry operating in harsh, dust-choked desert environments is vulnerable to sensor degradation, telecommunication dropouts, and mechanical freezing. To ensure model integrity, raw data streams undergo a four-stage quality assurance and harmonization pipeline, illustrated in Figure~\ref{fig:data_pipeline}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.9, transform shape,
+    box/.style={rectangle, draw=ustbblue, fill=ustbblue!6, text centered, rounded corners=3pt, minimum height=0.9cm, line width=1pt, font=\small},
+    arrow/.style={-{Stealth[scale=1.1]}, thick, draw=navyblue}
+]
+\node[box, text width=3.2cm] (raw) {\textbf{Raw Data Streams}\\ \footnotesize Station Telemetry, NWP Grids, Satellite AOD};
+\node[box, right=0.8cm of raw, text width=3.4cm] (qc) {\textbf{Sensor Screening}\\ \footnotesize Zero-Variance Flatline \& Rolling MAD Despiking};
+\node[box, right=0.8cm of qc, text width=3.4cm] (impute) {\textbf{Interpolation}\\ \footnotesize Akima Splines \& Spatial Ordinary Kriging};
+\node[box, right=0.8cm of impute, text width=3.2cm] (grid) {\textbf{Unified 5\,km Grid}\\ \footnotesize Conservative Regridding \& UTC Alignment};
+
+\draw[arrow] (raw) -- (qc);
+\draw[arrow] (qc) -- (impute);
+\draw[arrow] (impute) -- (grid);
+\end{tikzpicture}
+\caption{Automated Data Quality Assurance and Spatiotemporal Harmonization Pipeline}
+\label{fig:data_pipeline}
+\end{figure}
+
+\subsection{Sensor Freezing Detection and Dynamic MAD Despiking}
+\label{subsec:despiking}
+
+Ground sensors frequently experience mechanical sticking under high particulate loading, resulting in identical repeat readings, or electrical voltage surges producing unphysical single-hour spikes.
+\begin{enumerate}
+    \item \textbf{Zero-Variance Flatline Detection}: Any station recording constant $\text{PM}_{10}$ values for $\ge 6$ consecutive hours ($\text{Var}_{t-5:t}(y) = 0$) is flagged as mechanically frozen, and the affected sequence is masked as missing.
+    \item \textbf{Rolling Median Absolute Deviation (MAD) Despiking}: To eliminate unphysical transient spikes without clipping legitimate storm shock fronts, an adaptive rolling window ($W = 24\,\text{hours}$) evaluates the median and MAD metric:
+    \begin{equation}
+    \label{eq:mad_despiking}
+    \text{MAD}_t = \text{median}\left(\left| y_\tau - \text{median}(y_{t-W:t+W}) \right|\right), \quad \tau \in [t-W, t+W]
+    \end{equation}
+    Observations satisfying $|y_t - \text{median}(y)| > 5.5 \times \text{MAD}_t$ are identified as instrumentation noise and replaced by boundary-interpolated thresholds.
+\end{enumerate}
+
+\subsection{Negative Value Truncation and Hierarchical Imputation}
+\label{subsec:imputation}
+
+Negative concentration artifacts arising from thermal baseline zero-drift in beta-attenuation monitors are clamped to zero ($y_t = \max(0, y_t)$). Missing values within short time gaps ($\Delta t \le 3\,\text{hours}$) are reconstructed using shape-preserving Akima cubic spline interpolation, which prevents unphysical overshooting near sharp gradients. For prolonged spatial station dropouts, Ordinary Kriging using fitted seasonal semivariograms interpolates spatial values based on neighboring operating stations.
+
+\subsection{UTC Time Standardization and Diurnal Phase Alignment}
+\label{subsec:utc_alignment}
+
+Because observational telemetry in East Asia is collected across Beijing Time (UTC+8) and international models utilize UTC (Coordinated Universal Time), unaligned records produce an 8-hour phase error. This phase drift severely disrupts boundary layer convective modeling, because peak daytime thermal turbulence coincides with maximum wind speeds. All records are strictly converted to UTC timestamps, with boundary layer fluxes aligned to diurnal solar radiation cycles.
+
+\subsection{Spatial Resampling onto a Standardized 5\,km WGS84 Grid}
+\label{subsec:regridding}
+
+Multi-source grids exhibit divergent coordinate systems and spatial resolutions (ranging from $0.1^\circ$ in ECMWF to $0.25^\circ$ in ERA5 and irregular satellite swaths). To construct uniform input tensors, all variables are resampled onto a unified 5\,km regular grid in the WGS84 geographic coordinate system ($0.05^\circ \times 0.05^\circ$ spacing) over the domain $73^\circ\text{E}\text{--}135^\circ\text{E}, 18^\circ\text{N}\text{--}54^\circ\text{N}$ ($1240 \times 720$ grid cells):
+\begin{itemize}
+    \item Continuous atmospheric dynamic fields (geopotential height, temperature, wind components) are interpolated via second-order bilinear splines;
+    \item Discrete precipitation and mass fluxes are regridded via conservative area-weighted averaging, preserving total mass and energy across differing grid dimensions.
+\end{itemize}
+
+---
+
+\section{Four-Tier Domain-Specific Physical Feature Engineering}
+\label{sec:feature_engineering}
+
+Rather than feeding raw pixels into unguided neural networks, this research formulates a 32-dimensional physics feature tensor $\mathbf{X}(s, t) \in \mathbb{R}^{32}$ organized into four hierarchical tiers, summarized in Table~\ref{tab:feature_engineering_tiers}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Hierarchical Architecture of the 32-Dimensional Physics Feature Store}
+\label{tab:feature_engineering_tiers}
+\begin{tabularx}{\textwidth}{l l p{3.2cm} X}
+\toprule
+\textbf{Tier} & \textbf{Feature Dimension} & \textbf{Physical Variable} & \textbf{Atmospheric Mechanism} \\
+\midrule
+\multirow{4}{*}{\textbf{Tier 1: Dynamics}} 
+& $X_1, X_2$ & 10m Wind Speed & Aerodynamic drag driving surface shear stress $\tau_0$ \\
+& $X_3$ & Vertical Wind Shear & Momentum entrainment between 850\,hPa and surface \\
+& $X_4$ & 500\,hPa Geopotential & Synoptic baroclinic cyclogenesis and cold-front steering \\
+& $X_5$ & Boundary Layer Height & Vertical mixing volume and convective dispersion ceiling \\
+& $X_6$ & Thermal Inversion Index & Atmospheric static stability ($\partial \theta / \partial z$) suppressing turbulence \\
+\midrule
+\multirow{4}{*}{\textbf{Tier 2: Surface}} 
+& $X_7$ & Soil Water Content (0--7\,cm) & Meniscus capillary cohesion inhibiting particle detachment \\
+& $X_8$ & Roughness Length $z_0$ & Aerodynamic drag dissipation by non-erodible elements \\
+& $X_9$ & MODIS NDVI Anomaly & Phenological vegetation cover shielding vulnerable topsoil \\
+& $X_{10}$ & Snow Water Equivalent & Cryospheric surface armoring preventing aeolian deflation \\
+\midrule
+\multirow{3}{*}{\textbf{Tier 3: Geomorphic}} 
+& $X_{11}$ & Topographic Elevation (DEM) & Orographic barrier blocking and lee-side cyclogenesis \\
+& $X_{12}$ & Terrain Slope / TRI & Topographic Venturi acceleration through narrow passes \\
+& $X_{13}$ & Distance to Gobi / Taklimakan & Spatial proximity to primary East Asian erodible sand sources \\
+\midrule
+\multirow{3}{*}{\textbf{Tier 4: Memory}} 
+& $X_{14}, X_{15}$ & Upstream $\text{PM}_{10}$ Advection & Upwind historical particulate loading advected toward receptor \\
+& $X_{16}, X_{17}$ & Sine/Cosine DOY Harmonics & Annual solar insolation cycle and spring seasonality \\
+& $X_{18}$ & Arctic Oscillation (AO) Index & Planetary jet stream waviness and polar air outbreak potential \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Tier 1: Dynamic and Thermodynamic Atmospheric Forcing}
+\label{subsec:tier1_dynamics}
+
+This tier represents the instantaneous aerodynamic kinetic energy available to drive aeolian transport:
+\begin{itemize}
+    \item \textbf{Friction Velocity Proxies}: Combining 10m horizontal wind velocity components $U_{10} = \sqrt{u_{10}^2 + v_{10}^2}$ with surface drag coefficients parameterized by boundary layer thermal stability;
+    \item \textbf{Vertical Wind Shear}: Evaluated between 850\,hPa and 10\,m:
+    \begin{equation}
+    \label{eq:wind_shear}
+    S_{\text{shear}} = \frac{\sqrt{(u_{850} - u_{10})^2 + (v_{850} - v_{10})^2}}{z_{850} - 10}
+    \end{equation}
+    High vertical shear triggers Kelvin-Helmholtz billows, transporting high-momentum air downward to scour the ground;
+    \item \textbf{Boundary Layer Thermal Inversion Strength}: Calculated as the potential temperature difference $\Delta \theta = \theta_{850} - \theta_{2\text{m}}$. Under positive $\Delta \theta$, vertical exchange is suppressed, trapping pollutants in a thin surface layer.
+\end{itemize}
+
+\subsection{Tier 2: Soil Moisture, Roughness, and Surface Cover State}
+\label{subsec:tier2_surface}
+
+Surface erodibility dictates the volume of dust injected into the boundary layer under identical wind regimes:
+\begin{itemize}
+    \item \textbf{Topsoil Moisture Deficit}: Topsoil volumetric moisture ($0\text{--}7\,\text{cm}$) extracted from ERA5-Land. During spring thaw, frozen soil melts, creating a short window of wetness followed by rapid desiccation, causing dramatic shifts in critical saltation wind speed;
+    \item \textbf{Aerodynamic Roughness ($z_0$)}: Captures energy dissipation across pebble beds, sparse xerophytic vegetation, and urban complexes;
+    \item \textbf{NDVI Negative Anomalies}: Standardized departures from 10-year historical baselines ($\Delta \text{NDVI} = (\text{NDVI}_t - \mu_{\text{NDVI}}) / \sigma_{\text{NDVI}}$) delineate areas with compromised vegetation cover.
+\end{itemize}
+
+\subsection{Tier 3: Geomorphic Orography and Source Proximity}
+\label{subsec:tier3_geomorphology}
+
+Terrain governs dust transport channeling and gravitational deposition:
+\begin{itemize}
+    \item \textbf{Topographic Roughness Index (TRI)}: Evaluated from SRTM 90\,m DEM data:
+    \begin{equation}
+    \label{eq:tri_formula}
+    \text{TRI} = \sqrt{\frac{1}{8} \sum_{i=1}^8 \left(z_i - z_0\right)^2}
+    \end{equation}
+    High TRI corresponds to rugged mountain terrain (e.g., Qilian, Helan, Taihang ranges) that blocks low-level transport;
+    \item \textbf{Geodesic Sand Source Distance}: Great-circle distance from each receptor grid cell to the centroids of the Badain Jaran, Tengger, and Mongolian Gobi sand sheets.
+\end{itemize}
+
+\subsection{Tier 4: Upstream Particulate Memory and Teleconnection Indices}
+\label{subsec:tier4_teleconnections}
+
+Atmospheric dust storms possess temporal inertia:
+\begin{itemize}
+    \item \textbf{Advective Upstream Mass Concentration}: Evaluated using backward trajectory wind vector projection:
+    \begin{equation}
+    \label{eq:upstream_advection}
+    C_{\text{upstream}}(s, t) = C\left(s - \mathbf{u}_{10}(s, t) \cdot \Delta t, \ t - \Delta t\right)
+    \end{equation}
+    which feeds upwind particulate mass directly into downstream predictions;
+    \item \textbf{Synoptic Teleconnection Patterns}: Daily Arctic Oscillation (AO) index and Polar Vortex centroid coordinates capture large-scale jet stream meridional waviness responsible for cold-air outbreaks across East Asia.
+\end{itemize}
+
+---
+
+\section{Temporal Walk-Forward Dataset Partitioning Protocol}
+\label{sec:dataset_split}
+
+In meteorological time-series modeling, random $k$-fold cross-validation is strictly invalid because temporal autocorrelation between adjacent days causes severe information leakage, producing artificially optimistic performance estimates.
+
+To guarantee rigorous out-of-sample evaluation, this research employs a chronological **Walk-Forward Validation Protocol** without lookahead bias, partitioned as follows:
+\begin{enumerate}
+    \item \textbf{Training Dataset (2018--2022, 5 Years)}: 1{,}826 calendar days ($\approx 43{,}824$ hourly time slices), capturing diverse spring synoptic situations, major droughts, and baseline conditions;
+    \item \textbf{Validation Dataset (2023, 1 Year)}: 365 calendar days used exclusively for hyperparameter tuning, early stopping regularization, and Optuna multi-objective optimization;
+    \item \textbf{Out-of-Time Testing Dataset (2024--2025, 2 Years)}: 731 calendar days held completely unseen until final evaluation. This independent test window encompasses both extreme historical super-storms and prolonged quiescent spring conditions, establishing an objective benchmark for model generalization across the 3--15 day extended range.
+\end{enumerate}
+
+All feature normalization parameters (Z-score mean $\mu$ and standard deviation $\sigma$, Min-Max scalers) are fitted strictly on the training partition and subsequently applied to validation and testing datasets, ensuring complete elimination of target leakage.
+
+---
+
+\section{Chapter Summary}
+\label{sec:ch3_summary}
+
+This chapter established the data and feature engineering foundation of this dissertation. By integrating NWP forecasts (ECMWF, CMA-GFS), high-resolution reanalysis (ERA5), multi-spectral satellite remote sensing (MODIS, FY-4A/B), and ground monitoring telemetry (1{,}500+ stations), an automated quality control pipeline resolved sensor freezing, despiked anomalies, and harmonized multi-source data onto a standardized 5\,km WGS84 grid. Furthermore, a 32-dimensional physics feature store synthesized atmospheric dynamics, surface erodibility, geomorphic orography, and upstream memory. Finally, a strict walk-forward temporal partitioning protocol ensures rigorous model training and out-of-time evaluation in the modeling chapters that follow.

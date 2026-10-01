@@ -1,0 +1,466 @@
+{
+  "fileInfos" : [ {
+    "path" : "Ai Pipline\\api\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : 975437588,
+      "lastModified" : 1790681574342
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Ai Pipline\\api\\server.py",
+    "modificationInfo" : {
+      "contentHash" : -1580059198,
+      "lastModified" : 1790681992845
+    },
+    "linesOfCode" : 168
+  }, {
+    "path" : "Ai Pipline\\data\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -52878430,
+      "lastModified" : 1790681415995
+    },
+    "linesOfCode" : 12
+  }, {
+    "path" : "Ai Pipline\\data\\dataset.py",
+    "modificationInfo" : {
+      "contentHash" : 1094256095,
+      "lastModified" : 1790681429099
+    },
+    "linesOfCode" : 161
+  }, {
+    "path" : "Ai Pipline\\data\\mock_generator.py",
+    "modificationInfo" : {
+      "contentHash" : 616354413,
+      "lastModified" : 1790681410122
+    },
+    "linesOfCode" : 501
+  }, {
+    "path" : "Ai Pipline\\evaluation\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -1855097444,
+      "lastModified" : 1790681548855
+    },
+    "linesOfCode" : 18
+  }, {
+    "path" : "Ai Pipline\\evaluation\\benchmark.py",
+    "modificationInfo" : {
+      "contentHash" : -788731218,
+      "lastModified" : 1790681989344
+    },
+    "linesOfCode" : 124
+  }, {
+    "path" : "Ai Pipline\\evaluation\\metrics.py",
+    "modificationInfo" : {
+      "contentHash" : 804137588,
+      "lastModified" : 1790681556277
+    },
+    "linesOfCode" : 111
+  }, {
+    "path" : "Ai Pipline\\inference\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -842835198,
+      "lastModified" : 1790681534175
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Ai Pipline\\inference\\predictor.py",
+    "modificationInfo" : {
+      "contentHash" : 118235665,
+      "lastModified" : 1790681984843
+    },
+    "linesOfCode" : 170
+  }, {
+    "path" : "Ai Pipline\\models\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : 1462234730,
+      "lastModified" : 1790681434133
+    },
+    "linesOfCode" : 3
+  }, {
+    "path" : "Ai Pipline\\models\\deep_learning\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -1737187239,
+      "lastModified" : 1790681466827
+    },
+    "linesOfCode" : 16
+  }, {
+    "path" : "Ai Pipline\\models\\deep_learning\\aigamfs_backbone.py",
+    "modificationInfo" : {
+      "contentHash" : -764632406,
+      "lastModified" : 1790681497240
+    },
+    "linesOfCode" : 72
+  }, {
+    "path" : "Ai Pipline\\models\\deep_learning\\pinn_core.py",
+    "modificationInfo" : {
+      "contentHash" : -1109814644,
+      "lastModified" : 1790681477214
+    },
+    "linesOfCode" : 104
+  }, {
+    "path" : "Ai Pipline\\models\\deep_learning\\st_gnn.py",
+    "modificationInfo" : {
+      "contentHash" : 871613495,
+      "lastModified" : 1790681485957
+    },
+    "linesOfCode" : 117
+  }, {
+    "path" : "Ai Pipline\\models\\deep_learning\\unified_model.py",
+    "modificationInfo" : {
+      "contentHash" : -841161844,
+      "lastModified" : 1790681506566
+    },
+    "linesOfCode" : 132
+  }, {
+    "path" : "Ai Pipline\\models\\machine_learning\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -331376123,
+      "lastModified" : 1790777752944
+    },
+    "linesOfCode" : 23
+  }, {
+    "path" : "Ai Pipline\\models\\machine_learning\\hazard_classifier.py",
+    "modificationInfo" : {
+      "contentHash" : -2020321559,
+      "lastModified" : 1790681460530
+    },
+    "linesOfCode" : 89
+  }, {
+    "path" : "Ai Pipline\\models\\machine_learning\\line_a_ensemble.py",
+    "modificationInfo" : {
+      "contentHash" : -1313420671,
+      "lastModified" : 1790681446315
+    },
+    "linesOfCode" : 137
+  }, {
+    "path" : "Ai Pipline\\models\\machine_learning\\uncertainty_head.py",
+    "modificationInfo" : {
+      "contentHash" : 1303067867,
+      "lastModified" : 1790777743834
+    },
+    "linesOfCode" : 273
+  }, {
+    "path" : "Ai Pipline\\run_demo.py",
+    "modificationInfo" : {
+      "contentHash" : 1546716717,
+      "lastModified" : 1790682022235
+    },
+    "linesOfCode" : 151
+  }, {
+    "path" : "Ai Pipline\\training\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -57691705,
+      "lastModified" : 1790681511054
+    },
+    "linesOfCode" : 10
+  }, {
+    "path" : "Ai Pipline\\training\\train_dl.py",
+    "modificationInfo" : {
+      "contentHash" : -1670833162,
+      "lastModified" : 1790681980944
+    },
+    "linesOfCode" : 164
+  }, {
+    "path" : "Ai Pipline\\training\\train_ml.py",
+    "modificationInfo" : {
+      "contentHash" : -1711670813,
+      "lastModified" : 1790682034263
+    },
+    "linesOfCode" : 138
+  }, {
+    "path" : "Media\\operations\\build_presentation_video.py",
+    "modificationInfo" : {
+      "contentHash" : 1775305123,
+      "lastModified" : 1790784681418
+    },
+    "linesOfCode" : 564
+  }, {
+    "path" : "Media\\operations\\test_images.py",
+    "modificationInfo" : {
+      "contentHash" : -377794784,
+      "lastModified" : 1790338782272
+    },
+    "linesOfCode" : 22
+  }, {
+    "path" : "Media\\operations\\test_imports.py",
+    "modificationInfo" : {
+      "contentHash" : -474413294,
+      "lastModified" : 1790338753388
+    },
+    "linesOfCode" : 8
+  }, {
+    "path" : "Media\\operations\\write_metadata.py",
+    "modificationInfo" : {
+      "contentHash" : 2094895207,
+      "lastModified" : 1790425624515
+    },
+    "linesOfCode" : 33
+  }, {
+    "path" : "Website\\legacy_static\\ai_architecture\\ai_architecture.js",
+    "modificationInfo" : {
+      "contentHash" : 1278823407,
+      "lastModified" : 1790474915997
+    },
+    "linesOfCode" : 558
+  }, {
+    "path" : "Website\\legacy_static\\ai_architecture\\mock_data.js",
+    "modificationInfo" : {
+      "contentHash" : -572149652,
+      "lastModified" : 1790474864058
+    },
+    "linesOfCode" : 725
+  }, {
+    "path" : "Website\\legacy_static\\app.js",
+    "modificationInfo" : {
+      "contentHash" : 448778910,
+      "lastModified" : 1790282191392
+    },
+    "linesOfCode" : 289
+  }, {
+    "path" : "Website\\legacy_static\\d3-visualizations.js",
+    "modificationInfo" : {
+      "contentHash" : -1971675811,
+      "lastModified" : 1790283427340
+    },
+    "linesOfCode" : 1247
+  }, {
+    "path" : "Website\\legacy_static\\data.js",
+    "modificationInfo" : {
+      "contentHash" : -900974058,
+      "lastModified" : 1790449939707
+    },
+    "linesOfCode" : 1448
+  }, {
+    "path" : "Website\\src\\App.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1250150814,
+      "lastModified" : 1790784043668
+    },
+    "linesOfCode" : 57
+  }, {
+    "path" : "Website\\src\\api\\dustmlApi.js",
+    "modificationInfo" : {
+      "contentHash" : 1359359506,
+      "lastModified" : 1790783877036
+    },
+    "linesOfCode" : 39
+  }, {
+    "path" : "Website\\src\\components\\AiNeuralLab.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1740825720,
+      "lastModified" : 1790783419493
+    },
+    "linesOfCode" : 207
+  }, {
+    "path" : "Website\\src\\components\\BibtexModal.jsx",
+    "modificationInfo" : {
+      "contentHash" : -661809704,
+      "lastModified" : 1790783467955
+    },
+    "linesOfCode" : 78
+  }, {
+    "path" : "Website\\src\\components\\Hero.jsx",
+    "modificationInfo" : {
+      "contentHash" : 344416021,
+      "lastModified" : 1790783300973
+    },
+    "linesOfCode" : 133
+  }, {
+    "path" : "Website\\src\\components\\MethodologyRoadmap.jsx",
+    "modificationInfo" : {
+      "contentHash" : 554955728,
+      "lastModified" : 1790783459959
+    },
+    "linesOfCode" : 151
+  }, {
+    "path" : "Website\\src\\components\\Navbar.jsx",
+    "modificationInfo" : {
+      "contentHash" : -1051375666,
+      "lastModified" : 1790783289606
+    },
+    "linesOfCode" : 83
+  }, {
+    "path" : "Website\\src\\components\\OperationalDashboard.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1843956433,
+      "lastModified" : 1790783401325
+    },
+    "linesOfCode" : 271
+  }, {
+    "path" : "Website\\src\\components\\ProposalChapters.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1833297207,
+      "lastModified" : 1790783369946
+    },
+    "linesOfCode" : 272
+  }, {
+    "path" : "Website\\src\\components\\ReferencesDatabase.jsx",
+    "modificationInfo" : {
+      "contentHash" : -442180678,
+      "lastModified" : 1790783447203
+    },
+    "linesOfCode" : 137
+  }, {
+    "path" : "Website\\src\\components\\SimulationsSuite.jsx",
+    "modificationInfo" : {
+      "contentHash" : -749118597,
+      "lastModified" : 1790783335818
+    },
+    "linesOfCode" : 662
+  }, {
+    "path" : "Website\\src\\components\\VideoStudio.jsx",
+    "modificationInfo" : {
+      "contentHash" : -196640383,
+      "lastModified" : 1790783436964
+    },
+    "linesOfCode" : 172
+  }, {
+    "path" : "Website\\src\\components\\layout\\Footer.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1075736850,
+      "lastModified" : 1790783924279
+    },
+    "linesOfCode" : 33
+  }, {
+    "path" : "Website\\src\\components\\layout\\Navbar.jsx",
+    "modificationInfo" : {
+      "contentHash" : -310453128,
+      "lastModified" : 1790783913735
+    },
+    "linesOfCode" : 85
+  }, {
+    "path" : "Website\\src\\components\\ui\\Badge.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1629280859,
+      "lastModified" : 1790783932801
+    },
+    "linesOfCode" : 33
+  }, {
+    "path" : "Website\\src\\components\\ui\\Button.jsx",
+    "modificationInfo" : {
+      "contentHash" : -793561740,
+      "lastModified" : 1790783943069
+    },
+    "linesOfCode" : 24
+  }, {
+    "path" : "Website\\src\\components\\ui\\Card.jsx",
+    "modificationInfo" : {
+      "contentHash" : -217139149,
+      "lastModified" : 1790783954628
+    },
+    "linesOfCode" : 16
+  }, {
+    "path" : "Website\\src\\context\\AppContext.jsx",
+    "modificationInfo" : {
+      "contentHash" : -993922314,
+      "lastModified" : 1790783887813
+    },
+    "linesOfCode" : 32
+  }, {
+    "path" : "Website\\src\\data\\researchData.js",
+    "modificationInfo" : {
+      "contentHash" : -982659594,
+      "lastModified" : 1790783172854
+    },
+    "linesOfCode" : 1448
+  }, {
+    "path" : "Website\\src\\hooks\\useForecaster.js",
+    "modificationInfo" : {
+      "contentHash" : -839703767,
+      "lastModified" : 1790783896236
+    },
+    "linesOfCode" : 48
+  }, {
+    "path" : "Website\\src\\main.jsx",
+    "modificationInfo" : {
+      "contentHash" : -1626910920,
+      "lastModified" : 1790359849034
+    },
+    "linesOfCode" : 10
+  }, {
+    "path" : "Website\\src\\pages\\DashboardPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : 1352710589,
+      "lastModified" : 1790783986509
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Website\\src\\pages\\NeuralLabPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : 2031720813,
+      "lastModified" : 1790783999533
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Website\\src\\pages\\ProposalPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : -1301694075,
+      "lastModified" : 1790783968876
+    },
+    "linesOfCode" : 15
+  }, {
+    "path" : "Website\\src\\pages\\ReferencesPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : -388510097,
+      "lastModified" : 1790784024398
+    },
+    "linesOfCode" : 9
+  }, {
+    "path" : "Website\\src\\pages\\RoadmapPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : -1663112466,
+      "lastModified" : 1790784032380
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Website\\src\\pages\\SimulationsPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : -334363509,
+      "lastModified" : 1790783976651
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Website\\src\\pages\\VideoStudioPage.jsx",
+    "modificationInfo" : {
+      "contentHash" : -1830854539,
+      "lastModified" : 1790784013835
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : "Website\\src\\services\\bibtexService.js",
+    "modificationInfo" : {
+      "contentHash" : -1638549481,
+      "lastModified" : 1790783865289
+    },
+    "linesOfCode" : 21
+  }, {
+    "path" : "Website\\src\\services\\physicsService.js",
+    "modificationInfo" : {
+      "contentHash" : -422928509,
+      "lastModified" : 1790783857347
+    },
+    "linesOfCode" : 53
+  }, {
+    "path" : "Website\\src\\utils\\constants.js",
+    "modificationInfo" : {
+      "contentHash" : 661760413,
+      "lastModified" : 1790783832285
+    },
+    "linesOfCode" : 24
+  }, {
+    "path" : "Website\\src\\utils\\formatters.js",
+    "modificationInfo" : {
+      "contentHash" : -878293716,
+      "lastModified" : 1790783846081
+    },
+    "linesOfCode" : 23
+  }, {
+    "path" : "Website\\vite.config.js",
+    "modificationInfo" : {
+      "contentHash" : 727881048,
+      "lastModified" : 1790359849035
+    },
+    "linesOfCode" : 7
+  } ],
+  "appVersion" : "1.3.0"
+}

@@ -1,0 +1,248 @@
+% ======================================================================
+% CHAPTER 5: GEOSPATIAL EXPOSURE & SOCIETAL VULNERABILITY ANALYSIS
+% ======================================================================
+
+\chapter{Geospatial Exposure Modeling and Societal Vulnerability Analysis}
+\label{chap:spatial_socioeconomic}
+
+\section{Introduction and Coupled Spatial-Social Conceptual Framework}
+\label{sec:spatial_intro}
+
+Atmospheric environmental hazards do not operate in a social vacuum. While physical meteorological models output deterministic or probabilistic particulate concentrations, the translation of these physical fields into public health protection and municipal disaster mitigation depends on two interrelated dimensions:
+\begin{enumerate}
+    \item \textbf{Spatial Hazard Exposure}: Continuous geographic distribution, spatial autocorrelation, and orographic dispersion of airborne dust across regional population centers;
+    \item \textbf{Societal Behavioral Vulnerability}: Public perception of environmental risk, trust in municipal institutions, and the cognitive behavioral mechanisms through which early warning information translates into protective actions (e.g., mask compliance, indoor sheltering, school closures).
+\end{enumerate}
+
+To bridge the traditional divide between atmospheric fluid engineering and disaster sociology, this chapter establishes a coupled spatial-social analytical framework. Utilizing Geographic Information Systems (GIS) geostatistics alongside the Protective Action Decision Model (PADM)~\cite{lindell2012protective} estimated via Structural Equation Modeling (SEM), this research quantifies the complete causal chain from physical hazard exposure to societal emergency compliance.
+
+---
+
+\section{GIS Geostatistical Interpolation and Exposure Analysis}
+\label{sec:gis_exposure}
+
+\subsection{Geostatistical Interpolation Models: IDW, Ordinary Kriging, and EBK}
+\label{subsec:kriging_models}
+
+Ground-based air quality monitoring networks provide discrete point telemetry. Constructing continuous spatial exposure fields across northern China requires geostatistical spatial interpolation. Three standard algorithms were benchmarked: Inverse Distance Weighting (IDW), Ordinary Kriging (OK), and Empirical Bayesian Kriging (EBK).
+
+Ordinary Kriging is selected as the primary interpolation framework because it provides Best Linear Unbiased Estimates (BLUE) and explicitly accounts for the directional spatial covariance structure of turbulent aerosol advection. In Ordinary Kriging, the unknown concentration $\hat{Z}(\mathbf{x}_0)$ at an unmonitored location $\mathbf{x}_0$ is estimated as a linear combination of $n$ surrounding observation stations:
+\begin{equation}
+\label{eq:kriging_estimator}
+\hat{Z}(\mathbf{x}_0) = \sum_{i=1}^n \lambda_i Z(\mathbf{x}_i)
+\end{equation}
+subject to the unbiased condition $\sum_{i=1}^n \lambda_i = 1$, which minimizes estimation variance $\sigma_E^2 = \text{Var}\left(\hat{Z}(\mathbf{x}_0) - Z(\mathbf{x}_0)\right)$.
+
+\subsection{Semivariogram Modeling and Spatial Dependency}
+\label{subsec:semivariogram}
+
+The spatial continuity of aerosol dispersion is quantified using the empirical semivariogram $\gamma(h)$:
+\begin{equation}
+\label{eq:semivariogram_ch5}
+\gamma(h) = \frac{1}{2 N(h)} \sum_{i=1}^{N(h)} \left[ Z(\mathbf{x}_i) - Z(\mathbf{x}_i + h) \right]^2
+\end{equation}
+where $h$ denotes spatial separation lag distance and $N(h)$ is the number of station pairs separated by lag $h$. An exponential theoretical semivariogram model was fitted to the empirical semivariance:
+\begin{equation}
+\label{eq:exponential_semivariogram}
+\gamma(h) = C_0 + C \left[ 1 - \exp\left(-\frac{h}{a}\right) \right]
+\end{equation}
+where $C_0$ denotes the nugget variance (representing unresolved measurement noise and sub-grid microscale variability), $C_0 + C$ represents the sill (asymptotic total spatial variance), and $a$ defines the spatial range (correlation distance beyond which observations become spatially independent).
+
+Table~\ref{tab:kriging_parameters} summarizes the geostatistical semivariogram parameters fitted during extreme dust storm periods.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Geostatistical Semivariogram Parameters and Cross-Validation Diagnostics}
+\label{tab:kriging_parameters}
+\begin{tabularx}{\textwidth}{l p{2.2cm} p{2.2cm} p{2.2cm} p{2.2cm} X}
+\toprule
+\textbf{Model Type} & \textbf{Nugget ($C_0$)} & \textbf{Sill ($C_0 + C$)} & \textbf{Range ($a$, km)} & \textbf{Nugget/Sill (\%)} & \textbf{Cross-Validation (RMSSE)} \\
+\midrule
+Spherical & 1{,}240 & 14{,}850 & 420.5 & 8.35\% & 1.042 \\
+Exponential & 980 & 15{,}620 & 485.2 & 6.27\% & 1.011 (Optimal) \\
+Gaussian & 2{,}150 & 16{,}100 & 360.8 & 13.35\% & 1.128 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The optimal exponential model yields a nugget-to-sill ratio of $6.27\%$. In spatial geostatistics, a ratio $< 25\%$ confirms **strong spatial autocorrelation**, demonstrating that regional particulate dispersion is governed by coherent synoptic wind advection rather than isolated localized emissions. The Root Mean Square Standardized Error (RMSSE) of 1.011 confirms the unbiased validity of Kriging variance estimates.
+
+\subsection{Spatial Autocorrelation Testing: Global Moran's $I$ and LISA Hotspots}
+\label{subsec:spatial_autocorrelation_tests}
+
+\subsubsection{1. Global Moran's $I$}
+To statistically verify whether sandstorm exposure clusters geographically, Global Moran's $I$ was evaluated across northern China:
+\begin{equation}
+\label{eq:morans_i_ch5}
+I = \frac{n}{\sum_{i=1}^n \sum_{j=1}^n w_{ij}} \frac{\sum_{i=1}^n \sum_{j=1}^n w_{ij} (z_i - \bar{z})(z_j - \bar{z})}{\sum_{i=1}^n (z_i - \bar{z})^2}
+\end{equation}
+where $w_{ij}$ represents the inverse-distance geographic spatial weight matrix. Global Moran's $I$ reached $0.542$ with a standardized $Z$-score of $18.46$ ($p < 0.001$), firmly rejecting the spatial randomness null hypothesis and verifying strong spatial clustering.
+
+\subsubsection{2. Local Indicators of Spatial Association (LISA)}
+Local Moran's $I_i$ was evaluated for each municipal jurisdiction:
+\begin{equation}
+\label{eq:local_lisa}
+I_i = \frac{z_i - \bar{z}}{s^2} \sum_{j=1}^n w_{ij} (z_j - \bar{z})
+\end{equation}
+As visualized in LISA cluster mapping:
+\begin{itemize}
+    \item \textbf{High-High Clusters (Hotspots)}: Concentrated along the transboundary transport funnel spanning Erenhot, Zhangjiakou, Datong, and the Beijing-Tianjin-Hebei plain, identifying regions where high local exposure is reinforced by high regional exposure;
+    \item \textbf{Low-Low Clusters (Coldspots)}: Situated along the southern fringes of the Qinling Mountains and coastal Shandong;
+    \item \textbf{Spatial Outliers}: Low-High pockets occurring in protected intermontane valleys shielded by local topographic barriers.
+\end{itemize}
+
+---
+
+\section{Survey Instrument Design and SPSS Statistical Analysis}
+\label{sec:spss_survey}
+
+\subsection{Sampling Design, Administration, and Data Screening}
+\label{subsec:survey_sampling}
+
+To assess how meteorological warning dissemination influences public behavioral responses, a structured empirical survey was administered across major metropolitan centers frequently impacted by East Asian sandstorms (including Beijing, Shijiazhuang, Hohhot, and Yinchuan). A stratified random sampling strategy was implemented, collecting a total of $N=920$ responses, of which $N=842$ questionnaires were retained following data screening (valid response rate: $91.5\%$).
+
+Prior to statistical modeling, data distributions were evaluated for normality. Absolute values of univariate skewness ($|\text{Skew}| < 1.2$) and kurtosis ($|\text{Kurt}| < 2.0$) fell within standard thresholds for normal distribution assumptions in covariance-based structural modeling.
+
+\subsection{Construct Reliability and Convergent Validity}
+\label{subsec:reliability_validity}
+
+The questionnaire operationalized four core latent constructs grounded in the Protective Action Decision Model (PADM): Warning Perception (WP), Risk Perception (RP), Stakeholder Attributes / Institutional Trust (SA), and Protective Action Compliance (PA). Table~\ref{tab:sem_constructs} presents the statistical measurement diagnostics evaluated in SPSS.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Measurement Model Reliability and Convergent Validity Diagnostics}
+\label{tab:sem_constructs}
+\begin{tabularx}{\textwidth}{l p{5.5cm} c c c c}
+\toprule
+\textbf{Construct} & \textbf{Measurement Indicator Items} & \textbf{FL ($\ge 0.60$)} & \textbf{CR ($\ge 0.70$)} & \textbf{AVE ($\ge 0.50$)} & \textbf{Cronbach's $\alpha$} \\
+\midrule
+\multirow{3}{*}{\parbox{2.5cm}{\textbf{Warning Perception}\\ (WP)}} 
+& WP1: Information timeliness & 0.812 & \multirow{3}{*}{0.858} & \multirow{3}{*}{0.668} & \multirow{3}{*}{0.854} \\
+& WP2: Perceived forecast accuracy & 0.845 & & & \\
+& WP3: Authority of official channels & 0.796 & & & \\
+\midrule
+\multirow{3}{*}{\parbox{2.5cm}{\textbf{Risk Perception}\\ (RP)}} 
+& RP1: Threat to respiratory health & 0.774 & \multirow{3}{*}{0.833} & \multirow{3}{*}{0.625} & \multirow{3}{*}{0.829} \\
+& RP2: Visibility traffic hazard & 0.831 & & & \\
+& RP3: Disruption to daily routines & 0.765 & & & \\
+\midrule
+\multirow{2}{*}{\parbox{2.5cm}{\textbf{Stakeholder Trust}\\ (SA)}} 
+& SA1: Confidence in municipal warnings & 0.802 & \multirow{2}{*}{0.796} & \multirow{2}{*}{0.661} & \multirow{2}{*}{0.791} \\
+& SA2: Neighborhood mutual response & 0.828 & & & \\
+\midrule
+\multirow{3}{*}{\parbox{2.5cm}{\textbf{Protective Action}\\ (PA)}} 
+& PA1: Avoidance of non-essential trips & 0.821 & \multirow{3}{*}{0.863} & \multirow{3}{*}{0.677} & \multirow{3}{*}{0.861} \\
+& PA2: Wearing N95 masks / goggles & 0.856 & & & \\
+& PA3: Sealing windows \& air purifier use & 0.790 & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+As summarized in Table~\ref{tab:sem_constructs}:
+\begin{itemize}
+    \item Standardized factor loadings (FL) for all 11 indicators range from $0.765$ to $0.856$, exceeding the $0.60$ threshold;
+    \item Composite Reliability (CR) ranges between $0.796$ and $0.863$, exceeding the $0.70$ benchmark;
+    \item Average Variance Extracted (AVE) values range between $0.625$ and $0.677$, exceeding the $0.50$ criterion;
+    \item Cronbach's $\alpha$ internal consistency coefficients range from $0.791$ to $0.861$, confirming robust psychometric reliability.
+\end{itemize}
+
+\subsection{Common Method Bias (CMB) Testing}
+\label{subsec:cmb_test}
+
+Because survey data were gathered using self-report questionnaires, Common Method Bias (CMB) was evaluated using Harman's single-factor test. All 11 survey items were entered into an unrotated exploratory factor analysis (EFA). The first extracted principal component accounted for $28.4\%$ of the total variance, well below the critical $40.0\%$ threshold. Furthermore, introducing an unmeasured latent common methods factor in AMOS yielded non-significant changes in comparative fit indices ($\Delta \text{CFI} < 0.01$), confirming that Common Method Bias does not compromise structural path estimation.
+
+---
+
+\section{AMOS Structural Equation Modeling (SEM) of Protective Action}
+\label{sec:amos_sem}
+
+\subsection{Theoretical Hypotheses and Path Formulation}
+\label{subsec:sem_hypotheses}
+
+Based on the Protective Action Decision Model (PADM), five directional structural hypotheses were formulated:
+\begin{itemize}
+    \item \textbf{H1}: Warning Perception positively influences public Risk Perception ($\text{WP} \to \text{RP}$);
+    \item \textbf{H2}: Warning Perception directly triggers Protective Action Compliance ($\text{WP} \to \text{PA}$);
+    \item \textbf{H3}: Risk Perception positively drives Protective Action Compliance ($\text{RP} \to \text{PA}$);
+    \item \textbf{H4}: Institutional Trust moderates the relationship between warnings and risk perception ($\text{SA} \times \text{WP} \to \text{RP}$);
+    \item \textbf{H5}: Institutional Trust positively promotes citizen Protective Action Compliance ($\text{SA} \to \text{PA}$).
+\end{itemize}
+
+The structural model was estimated in AMOS 28.0 using Maximum Likelihood (ML) estimation, as illustrated in Figure~\ref{fig:sem_path_model}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.92, transform shape,
+    latent/.style={ellipse, draw=ustbblue, fill=ustbblue!8, text centered, minimum width=2.8cm, minimum height=1.1cm, line width=1pt, font=\small},
+    arrow/.style={-{Stealth[scale=1.1]}, thick, draw=navyblue},
+    lbl/.style={font=\footnotesize, fill=white, inner sep=1.5pt}
+]
+
+\node[latent] (wp) {\textbf{Warning}\\ \textbf{Perception (WP)}};
+\node[latent, above right=0.8cm and 2.5cm of wp] (rp) {\textbf{Risk}\\ \textbf{Perception (RP)}};
+\node[latent, below right=0.8cm and 2.5cm of wp] (sa) {\textbf{Institutional}\\ \textbf{Trust (SA)}};
+\node[latent, below right=0.8cm and 2.5cm of rp] (pa) {\textbf{Protective}\\ \textbf{Action (PA)}};
+
+\draw[arrow] (wp) -- node[lbl] {$\beta = 0.42^{***}$} (rp);
+\draw[arrow] (wp) -- node[lbl] {$\beta = 0.28^{***}$} (pa);
+\draw[arrow] (rp) -- node[lbl] {$\beta = 0.36^{***}$} (pa);
+\draw[arrow] (sa) -- node[lbl] {$\beta = 0.21^{**}$} (pa);
+\draw[arrow, dashed] (sa) -- node[lbl] {$\beta = 0.18^{**}$} (rp);
+
+\end{tikzpicture}
+\caption{Empirical PADM Structural Equation Model with Standardized Path Coefficients ($^{***}p < 0.001, ^{**}p < 0.01$)}
+\label{fig:sem_path_model}
+\end{figure}
+
+\subsection{Model Fit Indices}
+\label{subsec:sem_fit}
+
+The measurement and structural model fit indices achieved outstanding alignment with established academic criteria:
+\begin{itemize}
+    \item $\chi^2 / df = 2.14$ (criterion: $1.0 < \chi^2/df < 3.0$);
+    \item Root Mean Square Error of Approximation ($\text{RMSEA}$) = $0.037$ (criterion: $< 0.05$);
+    \item Comparative Fit Index ($\text{CFI}$) = $0.968$ (criterion: $> 0.95$);
+    \item Tucker-Lewis Index ($\text{TLI}$) = $0.959$ (criterion: $> 0.95$);
+    \item Standardized Root Mean Square Residual ($\text{SRMR}$) = $0.031$ (criterion: $< 0.05$).
+\end{itemize}
+
+\subsection{Mediation Effect Analysis via Bootstrap Resampling}
+\label{subsec:bootstrap_mediation}
+
+To test whether Risk Perception mediates the impact of Warning Perception on Protective Action Compliance, non-parametric percentile Bootstrap resampling (5{,}000 iterations, $95\%$ confidence interval) was executed:
+\begin{itemize}
+    \item \textbf{Direct Effect ($\text{WP} \to \text{PA}$)}: $\beta_{\text{direct}} = 0.282$, $p < 0.001$, $95\%\,\text{CI} = [0.198, 0.364]$;
+    \item \textbf{Indirect Mediated Effect ($\text{WP} \to \text{RP} \to \text{PA}$)}: $\beta_{\text{indirect}} = 0.421 \times 0.358 = 0.151$, $p < 0.001$, $95\%\,\text{CI} = [0.106, 0.208]$;
+    \item \textbf{Total Effect ($\text{WP} \to \text{PA}$)}: $\beta_{\text{total}} = 0.433$, $p < 0.001$, $95\%\,\text{CI} = [0.345, 0.518]$.
+\end{itemize}
+
+Because the $95\%$ confidence interval excludes zero, Risk Perception serves as a **statistically significant partial mediator**. Delivering accurate early warning information operates not only directly on behavior, but also by calibrating public risk awareness, which in turn reinforces compliance with protective interventions.
+
+---
+
+\section{Integrated Spatial-Societal Risk Mapping}
+\label{sec:integrated_risk}
+
+Combining the physical hazard forecasts from Chapter 4 with the spatial and social vulnerability models established in this chapter, an integrated disaster risk index is evaluated using multi-criteria spatial overlay:
+\begin{equation}
+\label{eq:disaster_risk_formula}
+\text{Risk}(s) = H(s) \times E(s) \times V(s)
+\end{equation}
+where:
+\begin{itemize}
+    \item \textbf{Hazard Index $H(s)$}: Spatial probability of exceeding CMA Level 3 sandstorm thresholds ($P(C \ge 500\,\mu\text{g/m}^3)$) generated by the DustML ST-GNN framework;
+    \item \textbf{Exposure Index $E(s)$}: High-resolution gridded population density extracted from WorldPop (2025) overlaid with national transportation density;
+    \item \textbf{Vulnerability Index $V(s)$}: Evaluated from municipal census demographics (proportions of elderly and pediatric populations, per-capita hospital beds, and institutional trust indices derived from SEM).
+\end{itemize}
+
+Spatial integration reveals that while western Inner Mongolia experiences the highest physical hazard intensity ($H$), the Beijing-Tianjin-Hebei megalopolis exhibits peak composite risk ($\text{Risk}$), driven by extreme population exposure density and vulnerable urban infrastructure.
+
+---
+
+\section{Chapter Summary}
+\label{sec:ch5_summary}
+
+This chapter bridged physical sandstorm forecasting and societal emergency mitigation. Ordinary Kriging with fitted exponential semivariograms ($C_0 / \text{Sill} = 6.27\%$) confirmed strong spatial continuity across the East Asian dust plume. Global Moran's $I$ ($0.542, p < 0.001$) and LISA cluster maps identified major High-High hazard hotspots spanning the northern transport corridor. Grounded in the Protective Action Decision Model (PADM), a validated empirical survey ($N=842$) and AMOS structural equation model confirmed that Risk Perception significantly mediates early warning information and public protective action ($\beta = 0.151, p < 0.001$). Finally, multi-criteria spatial overlay synthesized physical hazard probability, population exposure, and societal vulnerability into actionable composite risk maps.

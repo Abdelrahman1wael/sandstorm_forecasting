@@ -1,0 +1,276 @@
+% ======================================================================
+% CHAPTER 4: DUAL-LINE PREDICTIVE FRAMEWORK & PINN ARCHITECTURE
+% ======================================================================
+
+\chapter{Dual-Line Machine Learning Predictive Framework and Physics-Informed Architecture}
+\label{chap:methodology}
+
+\section{Dual-Line Modeling Philosophy and Architecture Overview}
+\label{sec:dual_line_philosophy}
+
+Operational extended-range forecasting across the 3--15 day window presents a fundamental scientific dilemma:
+\begin{enumerate}
+    \item \textbf{Numerical Weather Prediction (NWP)} provides dynamically consistent, physically interpretable prognostic states at short lead times ($L \le 72\,\text{hours}$). However, beyond Day 3, chaotic Lyapunov divergence, combined with sub-grid topographic smoothing over narrow mountain gaps, causes raw NWP trajectory skill to decline precipitously.
+    \item \textbf{Deep Spatiotemporal Neural Networks} excel at learning multi-scale non-linear representations and capturing long-term temporal dependencies directly from multi-modal observational and reanalysis streams. However, unconstrained deep models are prone to physical hallucinations, generating particulate mass under calm wind conditions and violating basic thermodynamic principles.
+\end{enumerate}
+
+To resolve this dilemma, this research develops a unified, dual-line predictive architecture entitled \textbf{DustML}. As illustrated in Figure~\ref{fig:dual_line_architecture}, the system decouples the forecasting task into two complementary modeling pathways:
+\begin{itemize}
+    \item \textbf{Main Line A (Statistical NWP Residual Correction)}: Employs gradient-boosted decision tree ensembles (LightGBM, CatBoost, XGBoost) to learn and eliminate the systematic, non-linear spatiotemporal residuals of numerical models over complex topography;
+    \item \textbf{Main Line B (Deep Physics-Informed Spatiotemporal Foundation)}: Deploys a 14-node bidirectional Spatiotemporal Graph Neural Network (ST-GNN) coupled with the AI-GAMFS aerosol foundation prior and Physics-Informed Neural Network (PINN) loss regularizers, enforcing Owen's saltation threshold and advective mass conservation.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.9, transform shape,
+    box/.style={rectangle, draw=ustbblue, fill=ustbblue!6, text centered, rounded corners=3pt, minimum height=0.9cm, line width=1pt, font=\small},
+    branch/.style={rectangle, draw=forestgreen, fill=forestgreen!8, text centered, rounded corners=3pt, line width=1pt, font=\small},
+    blend/.style={rectangle, draw=brickred, fill=brickred!10, text centered, rounded corners=3pt, line width=1pt, font=\small},
+    arrow/.style={-{Stealth[scale=1.1]}, thick, draw=navyblue}
+]
+
+\node[box, minimum width=12cm] (input) {\textbf{Multi-Source 5\,km Unified Input Tensor $\mathbf{X}(s, t) \in \mathbb{R}^{32}$ (Chapter 3)}};
+
+\node[branch, below left=1.0cm and -0.5cm of input, text width=5.5cm] (lineA) {\textbf{Main Line A: NWP Residual Learning}\\ \footnotesize • Target: $\varepsilon(s, t, L) = y_{\text{obs}} - y_{\text{nwp}}$\\ • LightGBM + CatBoost + XGBoost\\ • Ridge Stacking Meta-Learner};
+
+\node[branch, below right=1.0cm and -0.5cm of input, text width=5.5cm] (lineB) {\textbf{Main Line B: Deep ST-GNN + PINN}\\ \footnotesize • AI-GAMFS Aerosol Prior Embedding\\ • 14-Node Corridor Graph Diffusion\\ • Owen Saltation \& Mass Continuity Loss};
+
+\node[blend, below=3.2cm of input, minimum width=12cm] (blend) {\textbf{Adaptive Lead-Time Blending Mechanism: $w_A(L) = \left[1 + \exp\left(\frac{L - 168\,\text{h}}{48\,\text{h}}\right)\right]^{-1}$}};
+
+\node[box, below=0.8cm of blend, minimum width=12cm] (output) {\textbf{Calibrated Output Heads}\\ \footnotesize Monotonic Quantiles ($P_{10}, P_{50}, P_{90}$) \quad \& \quad Cost-Sensitive CMA 5-Tier Hazard Probability};
+
+\draw[arrow] (input.south) -| (lineA.north);
+\draw[arrow] (input.south) -| (lineB.north);
+\draw[arrow] (lineA.south) |- (blend.north west);
+\draw[arrow] (lineB.south) |- (blend.north east);
+\draw[arrow] (blend.south) -- (output.north);
+
+\end{tikzpicture}
+\caption{Overall Architecture of the DustML Dual-Line Predictive System}
+\label{fig:dual_line_architecture}
+\end{figure}
+
+\subsection{Adaptive Lead-Time Blending Mechanism}
+\label{subsec:lead_time_blending}
+
+The contribution of each pathway varies dynamically with the forecast lead time $L \in [72\,\text{h}, 360\,\text{h}]$ (3 to 15 days). At early lead times ($L \le 72\text{--}120\,\text{h}$), raw NWP dynamical pressure and wind vectors provide valuable synoptic guidance, making statistical residual correction in Main Line A highly effective. However, beyond Day 7 ($L > 168\,\text{h}$), chaotic divergence degrades raw NWP fields, necessitating a smooth transition to the deep physical representations in Main Line B.
+
+The integrated prediction $\hat{y}_{\text{final}}(s, t+L)$ is formulated as a convex combination governed by a parameterized sigmoid transition function:
+\begin{equation}
+\label{eq:lead_time_blending}
+\hat{y}_{\text{final}}(s, t+L) = w_A(L) \cdot \hat{y}_{\text{LineA}}(s, t+L) + \left[1 - w_A(L)\right] \cdot \hat{y}_{\text{LineB}}(s, t+L)
+\end{equation}
+where the weighting coefficient $w_A(L)$ is defined as:
+\begin{equation}
+\label{eq:sigmoid_decay}
+w_A(L) = \frac{1}{1 + \exp\left(\frac{L - L_{\text{crit}}}{\Delta L}\right)}
+\end{equation}
+with the critical transition inflection set to $L_{\text{crit}} = 168\,\text{hours}$ (Day 7) and scale width $\Delta L = 48\,\text{hours}$ (2 days). At $L = 72\,\text{h}$, $w_A \approx 0.88$, placing primary weight on Line A residual correction. By $L = 168\,\text{h}$, weights balance equally ($w_A = 0.50$), and at $L = 360\,\text{h}$ (Day 15), $w_A \approx 0.018$, transferring full predictive authority to the deep PINN architecture.
+
+---
+
+\section{Main Line A: Statistical Post-Processing and Tree Ensembles}
+\label{sec:main_line_a}
+
+\subsection{Systematic Spatiotemporal Residual Learning Formulation}
+\label{subsec:residual_math}
+
+Numerical models exhibit systematic biases over complex orography due to elevation smoothing and static drag coefficients. Rather than predicting raw particulate mass directly from scratch, Main Line A frames the problem as learning the non-linear residual function $\varepsilon(s, t, L)$:
+\begin{equation}
+\label{eq:residual_target}
+\varepsilon(s, t, L) \coloneqq y_{\text{obs}}(s, t+L) - y_{\text{nwp}}(s, t+L)
+\end{equation}
+where $y_{\text{obs}}$ is ground observational particulate concentration ($\mu\text{g/m}^3$) and $y_{\text{nwp}}$ is the interpolated raw prognostic dust concentration from ECMWF IFS or CMA-GFS. The predicted target is subsequently reconstructed as:
+\begin{equation}
+\label{eq:residual_reconstruction}
+\hat{y}_{\text{LineA}}(s, t+L) = \max\left(0, \ y_{\text{nwp}}(s, t+L) + \hat{\varepsilon}(s, t, L)\right)
+\end{equation}
+
+By focusing machine learning capacity entirely on modeling the residual $\hat{\varepsilon}$, raw hydrodynamic momentum and mass balances embedded within NWP equations are rigorously preserved, preventing unguided drift.
+
+\subsection{Gradient Boosted Decision Tree (GBDT) Architectures}
+\label{subsec:gbdt_models}
+
+To capture complex interactions across the 32-dimensional physics feature store, Main Line A trains three diverse, state-of-the-art tree boosting algorithms:
+\begin{enumerate}
+    \item \textbf{LightGBM (Light Gradient Boosting Machine)}: Employs Gradient-based One-Side Sampling (GOSS) and Exclusive Feature Bundling (EFB). GOSS retains instances with large gradients while randomly sub-sampling instances with small gradients, focusing optimization on difficult, rare sandstorm instances without biasing the data distribution.
+    \item \textbf{CatBoost (Categorical Boosting)}: Implements Ordered Target Statistics and symmetric oblivious decision trees. Oblivious trees apply identical split criteria across entire tree depths, serving as an effective inductive regularizer that mitigates overfitting on noisy station telemetry.
+    \item \textbf{XGBoost (Extreme Gradient Boosting)}: Utilizes exact greedy split-finding and second-order Taylor series approximations of arbitrary loss functions:
+    \begin{equation}
+    \label{eq:xgboost_obj}
+    \mathcal{L}^{(t)} \approx \sum_{i=1}^n \left[ l(y_i, \hat{y}^{(t-1)}_i) + g_i f_t(\mathbf{x}_i) + \frac{1}{2} h_i f_t^2(\mathbf{x}_i) \right] + \Omega(f_t)
+    \end{equation}
+    where $g_i = \partial_{\hat{y}^{(t-1)}} l(y_i, \hat{y}^{(t-1)}_i)$ and $h_i = \partial^2_{\hat{y}^{(t-1)}} l(y_i, \hat{y}^{(t-1)}_i)$ denote first and second-order gradients.
+\end{enumerate}
+
+\subsection{Stacking Meta-Learner with Constrained Ridge Regression}
+\label{subsec:stacking_ensemble}
+
+Individual tree predictions ($\hat{\varepsilon}_{\text{LGB}}, \hat{\varepsilon}_{\text{CAT}}, \hat{\varepsilon}_{\text{XGB}}$) are integrated using an out-of-fold Stacking meta-learner. To prevent collinear instability, the meta-model is formulated as a non-negative constrained Ridge regression:
+\begin{equation}
+\label{eq:ridge_stacking}
+\min_{\boldsymbol{\alpha}} \sum_{i=1}^N \left( \varepsilon_i - \sum_{k=1}^3 \alpha_k \hat{\varepsilon}_{k, i} \right)^2 + \lambda_{\text{ridge}} \sum_{k=1}^3 \alpha_k^2 \quad \text{subject to} \quad \alpha_k \ge 0, \ \sum_{k=1}^3 \alpha_k = 1
+\end{equation}
+Non-negativity prevents counter-intuitive negative weights, ensuring robust ensemble blending across diverse meteorological regimes.
+
+---
+
+\section{Main Line B: Deep Physics-Informed Spatiotemporal Foundation}
+\label{sec:main_line_b}
+
+\subsection{AI-GAMFS Multimodal Aerosol-Meteorology Prior Integration}
+\label{subsec:aigamfs_prior}
+
+Main Line B ingests prognostic representations from the Aerosol-Meteorology Coupled Large Model Forecasting System (AI-GAMFS)~\cite{ref2}. AI-GAMFS operates a dual-branch vision transformer (ViT) pre-trained on multi-decadal reanalysis grids. The latent feature embedding $\mathbf{z}_{\text{GAMFS}} \in \mathbb{R}^{d}$ is fused with local ground telemetry via an adaptive gating layer:
+\begin{equation}
+\label{eq:gamfs_gate}
+\mathbf{h}_{\text{fused}} = \sigma\left(\mathbf{W}_g \mathbf{X} + \mathbf{b}_g\right) \odot \mathbf{z}_{\text{GAMFS}} + \left(1 - \sigma\left(\mathbf{W}_g \mathbf{X} + \mathbf{b}_g\right)\right) \odot \text{MLP}(\mathbf{X})
+\end{equation}
+where $\odot$ denotes the Hadamard element-wise product, dynamically scaling foundation prior strength based on local atmospheric confidence.
+
+\subsection{14-Node East Asian Corridor Spatiotemporal Graph Neural Network (ST-GNN)}
+\label{subsec:st_gnn}
+
+Because East Asian dust transport is channeled through mountain gaps, this study constructs a directed topological graph $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathbf{A})$ spanning 14 key geographical nodes along the primary transport corridor, as detailed in Table~\ref{tab:corridor_nodes}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Geographical and Dynamical Attributes of the 14-Node East Asian Dust Transport Corridor}
+\label{tab:corridor_nodes}
+\begin{tabularx}{\textwidth}{l l l p{3.2cm} X}
+\toprule
+\textbf{Node ID} & \textbf{Node Location} & \textbf{Coordinates} & \textbf{Topographic Setting} & \textbf{Dynamic Role in Dust Lifecycle} \\
+\midrule
+$N_1$ & South Gobi, Mongolia & $43.5^\circ\text{N}, 104.2^\circ\text{E}$ & Semi-desert plateau & Primary upstream deflation source basin \\
+$N_2$ & Alxa League, Inner Mongolia & $38.8^\circ\text{N}, 105.7^\circ\text{E}$ & Badain Jaran/Tengger & Massive domestic saltation emission source \\
+$N_3$ & Erenhot Port & $43.6^\circ\text{N}, 112.0^\circ\text{E}$ & Northern flat grassland & Transboundary gateway into northern China \\
+$N_4$ & Hexi Corridor (Zhangye) & $38.9^\circ\text{N}, 100.4^\circ\text{E}$ & Narrow mountain trough & Orographic venturi wind jet accelerator \\
+$N_5$ & Helan Mountain Pass & $38.5^\circ\text{N}, 106.1^\circ\text{E}$ & High-altitude gorge & Eastern topographic barrier and overflow notch \\
+$N_6$ & Yinchuan Basin & $38.4^\circ\text{N}, 106.2^\circ\text{E}$ & Alluvial river valley & Low-level particulate accumulation basin \\
+$N_7$ & Hohhot & $40.8^\circ\text{N}, 111.7^\circ\text{E}$ & Dahei River plain & Pre-front high-speed transport corridor \\
+$N_8$ & Zhangjiakou & $40.8^\circ\text{N}, 114.8^\circ\text{E}$ & Yan Mountain gorge & Gateway notch into the North China Plain \\
+$N_9$ & Datong & $40.1^\circ\text{N}, 113.3^\circ\text{E}$ & Intermontane basin & North-south transport divergence point \\
+$N_{10}$ & Beijing Metropolitan Area & $39.9^\circ\text{N}, 116.4^\circ\text{E}$ & Foothills of Taihang/Yan & Downwind high-density receptor megalopolis \\
+$N_{11}$ & Tianjin Port & $39.1^\circ\text{N}, 117.2^\circ\text{E}$ & Coastal coastal plain & Downstream maritime outflow boundary \\
+$N_{12}$ & Shijiazhuang & $38.0^\circ\text{N}, 114.5^\circ\text{E}$ & Central Hebei plain & Leeside topographic stagnation and trapping \\
+$N_{13}$ & Jinan & $36.6^\circ\text{N}, 117.0^\circ\text{E}$ & Yellow River transition & Southward advection transport node \\
+$N_{14}$ & Zhengzhou & $34.7^\circ\text{N}, 113.6^\circ\text{E}$ & Central Plains gateway & Inland southern terminus for severe storms \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Spatial message-passing over this 14-node corridor is executed using 3-support Chebyshev polynomial graph diffusion convolutions~\cite{kipf2017semi}:
+\begin{equation}
+\label{eq:chebyshev_diffusion}
+\mathbf{Z} = \sum_{k=0}^{K-1} \left( \theta_{k, 1} \mathbf{P}_{\text{fwd}}^k + \theta_{k, 2} \mathbf{P}_{\text{rev}}^k \right) \mathbf{H}
+\end{equation}
+where $\mathbf{P}_{\text{fwd}} = \mathbf{D}_{\text{out}}^{-1} \mathbf{A}$ models downstream advective transport, $\mathbf{P}_{\text{rev}} = \mathbf{D}_{\text{in}}^{-1} \mathbf{A}^T$ captures upstream back-tracking influences, and $K=3$ represents diffusion order (supporting self-connections $P_0$, direct 1-hop transport $P_1$, and 2-hop regional advection $P_2$). Temporal sequence evolution is processed by Gated Recurrent Units (GRU) operating over node hidden states.
+
+\subsection{Multi-Task Physics-Informed (PINN) Loss Regularization}
+\label{subsec:pinn_multi_task_loss}
+
+To mathematically suppress physical hallucinations, Main Line B optimizes a multi-objective loss function embedding fundamental physical conservation laws into the backpropagation computation graph:
+\begin{equation}
+\label{eq:pinn_loss_total}
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{Huber}}(y, \hat{y}) + \lambda_{\text{mass}} \mathcal{L}_{\text{mass}} + \lambda_{\text{salt}} \mathcal{L}_{\text{saltation}} + \lambda_{\text{neg}} \mathcal{L}_{\text{negativity}}
+\end{equation}
+with loss weights set to $\lambda_{\text{mass}} = 0.15, \lambda_{\text{salt}} = 0.20, \lambda_{\text{neg}} = 0.10$.
+
+\subsubsection{1. Owen (1964) Aerodynamic Saltation Threshold Penalty ($\mathcal{L}_{\text{saltation}}$)}
+In nature, dust emissions cannot occur unless surface friction velocity exceeds the aerodynamic threshold ($u_* > u_{*t}$). If a network predicts high dust concentration when winds are calm, it violates fluid mechanics. The penalty penalizes non-zero concentrations when friction velocity falls below $90\%$ of threshold $u_{*t}$:
+\begin{equation}
+\label{eq:loss_saltation}
+\mathcal{L}_{\text{saltation}} = \frac{1}{B \cdot N} \sum_{b=1}^B \sum_{n=1}^N \mathbb{I}\left(u_{*, b, n} < 0.9 \, u_{*t, b, n}\right) \cdot \left[ \max\left(0, \ \hat{C}_{b, n, t=1} - C_{\text{baseline}}\right) \right]^2
+\end{equation}
+where $C_{\text{baseline}} = 45.0\,\mu\text{g/m}^3$ represents background clean-air aerosol concentration.
+
+\subsubsection{2. Advective Mass Continuity PDE Residual Along Graph Edges ($\mathcal{L}_{\text{mass}}$)}
+Between adjacent upstream ($u$) and downstream ($v$) corridor nodes, particulate mass change cannot exceed physical inflow fluxes:
+\begin{equation}
+\label{eq:loss_mass}
+\mathcal{L}_{\text{mass}} = \frac{1}{B \cdot N \cdot (L-1)} \sum_{b, n, l} \left\{ \text{ReLU}\left( \left(\hat{C}_{l+1, n} - \hat{C}_{l, n}\right) - 1.5 \cdot \text{Inflow}_{l, n} \right) \right\}^2
+\end{equation}
+where $\text{Inflow}_{l, n} = \sum_{j \in \mathcal{N}(n)} A_{j, n} \cdot \hat{C}_{l, j} \cdot U_{10, j}$. This penalty penalizes models that generate artificial aerosol mass without corresponding advective inflow.
+
+\subsubsection{3. Physical Non-Negativity Hard Boundary Constraint ($\mathcal{L}_{\text{negativity}}$)}
+Aerosol mass concentration is strictly non-negative:
+\begin{equation}
+\label{eq:loss_negativity}
+\mathcal{L}_{\text{negativity}} = \frac{1}{B \cdot N \cdot L} \sum_{b, n, l} \left[ \text{ReLU}\left(-\hat{C}_{b, n, l}\right) \right]^2
+\end{equation}
+
+---
+
+\section{Quantile Uncertainty Head and Monotonicity Guarantee}
+\label{sec:quantile_head}
+
+For decision-makers managing municipal emergencies, single deterministic point forecasts are inadequate. Decision-makers require calibrated prediction intervals representing uncertainty bounds.
+
+\subsection{Asymmetric Pinball Loss Formulation}
+\label{subsec:pinball_loss}
+
+To estimate the 10th ($P_{10}$, optimistic lower bound), 50th ($P_{50}$, median expectation), and 90th ($P_{90}$, severe risk upper envelope) percentiles, the network optimizes the asymmetric Pinball loss:
+\begin{equation}
+\label{eq:pinball_loss}
+\mathcal{L}_{\text{pinball}}(y, \hat{y}_\tau; \tau) = \frac{1}{N} \sum_{i=1}^N \max\left(\tau (y_i - \hat{y}_{\tau, i}), \ (\tau - 1)(y_i - \hat{y}_{\tau, i})\right)
+\end{equation}
+For $\tau = 0.90$, errors where the actual observation exceeds the forecast ($y > \hat{y}$) are penalized with weight $0.90$, forcing $\hat{y}_{P90}$ to cover $90\%$ of extreme historical realizations.
+
+\subsection{Cumulative Softplus Delta Parameterization for Monotonic Non-Crossing Bounds}
+\label{subsec:monotonicity_guarantee}
+
+Independent quantile heads frequently suffer from **quantile crossing** ($\hat{y}_{P10} > \hat{y}_{P90}$), which violates mathematical logic. To eliminate quantile crossing, this research formulates a cumulative Softplus Delta parameterization over hidden representation $\mathbf{h}$:
+\begin{align}
+\label{eq:quantile_p50}
+\hat{y}_{P50} &= \text{softplus}\left(\mathbf{W}_{50} \mathbf{h} + b_{50}\right) \\
+\label{eq:quantile_p10}
+\hat{y}_{P10} &= \max\left(0, \ \hat{y}_{P50} - \text{softplus}\left(\mathbf{W}_{10} \mathbf{h} + b_{10}\right)\right) \\
+\label{eq:quantile_p90}
+\hat{y}_{P90} &= \hat{y}_{P50} + \text{softplus}\left(\mathbf{W}_{90} \mathbf{h} + b_{90}\right)
+\end{align}
+Because $\text{softplus}(z) = \ln(1 + e^z) > 0$ for all $z \in \mathbb{R}$, this formulation provides a mathematical guarantee of non-crossing:
+\begin{equation}
+\label{eq:monotonicity_proof}
+0 \le \hat{y}_{P10} \le \hat{y}_{P50} \le \hat{y}_{P90} \quad \forall (s, t, L)
+\end{equation}
+which holds unconditionally across all spatiotemporal coordinates.
+
+---
+
+\section{Cost-Sensitive Hazard Warning Classifier}
+\label{sec:hazard_classifier}
+
+\subsection{CMA Five-Tier Sandstorm Standard Mapping}
+\label{subsec:cma_mapping}
+
+In accordance with national standard GB/T 20480-2017 (*Classification of Sand and Dust Weather*), continuous concentrations are mapped to five operational warning levels:
+\begin{equation}
+\label{eq:cma_classification}
+\text{Tier}(C) = 
+\begin{cases}
+\text{Level 0: Clear / Good}, & C < 150\,\mu\text{g/m}^3 \\
+\text{Level 1: Floating Dust}, & 150 \le C < 250\,\mu\text{g/m}^3 \\
+\text{Level 2: Blowing Sand}, & 250 \le C < 500\,\mu\text{g/m}^3 \\
+\text{Level 3: Sandstorm}, & 500 \le C < 1{,}000\,\mu\text{g/m}^3 \\
+\text{Level 4: Severe Sandstorm}, & C \ge 1{,}000\,\mu\text{g/m}^3
+\end{cases}
+\end{equation}
+
+\subsection{Asymmetric Cost Matrix Optimization}
+\label{subsec:cost_matrix}
+
+In emergency risk management, the societal cost of a **missed false negative** (failing to alert a city before a severe dust storm, causing transportation crashes and unmitigated exposure) is orders of magnitude greater than a **false positive** (precautionary misting during an unmaterialized storm). To reflect this operational asymmetry, the classification loss incorporates cost-sensitive weights $\mathbf{C} \in \mathbb{R}^{5 \times 5}$:
+\begin{equation}
+\label{eq:cost_sensitive_loss}
+\mathcal{L}_{\text{cost}}(\mathbf{p}, y^*) = -\sum_{k=0}^4 c_{y^*, k} \cdot \mathbb{I}(y^* = k) \cdot \ln(p_k)
+\end{equation}
+where the penalty cost for missing a Level 4 storm is set to $c_{4, 0} = 50.0$, compared to $c_{0, 4} = 1.0$ for false alarms. Following softmax classification, class probabilities are calibrated using non-parametric Isotonic Regression, ensuring that an issued $80\%$ warning probability reflects true historical frequencies.
+
+---
+
+\section{Chapter Summary}
+\label{sec:ch4_summary}
+
+This chapter developed the theoretical and architectural formulation of the \textbf{DustML} forecasting system. By bridging Main Line A (tree ensembles with quantile regression for NWP residual correction) and Main Line B (an end-to-end deep ST-GNN over 14 corridor nodes incorporating AI-GAMFS foundation priors and PINN mass/saltation conservation losses), the model resolves both NWP extended-range degradation and unconstrained AI hallucinations. The cumulative Softplus Delta parameterization mathematically guarantees non-crossing uncertainty bounds ($0 \le P_{10} \le P_{50} \le P_{90}$), while asymmetric cost-sensitive classification provides calibrated operational probabilities aligned with national warning standards.
