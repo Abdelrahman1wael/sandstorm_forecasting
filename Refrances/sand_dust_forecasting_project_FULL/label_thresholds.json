@@ -1,0 +1,11 @@
+{
+    "pollutant_col": "pm10",
+    "pm_metric": "pm10_max",
+    "wind_metric": "wspm_max",
+    "rain_metric": "rain_sum",
+    "pm_quantile": 0.9,
+    "wind_quantile": 0.7,
+    "pm_threshold": 350.3000000000011,
+    "wind_threshold": 4.1,
+    "rain_max": 0.1
+}

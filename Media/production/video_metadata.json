@@ -1,268 +1,251 @@
 {
   "title": "Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting",
-  "institution": "University of Science and Technology Beijing (\u5317\u4eac\u79d1\u6280\u5927\u5b66)",
+  "institution": "University of Science and Technology Beijing (北京科技大学)",
+  "source_document": "Review points.docx",
   "video_file": "sand_dust_storm_ml_presentation.mp4",
   "subtitles_file": "sand_dust_storm_subtitles.srt",
-  "total_duration_sec": 635.48,
+  "total_duration_sec": 501.24,
+  "total_duration_formatted": "8m 21s",
   "scenes": [
     {
       "id": 1,
-      "title": "Scene 1: Opening & Research Title",
+      "title": "Scene 1: Research Formulation & Title",
       "tag": "RESEARCH FORMULATION",
-      "time": "0:00\u20130:40",
-      "image_url": "https://images.openai.com/static-rsc-4/CFnzD1QZby7fFtFaPjlJLDJLYwqznxstGCTVgBF4iOWdl-eF1QNCKfUAHtmjQvYAHkEUk8ILF8LDu3Uu8t0AOO3xAWr3qQwkLtBGNUBPngX93vnt-FL4sHh4FwA8GYxxs_s-wZlfwgpBZOFRpyXc8ueNc5hw1vHlCS4gFcdaBlA?purpose=inline",
-      "image_caption": "Severe dust storm wall sweeping across arid terrain and transportation corridors",
-      "voiceover": "Imagine a massive sandstorm traveling hundreds of kilometers, reducing visibility, disrupting transportation, threatening public health, and affecting millions of people. What if we could predict such an event not just a few hours in advance, but several days or even weeks before it happens? This is the central question behind our research, titled: Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting. This research explores how artificial intelligence and multi-source environmental data can help improve the accuracy, reliability, and lead time of sandstorm forecasting.",
+      "time": "0:00–0:40",
+      "duration": 44.856,
+      "voiceover": "Welcome to the research presentation on applying machine learning algorithms to improve the accuracy of medium- to long-term sand and dust storm forecasting. Sand and dust storms represent severe atmospheric hazards across arid and semi-arid regions of East Asia. This study, conducted at the University of Science and Technology Beijing, addresses the critical predictability gap at sub-seasonal to seasonal horizons, specifically from 3 to 15 days up to monthly trends. By integrating multi-modal observations, reanalysis data, and physics-constrained deep learning architectures, we establish an end-to-end framework to transform hazard warning from reactive emergency response to proactive scientific defense.",
       "key_points": [
-        "Research Question: How can AI bridge the medium- to long-term predictability gap?",
-        "Forecasting Horizon: 3 to 15 days extended-range, monthly & seasonal trends",
-        "Multi-source heterogeneous environmental data & physical constraints",
-        "Target: Minimize socioeconomic disruption & protect public health"
+        "Research Title: Applying ML Algorithms for Medium- to Long-Term SDS Forecasting",
+        "Academic Institution: University of Science and Technology Beijing (USTB)",
+        "Target Horizons: Extended-range 3 to 15 days, sub-seasonal and monthly trends",
+        "Core Mission: Multi-modal fusion & physics-constrained deep learning architectures",
+        "Strategic Goal: Shifting hazard management from reactive response to proactive defense"
       ],
       "tags": [
-        "Medium-to-Long Term",
-        "AI Forecasting",
-        "Public Safety",
-        "USTB Research"
+        "USTB Proposal",
+        "3-15 Day Lead Time",
+        "Atmospheric AI",
+        "Hazard Mitigation"
       ],
-      "duration": 39.428,
-      "slide_image": "video_assets/slide_01.png",
-      "audio_file": "video_assets/audio_01.mp3",
-      "clip_file": "video_assets/clip_01.mp4"
+      "slide_image": "video_assets/slides/slide_01.png",
+      "audio_file": "video_assets/audio/audio_01.mp3",
+      "clip_file": "video_assets/clips/clip_01.mp4"
     },
     {
       "id": 2,
-      "title": "Scene 2: Research Background & Problem Statement",
-      "tag": "GLOBAL & REGIONAL HAZARDS",
-      "time": "0:40\u20131:35",
-      "image_url": "https://images.openai.com/static-rsc-4/5f8HiMHKxTLh3nIAVcC2ABeZ237raUMUzok-s5vtQbDw6Pl4szqknCLIwryMuikHcOxcUlKXx8VZT-D9JfncsBbg6GxYAhhSQaThKcRKbLngeBriIMRVxTxGHpMeSr2Lc55GvwMYe5VlnVQOhGa9Bc-49Ptc_31BFp3IMUs9c4s?purpose=inline",
-      "image_caption": "Satellite observation of long-distance transboundary dust plume migration",
-      "voiceover": "Sand and dust storms are among the major environmental hazards associated with extreme weather and climate events. According to the research proposal, nearly 330 million people across 151 countries are affected by sandstorms worldwide. In China, northern arid and semi-arid regions are major sources of dust. However, these storms can travel long distances, affecting central, eastern, and even southern regions. Their consequences include reduced visibility, transportation accidents, air pollution, respiratory and cardiovascular health risks, agricultural damage, and land degradation. Traditional forecasting methods rely heavily on numerical weather prediction models that simulate atmospheric and physical processes. Although these models are essential, they face challenges in computational cost, nonlinear interactions, and forecasting accuracy over extended time periods. As the forecast lead time increases, predicting the timing, intensity, and trajectory of sandstorms becomes increasingly difficult. This creates a critical need for intelligent forecasting systems that can provide earlier and more reliable warnings.",
+      "title": "Scene 2: Climate Change Drivers in China",
+      "tag": "CLIMATE FORCING & DRIVERS",
+      "time": "0:40–1:35",
+      "duration": 52.800000000000004,
+      "voiceover": "China is experiencing pronounced environmental shifts that alter dust storm frequency and intensity. First, extreme warming across the Mongolian Plateau and northern China causes rapid topsoil drying, making loose sediments easily mobilized into the air. Second, severe precipitation deficits and below-average snow cover throughout the Gobi Desert and Inner Mongolia deplete surface moisture. Third, more active spring Mongolian cyclones create intense gale-force wind systems capable of lifting massive dust plumes across thousands of kilometers. Furthermore, land degradation and agricultural expansion have stripped natural vegetative soil anchors, while long-term ecological projects such as the Three-North Shelter Forest are frequently overwhelmed by acute regional climate anomalies, as evidenced by the severe Harbin darkening events.",
       "key_points": [
-        "Global Impact: 330M people across 151 countries affected worldwide",
-        "Source Regions: Taklimakan, Gobi, northern arid corridors in China",
-        "Severe Hazards: PM10/PM2.5 spikes, transportation halts, cardiovascular risk",
-        "NWP Bottleneck: High computational cost, rapid error accumulation beyond 72h",
-        "Critical Need: Intelligent early-warning systems with extended lead times"
+        "Extreme Warming: Rapid temperature rise drying out Mongolian Plateau topsoil",
+        "Moisture Deficits: Depleted spring snow cover & rainfall in Gobi & Inner Mongolia",
+        "Cyclonic Forcing: High-velocity spring Mongolian cyclones lifting transboundary plumes",
+        "Ecological Stress: Land degradation vs. afforestation defenses overwhelmed by anomalies",
+        "Regional Extremes: Dramatic May and June storm surges turning northern cities pitch-dark"
       ],
       "tags": [
-        "330M Affected",
-        "Numerical Weather Prediction",
-        "Lead Time Decay",
-        "Error Compounding"
+        "Mongolian Cyclones",
+        "Topsoil Desiccation",
+        "Three-North Forest",
+        "Regional Warming"
       ],
-      "duration": 74.3,
-      "slide_image": "video_assets/slide_02.png",
-      "audio_file": "video_assets/audio_02.mp3",
-      "clip_file": "video_assets/clip_02.mp4"
+      "slide_image": "video_assets/slides/slide_02.png",
+      "audio_file": "video_assets/audio/audio_02.mp3",
+      "clip_file": "video_assets/clips/clip_02.mp4"
     },
     {
       "id": 3,
-      "title": "Scene 3: Research Motivation & Significance",
-      "tag": "THEORETICAL & PRACTICAL VALUE",
-      "time": "1:35\u20132:20",
-      "image_url": "https://images.openai.com/static-rsc-4/Ex_xAr3w3ZAiwyq2Z8otwd91gaNKO3tIGrfES5iLjax1A-dNBYVkwhsGP3oydg_hM6Ev18nhdY1-lt1ySG_6-3vgN7p-g41ptoyqio5r2zWV8l7dxfw8fd6G9RM9AJMeVceeSpi-S_y41hkqm6y_lkBBd1XtNnRvCnIYcWg_KyE?purpose=inline",
-      "image_caption": "Advanced meteorological modeling & AI-GAMFS high-resolution forecasting",
-      "voiceover": "Machine learning provides a promising opportunity to address these challenges. By learning patterns from historical observations, satellite imagery, climate reanalysis, and numerical forecasts, machine learning models can identify complex relationships that may be difficult to capture through conventional methods alone. The research proposal highlights recent advances in artificial intelligence-based meteorological forecasting, including the AI-GAMFS system, as evidence of the growing potential of AI in environmental meteorology. However, applying these technologies to medium- and long-term sandstorm prediction remains an important research challenge. The significance of this study is both theoretical and practical. Theoretically, it aims to improve our understanding of the environmental and atmospheric factors influencing sandstorm activity. Practically, it aims to support disaster preparedness, public health protection, transportation planning, renewable energy management, and environmental governance.",
+      "title": "Scene 3: Causes & Physical Mechanisms of SDS",
+      "tag": "PHYSICAL & LAND MECHANISMS",
+      "time": "1:35–2:25",
+      "duration": 53.352000000000004,
+      "voiceover": "Sand and dust storm initiation is governed by complex land-atmosphere couplings. Major source regions, including the vast Taklimakan Desert in northwestern China and the Gobi Desert across northern China and Mongolia, provide an abundant reservoir of fine mineral dust. When strong cold fronts and baroclinic atmospheric systems sweep across these arid expanses, surface friction velocity exceeds aerodynamic threshold levels, lifting fine sediments into the boundary layer. The availability of erodible particles is tightly coupled to antecedent conditions over days, months, and seasons, including soil moisture, surface roughness, temperature anomalies, and prolonged drought. Consequently, dust storms cannot be modeled as isolated instantaneous events, but as cross-scale physical phenomena driven by delayed environmental memory.",
       "key_points": [
-        "AI Meteorology Paradigm: Pattern extraction from petabyte reanalysis data",
-        "State of the Art: AI-GAMFS demonstrates AI prowess in global weather modeling",
-        "Theoretical Depth: Disentangling nonlinear dust emission & boundary dynamics",
-        "Practical Benefits: Early civil defense, solar/wind farm management, healthcare alerts"
+        "Primary Sources: Vast sediment reservoirs in Taklimakan Desert and Gobi Desert",
+        "Trigger Dynamics: Spring cold fronts, baroclinic systems & aerodynamic friction threshold",
+        "Cross-Scale Memory: 1-to-12-month antecedent drought & soil moisture controls",
+        "Nonlinear Couplings: Vegetation phenology and soil moisture governing sediment erodibility",
+        "Forecast Horizon: Requires incorporating delayed environmental memory into AI models"
       ],
       "tags": [
-        "AI-GAMFS",
-        "Pattern Recognition",
-        "Disaster Preparedness",
-        "Green Energy Protection"
+        "Taklimakan & Gobi",
+        "Threshold Friction Wind",
+        "Cold Front Dynamics",
+        "Lagged Drivers"
       ],
-      "duration": 63.812,
-      "slide_image": "video_assets/slide_03.png",
-      "audio_file": "video_assets/audio_03.mp3",
-      "clip_file": "video_assets/clip_03.mp4"
+      "slide_image": "video_assets/slides/slide_03.png",
+      "audio_file": "video_assets/audio/audio_03.mp3",
+      "clip_file": "video_assets/clips/clip_03.mp4"
     },
     {
       "id": 4,
-      "title": "Scene 4: Literature Review & Current Research",
-      "tag": "CHRONOLOGICAL ADVANCEMENTS",
-      "time": "2:20\u20133:30",
-      "image_url": "https://images.openai.com/static-rsc-4/PdOgFdPe0Rtb7mZyDoSt4OZWKcL1z8v3AKdgEfK-iFcJ72VKR34MBAG38ap7rFW7WbP1XShmI-a2EaD8wbafGFPhjYdy21SHg4jwWCagtpNPH11HHUwzpoQppmJPKnRyiKaZO6_zSJq2y0z1Cz_zoArKJ80PdjUp0UWBEnpA0Mg?purpose=inline",
-      "image_caption": "Evolutionary timeline from shallow ML models to Spatiotemporal Deep Learning",
-      "voiceover": "Previous research has explored a wide range of machine learning techniques for sandstorm prediction. Early studies used artificial neural networks and support vector machines to predict sandstorm occurrence based on meteorological observations. Later research introduced methods such as Random Forest, AdaBoost, and synthetic minority oversampling to address the problem of imbalanced datasets, where sandstorm events are much less frequent than normal weather conditions. With the development of deep learning, researchers began applying convolutional neural networks to extract spatial features from atmospheric data and satellite images. Other studies explored transfer learning, ensemble learning, and hybrid architectures combining convolutional neural networks with long short-term memory networks. These approaches have demonstrated improvements in short-term identification, classification, and sandstorm movement prediction. In the broader meteorological field, models such as LSTM, Transformers, and Graph Neural Networks have also shown potential in capturing temporal dependencies and spatial relationships. Nevertheless, the literature review identifies several important research gaps. Most existing sandstorm studies focus on short-term forecasting. Multi-source data fusion remains insufficiently developed, advanced spatiotemporal models require further investigation, and standardized datasets and evaluation frameworks are still lacking. These gaps motivate the direction of the proposed research.",
+      "title": "Scene 4: Multi-Scale Impacts & Public Health",
+      "tag": "SOCIOECONOMIC HAZARDS",
+      "time": "2:25–3:15",
+      "duration": 54.936,
+      "voiceover": "Sandstorms pose extraordinary challenges to societal operations and public health worldwide, impacting over 330 million people in 151 nations. In northern and eastern China, severe events cause near-zero visibility, plunging cities into daytime darkness, grounding commercial aviation, and causing catastrophic traffic disruption. High airborne concentrations of PM10 and PM2.5 trigger severe respiratory and cardiovascular morbidity. Epidemiological findings published in Nature Communications demonstrate substantial increases in hospital admissions and cause-specific mortality during dust outbreaks. Furthermore, toxic oxidative-potential components and persistent free radicals carried by mineral particles cause cellular damage, while deposition across agricultural zones ruins crop yields and exacerbates desertification.",
       "key_points": [
-        "Early Phase: ANN & SVM for basic station binary classification",
-        "Ensemble & Imbalance: Random Forest, AdaBoost, SMOTE oversampling",
-        "Deep Learning: CNN-LSTM hybrids, spatial feature maps, transfer learning",
-        "Frontier Models: Transformers & Graph Neural Networks (GNN) for teleconnections",
-        "Identified Gaps: Lack of medium-term focus, weak data fusion, missing standard benchmarks"
+        "Global Reach: Over 330 million people affected across 151 countries worldwide",
+        "Transportation Shutdown: Near-zero daytime visibility, flight groundings, highway closures",
+        "Public Health Risk: Spikes in PM10 & PM2.5, respiratory & cardiovascular mortality",
+        "Biochemical Toxicity: Mineral dust carries oxidative-potential components & free radicals",
+        "Agricultural Damage: Farmland topsoil erosion, crop burial, and accelerated desertification"
       ],
       "tags": [
-        "ANN & SVM",
-        "CNN-LSTM",
-        "SMOTE",
-        "Transformers",
-        "GNNs",
-        "Literature Gaps"
+        "Public Health Hazard",
+        "PM10 & PM2.5 Spikes",
+        "Aviation Disruption",
+        "Ecosystem Impact"
       ],
-      "duration": 93.044,
-      "slide_image": "video_assets/slide_04.png",
-      "audio_file": "video_assets/audio_04.mp3",
-      "clip_file": "video_assets/clip_04.mp4"
+      "slide_image": "video_assets/slides/slide_04.png",
+      "audio_file": "video_assets/audio/audio_04.mp3",
+      "clip_file": "video_assets/clips/clip_04.mp4"
     },
     {
       "id": 5,
-      "title": "Scene 5: Research Objectives & Scope",
-      "tag": "THREE CORE PILLARS",
-      "time": "3:30\u20134:20",
-      "image_url": "https://images.openai.com/static-rsc-4/dPHeuCLaX1BgSpjfzknR9HNCoTIFXd7GytkbZDqF3AMMQI7HRaUQ0p2SnfOhiFsRsdpDC62K-DfHwwAwlVgIn1Ae8LmuhAlNolVlW2uHrjzhbrYpe01IX3ET-_ip8HGIsDCB6P6Pkejo3SJ7jjK-ptM1lyas8u0SU8P2hp6vNeo?purpose=inline",
-      "image_caption": "Global & regional observation frameworks integrating remote sensing tensors",
-      "voiceover": "The primary objective of this study is to develop a machine learning framework that improves the accuracy of medium- to long-term sandstorm forecasting. The research is organized into three main components. First, the construction of a unified forecasting dataset by integrating numerical weather forecasts, climate reanalysis, satellite remote sensing, and surface environmental information. Second, the development and comparison of machine learning models capable of predicting sandstorm risk probabilities and intensity. Third, the validation and interpretation of these models through rigorous evaluation, representative case studies, and analysis of the physical factors influencing their predictions. The target forecasting scales include three to fifteen days, as well as monthly and seasonal trends.",
+      "title": "Scene 5: Traditional NWP & Bottlenecks",
+      "tag": "NWP LIMITATIONS & BOTTLENECKS",
+      "time": "3:15–4:05",
+      "duration": 50.304,
+      "voiceover": "Operational dust forecasting has traditionally relied on numerical weather prediction models and chemical transport simulations. While these physical systems capture synoptic dynamics, they face critical operational bottlenecks. Initial atmospheric condition uncertainties, empirical dust-emission parameterizations, and boundary-layer turbulence approximations lead to rapid error accumulation. Because atmospheric flow is chaotic, numerical forecast accuracy decays sharply beyond 48 to 72 hours, rendering 3-to-15-day sub-seasonal forecasting highly unreliable. Furthermore, running multi-scale physical ensembles demands enormous computational resources, leaving emergency agencies with a post-event response posture rather than true proactive lead time.",
       "key_points": [
-        "Component 1: Unified Multi-Source Spatiotemporal Dataset Architecture",
-        "Component 2: Dual-Track Modeling (Line A: NWP Post-Processing + Line B: End-to-End Deep ML)",
-        "Component 3: Physical Validation, Explainable AI (XAI), & Historical Case Studies",
-        "Target Horizons: 3\u201315 days extended range, sub-seasonal, and seasonal trends"
+        "Physical Basis: Synoptic atmospheric transport & chemical dispersion modeling",
+        "Critical Bottlenecks: Emission parameterization errors & boundary-layer uncertainties",
+        "Predictability Barrier: Rapid chaotic error compounding beyond 48 to 72 hours",
+        "Computational Barrier: Enormous computational cost preventing dense real-time ensembles",
+        "Operational Result: Reliance on passive post-event responses instead of early warning"
       ],
       "tags": [
-        "Unified Dataset",
-        "Probability Mapping",
-        "Intensity Prediction",
-        "3-15 Days Scale"
+        "NWP Limitations",
+        "Error Compounding",
+        "Chaos Theory",
+        "Lead-Time Decay"
       ],
-      "duration": 50.948,
-      "slide_image": "video_assets/slide_05.png",
-      "audio_file": "video_assets/audio_05.mp3",
-      "clip_file": "video_assets/clip_05.mp4"
+      "slide_image": "video_assets/slides/slide_05.png",
+      "audio_file": "video_assets/audio/audio_05.mp3",
+      "clip_file": "video_assets/clips/clip_05.mp4"
     },
     {
       "id": 6,
-      "title": "Scene 6: Methodology & Model Architecture",
-      "tag": "TECHNICAL WORKFLOW",
-      "time": "4:20\u20135:50",
-      "image_url": "https://images.openai.com/static-rsc-4/tF_6xlDpD1_Pfghtx_zYkiYSElDozay6IpkJihsUlQ4GvRaCbPm3wwU-c1V68kwtyUggXLPSQ2-D06PdG0YpD1ZEGWCBpapSGP_m9CeheWUJqBdzrItDLllmKtBi9DdwgFRjI4DTfAIL12pyEq0La4-E3I-CM_vuemkKJGws7KA?purpose=inline",
-      "image_caption": "Spatiotemporal neural network architecture with cross-attention & graph message passing",
-      "voiceover": "The proposed methodology consists of several interconnected stages. The first stage is data collection and preprocessing. The study will collect multi-model numerical weather forecasts, ERA5 reanalysis data, satellite observations such as MODIS, and surface environmental parameters. These datasets will undergo quality control, missing-value handling, spatial and temporal alignment, and normalization. The second stage is feature engineering. Three categories of features will be constructed. The first includes dust emission conditions, such as soil moisture, vegetation cover, snow cover, bare land proportion, and friction wind speed. The second includes atmospheric dynamics and transport features, such as near-surface wind, wind shear, pressure fields, boundary layer height, and cold-air pathways. The third includes historical sandstorm information, including upstream dust concentration, event persistence, and spatial neighborhood relationships. The third stage is model development. Two main modeling directions will be investigated. The first is numerical weather prediction enhancement, using Random Forest, XGBoost, and other machine learning methods to correct systematic forecast errors. The second is end-to-end sandstorm risk and intensity forecasting, using LSTM, temporal convolutional networks, Transformers, and Graph Neural Networks. These models will be evaluated for their ability to capture temporal dependencies, spatial heterogeneity, and dust transport relationships.",
+      "title": "Scene 6: The AI Revolution in Earth Systems",
+      "tag": "MACHINE LEARNING REVOLUTION",
+      "time": "4:05–4:55",
+      "duration": 43.536,
+      "voiceover": "Machine learning offers a transformative paradigm to overcome the limitations of classical numerical prediction. By extracting high-dimensional nonlinear patterns from petabytes of satellite, surface, and atmospheric data, modern AI models learn complex relationships without rigid mathematical assumptions. Breakthrough systems such as AI-GAMFS and Google's NeuralGCM have demonstrated that data-driven architectures can match or exceed traditional atmospheric models in speed and precision. In sandstorm forecasting, machine learning models effectively integrate multi-modal heterogeneous inputs, identify slowly varying environmental memory signals, and correct systematic numerical biases.",
       "key_points": [
-        "Stage 1: Multi-Modal Data Ingestion (ERA5, ECMWF, CMA, MODIS AOD, Soil moisture)",
-        "Stage 2: 3-Tier Feature Engineering (Emission Dynamics, Atmospheric Transport, Upstream History)",
-        "Track 1 (Line A): NWP Enhancement & Systematic Bias Correction (XGBoost, LightGBM)",
-        "Track 2 (Line B): End-to-End Spatiotemporal Deep Learning (ConvLSTM, Transformer, GNN)",
-        "Physical Coupling: Advection-diffusion transport graph network"
+        "Data-Driven Paradigm: Mining high-dimensional nonlinear Earth observation records",
+        "Frontier Milestones: AI-GAMFS and Google NeuralGCM show AI prowess in weather modeling",
+        "Multi-Modal Integration: Fusing ground stations, satellite retrievals & reanalysis tensors",
+        "Systematic Error Correction: Learning and eliminating numerical model biases",
+        "Extended Horizon: Harnessing slowly varying climate memory for sub-seasonal outlooks"
       ],
       "tags": [
-        "ERA5 & MODIS",
-        "Feature Engineering",
-        "XGBoost",
-        "Spatiotemporal GNN",
-        "ConvLSTM"
+        "AI-GAMFS",
+        "Google NeuralGCM",
+        "Data-Driven Modeling",
+        "Nonlinear Synergy"
       ],
-      "duration": 100.292,
-      "slide_image": "video_assets/slide_06.png",
-      "audio_file": "video_assets/audio_06.mp3",
-      "clip_file": "video_assets/clip_06.mp4"
+      "slide_image": "video_assets/slides/slide_06.png",
+      "audio_file": "video_assets/audio/audio_06.mp3",
+      "clip_file": "video_assets/clips/clip_06.mp4"
     },
     {
       "id": 7,
-      "title": "Scene 7: Model Optimization & Evaluation",
-      "tag": "VALIDATION & EXPLAINABILITY",
-      "time": "5:50\u20136:50",
-      "image_url": "https://images.openai.com/static-rsc-4/DYVuhzkBVzGYv7cOvKa_d9FePxZNF54wpcml9J7pkBbhJn_oNy71cR0lqWkMNNjFG8hXpK2nL51WXRedwkaL9OVKzwbC969uEZrQzM65tDHxDjjE_nUYKvQc5hN9DWohIPvabrhnUqEq8XLoFj8zrG0H_VGVPFix_reEmZLBpuk?purpose=inline",
-      "image_caption": "Model optimization, loss convergence, and ROC-AUC performance verification",
-      "voiceover": "An important challenge in sandstorm forecasting is the rarity of extreme events. To address this issue, the study will investigate resampling techniques, SMOTE-based event augmentation, and cost-sensitive learning. Probability calibration will also be applied to improve the reliability of the predicted risks. Model evaluation will combine event-based verification, regression error analysis, and probabilistic metrics, including the area under the receiver operating characteristic curve, or AUC. The proposed models will be compared against baseline numerical weather prediction systems. In addition, one to two representative severe sandstorm events will be selected for detailed case studies. Interpretability methods, including feature importance, SHAP analysis, and attention-weight visualization, will be used to investigate the factors contributing to model predictions. The final outputs are expected to include sandstorm risk probability maps, intensity forecasts, and an assessment of forecast performance as lead time increases.",
+      "title": "Scene 7: Deep Learning Spatiotemporal Models",
+      "tag": "ADVANCED MODEL ARCHITECTURES",
+      "time": "4:55–5:55",
+      "duration": 51.6,
+      "voiceover": "To capture both temporal persistence and spatial advection, our research investigates a comprehensive hierarchy of advanced deep learning architectures. For time-series dependencies, Long Short-Term Memory networks and Bidirectional Gated Recurrent Units with attention mechanisms retain multi-day environmental forcing. To model continuous spatial dust advection, Convolutional Neural Networks and Spatiotemporal Transformers capture multi-scale atmospheric flow fields. Most crucially, Graph Neural Networks represent the geographic topography and spatial propagation network of dust source regions, tracking plume transport along realistic meteorological corridors. For tabular and ensemble post-processing, gradient boosting models including XGBoost, CatBoost, and LightGBM provide robust bias correction.",
       "key_points": [
-        "Extreme Event Imbalance: Resampling, SMOTE event augmentation, focal cost loss",
-        "Comprehensive Metrics: Threat Score (TS), ETS, Brier Score, ROC-AUC, RMSE",
-        "Benchmark Baselines: Operational CMA-T639, ECMWF IFS, persistence forecasts",
-        "Explainable AI (XAI): SHAP value attribution, attention heatmaps, feature importance",
-        "Deliverables: High-resolution risk probability grids & lead-time decay curves"
+        "Recurrent Sequence Models: LSTM & Bi-GRU with attention for long-term temporal memory",
+        "Spatiotemporal Attention: Transformers capture cross-scale atmospheric correlations",
+        "Graph Neural Networks (GNN): Message passing across spatial dust propagation networks",
+        "Gradient Boosting Ensembles: XGBoost, CatBoost & LightGBM for numerical post-processing",
+        "Multi-Scale Representation: Jointly learning local emission thresholds and regional advection"
       ],
       "tags": [
-        "SMOTE Augmentation",
-        "ROC-AUC",
-        "SHAP Attribution",
-        "Lead-Time Analysis",
-        "Case Study"
+        "Spatiotemporal GNN",
+        "LSTM & Bi-GRU",
+        "Transformers",
+        "Gradient Boosting"
       ],
-      "duration": 66.236,
-      "slide_image": "video_assets/slide_07.png",
-      "audio_file": "video_assets/audio_07.mp3",
-      "clip_file": "video_assets/clip_07.mp4"
+      "slide_image": "video_assets/slides/slide_07.png",
+      "audio_file": "video_assets/audio/audio_07.mp3",
+      "clip_file": "video_assets/clips/clip_07.mp4"
     },
     {
       "id": 8,
-      "title": "Scene 8: Innovation & Expected Contributions",
-      "tag": "ACADEMIC & SOCIETAL IMPACT",
-      "time": "6:50\u20137:40",
-      "image_url": "https://images.openai.com/static-rsc-4/_ecvZKAmMlpHq2SUC8RETWKQ8F8W2opCFSaM2xXUrntNWY8ZuSqsUfekw854bS9PeAd44XiQEXOzof8gpAj88Oeq9NJ4DGr51nQQPwyOVv-0CFU3FsEzFC_H2Jtc66Z0fJ9UTLFVTSJkuNXMMumAuoRZesxo0ea87IPonNpigYA?purpose=inline",
-      "image_caption": "Early warning civil defense and cross-regional disaster management systems",
-      "voiceover": "The proposed research aims to contribute in three main areas. The first is multi-source data integration, creating a unified spatiotemporal dataset designed specifically for medium- to long-term sandstorm forecasting. The second is advanced model development, combining numerical forecast post-processing with deep learning architectures and strategies for handling rare events. The third is model interpretability and standardized evaluation, supporting more transparent and comparable forecasting results. From an application perspective, the research could contribute to earlier sandstorm warnings and more proactive risk management. Potential beneficiaries include meteorological departments, emergency management authorities, transportation operators, agricultural communities, renewable energy providers, and environmental protection agencies. The ultimate aim is to support a transition from reactive emergency response toward earlier, data-driven disaster preparedness.",
+      "title": "Scene 8: Physics-Informed ML & Interpretability",
+      "tag": "PHYSICS CONSTRAINTS & XAI",
+      "time": "5:55–6:50",
+      "duration": 45.456,
+      "voiceover": "Pure data-driven models risk making unphysical predictions under extreme out-of-distribution conditions. To ensure physical validity, we incorporate physics-informed neural network principles by embedding atmospheric constraints, such as mass conservation and aerodynamic threshold friction velocities, directly into network loss functions. To ensure operational credibility for meteorologists, we employ Explainable AI methodologies. Using SHAP value attributions and neural attention weight visualizations, we quantitatively isolate the exact influence of soil moisture, wind shear, upstream dust loading, and surface roughness on every forecast decision, ensuring the model is trustworthy and scientifically sound.",
       "key_points": [
-        "Contribution 1: First unified multi-modal 3\u201315d dust storm benchmark dataset",
-        "Contribution 2: Novel hybrid model overcoming classical numerical predictability decay",
-        "Contribution 3: Physics-informed interpretable framework validated by meteorologists",
-        "Societal Value: Transition from reactive crisis response to proactive AI preparedness"
+        "Physics-Informed Constraints: Embedding mass conservation & threshold friction velocity",
+        "Physical Consistency: Constrained optimization prevents unphysical out-of-distribution output",
+        "SHAP Value Attribution: Decomposing contributions of soil moisture, wind shear & temperature",
+        "Attention Weight Heatmaps: Visualizing active dust transport corridors for forecasters",
+        "Trust & Transparency: Enhancing scientific interpretability and operational adoption"
       ],
       "tags": [
-        "Novel Benchmark",
-        "Physics-Informed ML",
-        "Early Warning",
-        "Societal Resilience"
+        "PINNs",
+        "Physical Constraints",
+        "SHAP Framework",
+        "Attention Visualization"
       ],
-      "duration": 61.196,
-      "slide_image": "video_assets/slide_08.png",
-      "audio_file": "video_assets/audio_08.mp3",
-      "clip_file": "video_assets/clip_08.mp4"
+      "slide_image": "video_assets/slides/slide_08.png",
+      "audio_file": "video_assets/audio/audio_08.mp3",
+      "clip_file": "video_assets/clips/clip_08.mp4"
     },
     {
       "id": 9,
-      "title": "Scene 9: Research Implementation Timeline",
-      "tag": "GANTT CHART & MILESTONES",
-      "time": "7:40\u20138:20",
-      "image_url": "https://images.openai.com/static-rsc-4/nGQM0xCoWCMTzsO__f71Htw-abOnTQVctN-ahlko2_-bL187c4lDdVUX9Ti2w0oeaXgnBc97-P7Hk4JoBJBTJDYFId60TH4crZGzTejFSMnumbwyefYwuOImn628TAxFYoNmXRZdNtDIw6xLmeed8sYIpP996B2KTS62BMBLLtY?purpose=inline",
-      "image_caption": "Comprehensive master's research timeline from September 2025 to June 2027",
-      "voiceover": "The research is planned across seven phases, from September 2025 to June 2027. The initial phases focus on literature review, research preparation, and construction of the multi-source dataset. From May to August 2026, the work focuses on baseline model development, preliminary experiments, and performance comparison. From September to December 2026, the study advances to ensemble learning, Graph Neural Networks, and physics-informed modeling. The subsequent phases cover case studies, interpretability analysis, manuscript preparation, dissertation completion, and pre-defense. The final stage, scheduled for June 2027, is the dissertation defense and graduation.",
+      "title": "Scene 9: Methodology & 5-Step Pipeline",
+      "tag": "EXPERIMENTAL METHODOLOGY",
+      "time": "6:50–7:45",
+      "duration": 57.0,
+      "voiceover": "The core methodology is structured around five systematic steps evaluated across four benchmark meteorological stations in China. Step 1 acquires and harmonizes multi-source data from ECMWF, China Meteorological Administration stations, ERA5 reanalysis, and MODIS satellite retrievals. Step 2 constructs three feature tiers: surface emission conditions, dynamic transport features, and historical upstream memory. Step 3 develops our dual-track modeling framework: Line A for numerical bias correction and Line B for end-to-end spatiotemporal risk forecasting. Step 4 resolves extreme event class imbalance using SMOTE oversampling, cost-sensitive focal loss, and probability calibration. Step 5 conducts multi-metric validation using Threat Scores, ROC-AUC, and retrospective severe storm case studies.",
       "key_points": [
-        "Phase 1 & 2 (Sep 2025 \u2013 Apr 2026): Literature review, preparation & multi-source data pipeline",
-        "Phase 3 (May 2026 \u2013 Aug 2026): Baseline models (RF, XGBoost, LSTM) & preliminary benchmarking",
-        "Phase 4 (Sep 2026 \u2013 Dec 2026): Advanced Spatio-Temporal GNN & physics-informed coupling",
-        "Phase 5 & 6 (Jan 2027 \u2013 May 2027): Severe storm case studies, paper submission & thesis writing",
-        "Phase 7 (Jun 2027): Dissertation defense and master's graduation at USTB"
+        "Data Integration: ECMWF, CMA 4 stations, ERA5 reanalysis & MODIS satellite tensors",
+        "3-Tier Feature Engineering: Emission conditions, atmospheric transport & upstream memory",
+        "Dual-Track Modeling: Line A (NWP Bias Correction) + Line B (End-to-End Deep Spatiotemporal)",
+        "Class Imbalance Handling: SMOTE oversampling, cost-sensitive focal loss & calibration",
+        "Comprehensive Validation: Threat Score (TS), ETS, ROC-AUC, and severe event case studies"
       ],
       "tags": [
-        "7 Research Phases",
-        "Sep 2025 - Jun 2027",
-        "Milestones",
-        "USTB Defense"
+        "5-Step Pipeline",
+        "ERA5 & MODIS",
+        "SMOTE & Cost Loss",
+        "Threat Score Validation"
       ],
-      "duration": 48.236,
-      "slide_image": "video_assets/slide_09.png",
-      "audio_file": "video_assets/audio_09.mp3",
-      "clip_file": "video_assets/clip_09.mp4"
+      "slide_image": "video_assets/slides/slide_09.png",
+      "audio_file": "video_assets/audio/audio_09.mp3",
+      "clip_file": "video_assets/clips/clip_09.mp4"
     },
     {
       "id": 10,
-      "title": "Scene 10: Conclusion & Scientific Outlook",
-      "tag": "SUMMARY & FUTURE VISION",
-      "time": "8:20\u20138:50",
-      "image_url": "https://images.openai.com/static-rsc-4/dU_3jU-NNt_ivp_eH-rwPvJbr3HieiYpJxu48fILdepFlgSgULTF13-YOqSvy5BvNFkrln6z4BlSxr6O_GNpd7Y20VGn_958dXKBucjIz7HoPccyuAd213z0paLM2liem3O4uAvIlT7fqbTyoMicFMQrOglvlMr_PNH837svaOs?purpose=inline",
-      "image_caption": "Sustainable environmental monitoring and future climate hazard mitigation",
-      "voiceover": "In conclusion, this research seeks to combine machine learning, multi-source environmental data, and meteorological knowledge to address the challenges of medium- to long-term sandstorm forecasting. By integrating advanced algorithms with physical and environmental information, the study aims to improve forecasting accuracy, extend warning lead times, and enhance the interpretability of intelligent forecasting systems. Through these efforts, the research aspires to contribute to scientific understanding, environmental protection, and more effective disaster prevention and mitigation. Thank you for watching.",
+      "title": "Scene 10: Milestones, Deliverables & Impact",
+      "tag": "TIMELINE & SOCIETAL VALUE",
+      "time": "7:45–8:35",
+      "duration": 47.4,
+      "voiceover": "Spanning September 2025 through June 2027, the research roadmap culminates in a validated, operational-ready forecasting system and master's dissertation defense. The expected deliverables include high-resolution 3-to-15-day risk probability maps, an open benchmark dataset, and publication in top-tier environmental informatics journals. By extending warning lead times up to five full days, this intelligent framework empowers aviation scheduling, civil protection, and solar and wind energy infrastructure. In summary, uniting physics-informed AI with multi-source Earth observations will advance China's capacity to anticipate sandstorms and protect human communities. Thank you for your attention.",
       "key_points": [
-        "Synthesis: AI + Multi-Source Earth Observations + Atmospheric Physics",
-        "Core Outcomes: Extended lead times, reduced forecasting error, transparent AI decisions",
-        "Mission: Elevating environmental engineering & safeguarding human communities",
+        "7 Research Phases: September 2025 to June 2027 concluding with USTB thesis defense",
+        "Core Deliverables: 3 to 15 day probabilistic risk grids, open benchmark & publications",
+        "Civil Resilience: 5-day warning window protecting aviation, public health & green energy",
+        "Decisive Shift: Moving environmental meteorology toward proactive AI resilience",
         "Department: USTB School of Energy and Environmental Engineering"
       ],
       "tags": [
-        "Intelligent Meteorology",
-        "Extended Lead Time",
-        "Environmental Protection",
-        "Thank You"
+        "USTB Timeline",
+        "3-15d Outlooks",
+        "Civil Protection",
+        "Proactive Resilience"
       ],
-      "duration": 37.988,
-      "slide_image": "video_assets/slide_10.png",
-      "audio_file": "video_assets/audio_10.mp3",
-      "clip_file": "video_assets/clip_10.mp4"
+      "slide_image": "video_assets/slides/slide_10.png",
+      "audio_file": "video_assets/audio/audio_10.mp3",
+      "clip_file": "video_assets/clips/clip_10.mp4"
     }
   ]
 }

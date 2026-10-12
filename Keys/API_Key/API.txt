@@ -1,0 +1,2 @@
+url: https://ads.atmosphere.copernicus.eu/api
+key: 2172f7bc-13d3-4b64-9cef-945e9aa243de

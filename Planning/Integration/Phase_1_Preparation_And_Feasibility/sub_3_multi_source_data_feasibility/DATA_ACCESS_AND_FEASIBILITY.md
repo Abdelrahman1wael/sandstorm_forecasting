@@ -22,13 +22,21 @@ Phase 1.3 verifies that all necessary multi-source environmental datasets can be
 ## 🔑 2. Automated Credential Configuration
 
 ```bash
-# ECMWF CDS API Configuration (~/.cdsapirc)
-url: https://cds.climate.copernicus.eu/api/v2
-key: UID:API-KEY-HERE
+# ECMWF CDS API Configuration (~/.cdsapirc / C:\Users\<you>\.cdsapirc)
+url: https://cds.climate.copernicus.eu/api
+key: <your-personal-access-token>
 
 # NASA Earthdata Authentication (~/.netrc)
 machine urs.earthdata.nasa.gov login YOUR_USERNAME password YOUR_PASSWORD
 ```
+
+> [!IMPORTANT]
+> **Operational Horizon & Data Availability Constraints:**
+> - **ECMWF CAMS Atmospheric Composition:** Aerosol and PM10 chemical transport forecasts are available out to **~120h (5 days)**.
+> - **ECMWF IFS / TIGGE:** Purely meteorological forecasts (wind, surface pressure, temperature) extend out to **360h (15 days)**, but do *not* contain dust aerosol/PM10 concentrations.
+> - **Line A Two-Tier Strategy:**
+>   - *Days 3–5 (72h–120h):* Residual learning on numerical CAMS PM10: $\Delta y = y_{\text{obs}} - y_{\text{CAMS\_PM10}}$.
+>   - *Days 6–15 (144h–360h):* Direct ML prediction of PM10 using forecasted meteorological variables (wind, gust, boundary layer height, soil moisture, surface pressure) as dynamical features.
 
 ---
 
