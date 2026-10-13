@@ -2,7 +2,7 @@
 ### *Extreme Gradient Boosted Decision Trees for Non-Linear Atmospheric Residuals*
 **Model Family:** Gradient Boosted Decision Trees (GBDT)  
 **Implementation:** `xgboost.XGBRegressor`  
-**File Location in Codebase:** [`Ai Pipline/models/machine_learning/`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/models/machine_learning/)
+**File Location in Codebase:** [`Ai Pipline/models/machine_learning/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/models/machine_learning/)
 
 ---
 

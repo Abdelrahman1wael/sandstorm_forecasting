@@ -25,11 +25,11 @@ It translates the theoretical principles of the master's research proposal into 
 
 | File | Type | Description |
 | :--- | :--- | :--- |
-| [`index.html`](file:///c:/Users/hp/Desktop/China_project/ai_architecture/index.html) | Standalone Web Application | Interactive AI Architecture Lab & dashboard containing 6 interactive scientific sections. |
-| [`mock_data.js`](file:///c:/Users/hp/Desktop/China_project/ai_architecture/mock_data.js) | Scientific Data Repository | Rich synthetic mock data structures: tensor schemas, neural layer weights, 8 Chinese forecasting stations, training logs, and corridor graph links. |
-| [`ai_architecture.js`](file:///c:/Users/hp/Desktop/China_project/ai_architecture/ai_architecture.js) | Controller & Reactive Logic | Handles user interactions, slider events, simulated neural inference runs, dynamic SVG network rendering, and tab switching. |
-| [`styles.css`](file:///c:/Users/hp/Desktop/China_project/ai_architecture/styles.css) | Custom Design System | Dark-mode scientific aesthetic (`#050811`, `#070c18`), glassmorphism, responsive grid layouts, glowing telemetry indicators, and typography (`Outfit`, `Inter`, `JetBrains Mono`). |
-| [`README.md`](file:///c:/Users/hp/Desktop/China_project/ai_architecture/README.md) | Module Documentation | Detailed architectural specification, tensor dimensions, and scientific references. |
+| [`index.html`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/ai_architecture/index.html) | Standalone Web Application | Interactive AI Architecture Lab & dashboard containing 6 interactive scientific sections. |
+| [`mock_data.js`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/ai_architecture/mock_data.js) | Scientific Data Repository | Rich synthetic mock data structures: tensor schemas, neural layer weights, 8 Chinese forecasting stations, training logs, and corridor graph links. |
+| [`ai_architecture.js`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/ai_architecture/ai_architecture.js) | Controller & Reactive Logic | Handles user interactions, slider events, simulated neural inference runs, dynamic SVG network rendering, and tab switching. |
+| [`styles.css`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/ai_architecture/styles.css) | Custom Design System | Dark-mode scientific aesthetic (`#050811`, `#070c18`), glassmorphism, responsive grid layouts, glowing telemetry indicators, and typography (`Outfit`, `Inter`, `JetBrains Mono`). |
+| [`README.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/ai_architecture/README.md) | Module Documentation | Detailed architectural specification, tensor dimensions, and scientific references. |
 
 ---
 
@@ -74,7 +74,7 @@ Synthetic high-dimensional tensors mirroring the 4 ingestion modalities:
 
 1. Open `ai_architecture/index.html` in any modern web browser directly, or serve the root directory using any local web server:
    ```bash
-   # From c:/Users/hp/Desktop/China_project:
+   # From c:/Users/hp/Desktop/sandstorm_forecasting:
    python -m http.server 8000
    ```
 2. Navigate to: `http://localhost:8000/ai_architecture/index.html`

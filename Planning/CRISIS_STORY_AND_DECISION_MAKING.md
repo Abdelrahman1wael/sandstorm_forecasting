@@ -243,6 +243,6 @@ When presenting this project to your thesis committee, remember this core narrat
 ---
 
 *Related Technical Documentation:*
-* **Master Technical README:** [`README.md`](file:///c:/Users/hp/Desktop/China_project/README.md)
-* **Plain-English README Guide:** [`README_EXPLAINED.md`](file:///c:/Users/hp/Desktop/China_project/README_EXPLAINED.md)
-* **Quantitative Research Methodology:** [`SPSS_AMOS_GIS_ROADMAP.md`](file:///c:/Users/hp/Desktop/China_project/SPSS_AMOS_GIS_ROADMAP.md)
+* **Master Technical README:** [`README.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/README.md)
+* **Plain-English README Guide:** [`README_EXPLAINED.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/README_EXPLAINED.md)
+* **Quantitative Research Methodology:** [`SPSS_AMOS_GIS_ROADMAP.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/SPSS_AMOS_GIS_ROADMAP.md)

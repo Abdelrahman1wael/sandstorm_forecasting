@@ -10,9 +10,9 @@
 
 | 规范文档 | 防过拟合重点技术与核心算法 | 解决的关键学术与工程痛点 |
 |:---|:---|:---|
-| **[`01_MACHINE_LEARNING_OVERFITTING_PREVENTION.md`](file:///c:/Users/hp/Desktop/China_project/Planning/Prevent_Overfiting/01_MACHINE_LEARNING_OVERFITTING_PREVENTION.md)** | • 时间滚动滑动交叉验证 (Walk-Forward Temporal CV)<br>• 树模型正则化超参数网格 (L1/L2, `min_child_samples`)<br>• 方差膨胀因子 (VIF < 5) 与共线性剪枝<br>• Stacking 折外预测 (Out-of-Fold, OOF) 防标签泄露 | 杜绝时间穿越、抑制决策树叶子节点噪声记忆、消除元学习器数据泄露 |
-| **[`02_DEEP_LEARNING_AND_PINN_REGULARIZATION.md`](file:///c:/Users/hp/Desktop/China_project/Planning/Prevent_Overfiting/02_DEEP_LEARNING_AND_PINN_REGULARIZATION.md)** | • PINN 物理偏微分先验作为无穷数据正则化器<br>• ST-GNN 图随机断边 (DropEdge) 与节点 Dropout<br>• 余弦退火动态热身学习率调度 (Cosine Annealing + Warmup)<br>• 自适应多任务梯度归一化平衡 (GradNorm) | 杜绝纯数据驱动黑箱在外推时的无界振荡、防止图注意力过平滑与节点强记忆 |
-| **[`03_SPATIAL_AND_STATISTICAL_CROSS_VALIDATION.md`](file:///c:/Users/hp/Desktop/China_project/Planning/Prevent_Overfiting/03_SPATIAL_AND_STATISTICAL_CROSS_VALIDATION.md)** | • 空间分块交叉验证 (Spatial Block K-Fold) 与缓冲留一站法<br>• GWR 自适应空间带宽 AICc 惩罚控制<br>• AMOS 结构方程模型自由度保护 ($df \gg 0$)<br>• 限制修正指数 (MI) 滥用与共同方法偏差 (CMB < 40%) | 克服空间自相关导致的假性高准确率、防止心理计量模型在样本上的偶然拟合 |
+| **[`01_MACHINE_LEARNING_OVERFITTING_PREVENTION.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/Prevent_Overfiting/01_MACHINE_LEARNING_OVERFITTING_PREVENTION.md)** | • 时间滚动滑动交叉验证 (Walk-Forward Temporal CV)<br>• 树模型正则化超参数网格 (L1/L2, `min_child_samples`)<br>• 方差膨胀因子 (VIF < 5) 与共线性剪枝<br>• Stacking 折外预测 (Out-of-Fold, OOF) 防标签泄露 | 杜绝时间穿越、抑制决策树叶子节点噪声记忆、消除元学习器数据泄露 |
+| **[`02_DEEP_LEARNING_AND_PINN_REGULARIZATION.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/Prevent_Overfiting/02_DEEP_LEARNING_AND_PINN_REGULARIZATION.md)** | • PINN 物理偏微分先验作为无穷数据正则化器<br>• ST-GNN 图随机断边 (DropEdge) 与节点 Dropout<br>• 余弦退火动态热身学习率调度 (Cosine Annealing + Warmup)<br>• 自适应多任务梯度归一化平衡 (GradNorm) | 杜绝纯数据驱动黑箱在外推时的无界振荡、防止图注意力过平滑与节点强记忆 |
+| **[`03_SPATIAL_AND_STATISTICAL_CROSS_VALIDATION.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/Prevent_Overfiting/03_SPATIAL_AND_STATISTICAL_CROSS_VALIDATION.md)** | • 空间分块交叉验证 (Spatial Block K-Fold) 与缓冲留一站法<br>• GWR 自适应空间带宽 AICc 惩罚控制<br>• AMOS 结构方程模型自由度保护 ($df \gg 0$)<br>• 限制修正指数 (MI) 滥用与共同方法偏差 (CMB < 40%) | 克服空间自相关导致的假性高准确率、防止心理计量模型在样本上的偶然拟合 |
 
 ---
 

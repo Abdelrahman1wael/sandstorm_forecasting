@@ -9,8 +9,9 @@ import edge_tts
 # pyrefly: ignore [missing-import]
 from PIL import Image, ImageDraw, ImageFont
 
-# Set working directory
-BASE_DIR = r"c:\Users\hp\Desktop\China_project"
+# Set working directory (defaults to current project root)
+BASE_DIR = os.environ.get("PROJECT_ROOT", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 ASSETS_DIR = os.path.join(BASE_DIR, "video_assets")
 OUTPUT_VIDEO = os.path.join(BASE_DIR, "sand_dust_storm_ml_presentation.mp4")
 SUBTITLES_SRT = os.path.join(BASE_DIR, "sand_dust_storm_subtitles.srt")

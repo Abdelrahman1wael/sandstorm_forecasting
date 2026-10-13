@@ -2,7 +2,7 @@
 ### *Owen Aerodynamic Saltation Thresholds & Mass Continuity PDE Loss Regularization*
 **Model Family:** Physics-Informed Neural Networks (PINN) & PDE Constrained Optimization  
 **Implementation:** `torch.nn.Module` (`PhysicsInformedLoss`, `OwenSaltationPhysics`)  
-**File Location in Codebase:** [`Ai Pipline/models/deep_learning/pinn_core.py`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/models/deep_learning/pinn_core.py)
+**File Location in Codebase:** [`Ai Pipline/models/deep_learning/pinn_core.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/models/deep_learning/pinn_core.py)
 
 ---
 

@@ -2,7 +2,7 @@
 ### *Multi-Modal Planetary Aerosol-Meteorology Foundation Vision Encoder*
 **Model Family:** Multi-Modal Convolutional Vision Encoder with Adaptive Gated Fusion  
 **Implementation:** `torch.nn.Module` (`CoupledAIGAMFSEncoder`)  
-**File Location in Codebase:** [`Ai Pipline/models/deep_learning/aigamfs_backbone.py`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/models/deep_learning/aigamfs_backbone.py)
+**File Location in Codebase:** [`Ai Pipline/models/deep_learning/aigamfs_backbone.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/models/deep_learning/aigamfs_backbone.py)
 
 ---
 

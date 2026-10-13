@@ -8,10 +8,10 @@ This module implements the **Main Line A** machine learning forecasting componen
 
 | File | Primary Role & Class Names | Description |
 | :--- | :--- | :--- |
-| [`line_a_ensemble.py`](file:///c:/Users/hp/Desktop/China_project/Main%20project/models/machine_learning/line_a_ensemble.py) | `NWPBiasCorrectionEnsemble` | Gradient-boosted decision forest ensemble (LightGBM / HistGradientBoosting) learning systematic NWP residual biases ($y_{\text{true}} - y_{\text{NWP}}$). |
-| [`uncertainty_head.py`](file:///c:/Users/hp/Desktop/China_project/Main%20project/models/machine_learning/uncertainty_head.py) | `QuantileUncertaintyEstimator`<br>`MLUncertaintyPipeline`<br>`PinballQuantileLoss`<br>`DeepQuantileRegressionHead` | Non-parametric quantile regression ($P_{10}, P_{50}, P_{90}$) and connectors for both Machine Learning and Deep Learning architectures. |
-| [`hazard_classifier.py`](file:///c:/Users/hp/Desktop/China_project/Main%20project/models/machine_learning/hazard_classifier.py) | `CostSensitiveHazardClassifier` | 5-class severity classifier with cost-sensitive loss matrix penalizing false negatives for severe dust storms. |
-| [`__init__.py`](file:///c:/Users/hp/Desktop/China_project/Main%20project/models/machine_learning/__init__.py) | Module Exports | Unified entry points for models and pipelines. |
+| [`line_a_ensemble.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Main%20project/models/machine_learning/line_a_ensemble.py) | `NWPBiasCorrectionEnsemble` | Gradient-boosted decision forest ensemble (LightGBM / HistGradientBoosting) learning systematic NWP residual biases ($y_{\text{true}} - y_{\text{NWP}}$). |
+| [`uncertainty_head.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Main%20project/models/machine_learning/uncertainty_head.py) | `QuantileUncertaintyEstimator`<br>`MLUncertaintyPipeline`<br>`PinballQuantileLoss`<br>`DeepQuantileRegressionHead` | Non-parametric quantile regression ($P_{10}, P_{50}, P_{90}$) and connectors for both Machine Learning and Deep Learning architectures. |
+| [`hazard_classifier.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Main%20project/models/machine_learning/hazard_classifier.py) | `CostSensitiveHazardClassifier` | 5-class severity classifier with cost-sensitive loss matrix penalizing false negatives for severe dust storms. |
+| [`__init__.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Main%20project/models/machine_learning/__init__.py) | Module Exports | Unified entry points for models and pipelines. |
 
 ---
 

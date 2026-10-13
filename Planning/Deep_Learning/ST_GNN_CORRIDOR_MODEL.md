@@ -2,7 +2,7 @@
 ### *Non-Euclidean Dust Plume Advection & Bidirectional Corridor Diffusion*
 **Model Family:** Spatio-Temporal Graph Neural Network (GNN + Recurrent Memory)  
 **Implementation:** `torch.nn.Module` (`SpatioTemporalGNN`, `GraphDiffusionLayer`)  
-**File Location in Codebase:** [`Ai Pipline/models/deep_learning/st_gnn.py`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/models/deep_learning/st_gnn.py)
+**File Location in Codebase:** [`Ai Pipline/models/deep_learning/st_gnn.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/models/deep_learning/st_gnn.py)
 
 ---
 

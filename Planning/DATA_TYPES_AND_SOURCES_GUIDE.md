@@ -319,9 +319,9 @@ files = earthaccess.download(results, "./data/satellite/modis_aod/")
 ---
 
 *Related Documentation:*
-* **Master Technical README:** [`README.md`](file:///c:/Users/hp/Desktop/China_project/README.md)
-* **Plain-English README Guide:** [`README_EXPLAINED.md`](file:///c:/Users/hp/Desktop/China_project/README_EXPLAINED.md)
-* **Operational Crisis Decision Playbook:** [`Planning/CRISIS_STORY_AND_DECISION_MAKING.md`](file:///c:/Users/hp/Desktop/China_project/Planning/CRISIS_STORY_AND_DECISION_MAKING.md)
-* **SPSS Research Roadmap:** [`Planning/SPSS_ROADMAP.md`](file:///c:/Users/hp/Desktop/China_project/Planning/SPSS_ROADMAP.md)
-* **AMOS SEM Roadmap:** [`Planning/AMOS_ROADMAP.md`](file:///c:/Users/hp/Desktop/China_project/Planning/AMOS_ROADMAP.md)
-* **GIS Spatial Science Roadmap:** [`Planning/GIS_ROADMAP.md`](file:///c:/Users/hp/Desktop/China_project/Planning/GIS_ROADMAP.md)
+* **Master Technical README:** [`README.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/README.md)
+* **Plain-English README Guide:** [`README_EXPLAINED.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/README_EXPLAINED.md)
+* **Operational Crisis Decision Playbook:** [`Planning/CRISIS_STORY_AND_DECISION_MAKING.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/CRISIS_STORY_AND_DECISION_MAKING.md)
+* **SPSS Research Roadmap:** [`Planning/SPSS_ROADMAP.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/SPSS_ROADMAP.md)
+* **AMOS SEM Roadmap:** [`Planning/AMOS_ROADMAP.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/AMOS_ROADMAP.md)
+* **GIS Spatial Science Roadmap:** [`Planning/GIS_ROADMAP.md`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Planning/GIS_ROADMAP.md)

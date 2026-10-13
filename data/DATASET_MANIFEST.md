@@ -64,3 +64,16 @@ This document records all environmental and meteorological datasets utilized in 
 - **Domain:** $70^\circ\text{E} - 135^\circ\text{E}$, $25^\circ\text{N} - 55^\circ\text{N}$
 - **Variables:** Elevation ($H_{\text{dem}}$), Slope, Aspect, Roughness ($z_0$)
 - **Local Path:** `data/raw/gis/`
+
+---
+
+## 6. Live Dataset Acquisition Status (Updated)
+
+| Dataset Modality | Target Files / Period | Status | Local Disk Path | Notes |
+| :--- | :--- | :---: | :--- | :--- |
+| **Saudi Arabia CAMS NWP (Real)** | April 2024 [33°N, 34°E, 16°N, 56°E] | ✅ **100% Downloaded** (`cams_forecast_saudi_arabia.nc`, 1.58 MB) | `data/raw/nwp/cams_forecast_saudi_arabia.nc` | Real operational CAMS PM10, Dust AOD, and 10m Wind fields for Saudi Arabia (43×56 grid, 9 forecast lead steps, 6 cycles) downloaded via Copernicus API. Detailed authenticity proof: [Documentation/SAUDI_ARABIA_NWP_DATASET_PROVENANCE.md](../Documentation/SAUDI_ARABIA_NWP_DATASET_PROVENANCE.md). |
+| **Ground Air Quality Stations** | China Network | ⏹️ **Stopped** (per user request) | `data/raw/ground/` | Halted to focus strictly on Saudi Arabia NWP. |
+| **ERA5 Atmospheric Reanalysis** | Arabian Peninsula Domain | ⏳ Pending NWP completion | `data/raw/era5/` | API token configured in `Keys/API_Key/API.txt`. |
+| **GIS DEM Elevation** | Topography grid across domain | ⏳ Pending download | `data/raw/gis/` | SRTM 90m domain raster. |
+
+

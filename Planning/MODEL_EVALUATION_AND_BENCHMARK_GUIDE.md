@@ -270,7 +270,7 @@ Economic Value V(C/L) Curve:
 
 ## 💻 Python Implementation & Automated Benchmarking
 
-The evaluation suite is directly implemented in [`Ai Pipline/evaluation/`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/evaluation/):
+The evaluation suite is directly implemented in [`Ai Pipline/evaluation/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/evaluation/):
 
 ### 1. `metrics.py` (Core Calculations)
 Contains:

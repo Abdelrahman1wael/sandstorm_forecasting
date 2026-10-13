@@ -2,7 +2,7 @@
 ### *Non-Parametric Prediction Intervals ($P_{10}, P_{50}, P_{90}$) with Guaranteed Monotonicity*
 **Model Family:** Quantile Loss Regression & Uncertainty Quantification  
 **Implementation:** `HistGradientBoostingRegressor(loss='quantile')` & PyTorch `DeepQuantileRegressionHead`  
-**File Location in Codebase:** [`Ai Pipline/models/machine_learning/uncertainty_head.py`](file:///c:/Users/hp/Desktop/China_project/Ai%20Pipline/models/machine_learning/uncertainty_head.py)
+**File Location in Codebase:** [`Ai Pipline/models/machine_learning/uncertainty_head.py`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/Ai%20Pipline/models/machine_learning/uncertainty_head.py)
 
 ---
 
