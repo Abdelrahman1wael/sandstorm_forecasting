@@ -1,6 +1,8 @@
 # 📊 Dataset Manifest & Provenance Record
 
-This document records all environmental and meteorological datasets utilized in the extended-range sandstorm forecasting project, their source URLs, access methods, variables, and licensing. This serves as the documentation standard for the thesis data chapter.
+> 📘 **Comprehensive Riyadh Real-World Scientific Dataset Guide:**  
+> For the complete documentation of real datasets acquired for Riyadh across all 5 modalities (Ground, ERA5, GIS, NWP, and Satellite) along with verification URLs and inspection scripts, refer to:  
+> 👉 [`Documentation/RIYADH_REAL_DATASETS_PROVENANCE_AND_VERIFICATION.md`](../Documentation/RIYADH_REAL_DATASETS_PROVENANCE_AND_VERIFICATION.md)
 
 ---
 

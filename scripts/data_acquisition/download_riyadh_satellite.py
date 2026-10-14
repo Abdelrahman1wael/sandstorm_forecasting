@@ -9,6 +9,7 @@ import sys
 import requests
 import pandas as pd
 import numpy as np
+# pyrefly: ignore [missing-import]
 import xarray as xr
 from pathlib import Path
 
