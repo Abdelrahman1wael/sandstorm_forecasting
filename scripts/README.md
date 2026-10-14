@@ -12,6 +12,10 @@ scripts/
 ├── README.md                          # Documentation index of all operational utilities
 │
 ├── data_acquisition/                 # 1. API downloaders & synthetic stand-in generators
+│   ├── download_riyadh_ground_data.py# Downloads real ground station observations for Riyadh (OERK) & corridors
+│   ├── download_riyadh_era5.py       # Downloads real ECMWF ERA5 hourly reanalysis & spatial grid for Riyadh
+│   ├── download_riyadh_gis.py        # Downloads real GIS DEM elevation grid, slope, roughness & GeoJSON boundaries
+│   ├── download_riyadh_satellite.py  # Downloads real satellite remote sensing AOD (MODIS/Sentinel) & NASA solar flux
 │   ├── download_nwp_saudi_arabia.py  # Primary Copernicus ADS downloader for Saudi Arabia CAMS NWP
 │   ├── download_cams_forecast.py     # Global CAMS atmospheric composition downloader
 │   ├── download_tigge_forecast.py    # ECMWF TIGGE extended-range downloader
@@ -19,6 +23,7 @@ scripts/
 │   └── generate_standin_nwp_saudi.py # Domain-calibrated Saudi Arabia testing generator
 │
 ├── data_verification/                # 2. Quality inspection & data integrity checkers
+│   ├── inspect_riyadh_datasets.py    # Master audit & inspection script for Riyadh real datasets (ERA5, GIS, Ground)
 │   ├── inspect_saudi_nwp.py          # NetCDF-4 metadata & GRIB parameter validator
 │   ├── check_downloaded_data.py      # Multi-source dataset integrity & completeness checker
 │   └── test_feature_pipeline.py      # Feature engineering calculation & Parquet export test

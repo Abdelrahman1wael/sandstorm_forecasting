@@ -1,0 +1,32 @@
+{
+  "city": "Riyadh",
+  "country": "Saudi Arabia",
+  "crs": "EPSG:4326 (WGS84)",
+  "bounding_box": {
+    "lat_min": 24.0,
+    "lat_max": 25.5,
+    "lon_min": 46.0,
+    "lon_max": 47.5
+  },
+  "elevation": {
+    "source": "SRTM Digital Elevation Model",
+    "grid_resolution_km": 7.5,
+    "grid_points": 441
+  },
+  "ground_stations": [
+    {
+      "id": "OERK",
+      "name": "King Khalid International Airport",
+      "lat": 24.9252,
+      "lon": 46.7213,
+      "elevation": 614
+    },
+    {
+      "id": "OERF",
+      "name": "Riyadh Air Base",
+      "lat": 24.7108,
+      "lon": 46.7253,
+      "elevation": 635
+    }
+  ]
+}

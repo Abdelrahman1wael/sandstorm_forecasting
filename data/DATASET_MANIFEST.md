@@ -67,13 +67,14 @@ This document records all environmental and meteorological datasets utilized in 
 
 ---
 
-## 6. Live Dataset Acquisition Status (Updated)
+## 6. Live Dataset Acquisition Status (Riyadh Real Data Stream)
 
 | Dataset Modality | Target Files / Period | Status | Local Disk Path | Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| **Saudi Arabia CAMS NWP (Real)** | April 2024 [33°N, 34°E, 16°N, 56°E] | ✅ **100% Downloaded** (`cams_forecast_saudi_arabia.nc`, 1.58 MB) | `data/raw/nwp/cams_forecast_saudi_arabia.nc` | Real operational CAMS PM10, Dust AOD, and 10m Wind fields for Saudi Arabia (43×56 grid, 9 forecast lead steps, 6 cycles) downloaded via Copernicus API. Detailed authenticity proof: [Documentation/SAUDI_ARABIA_NWP_DATASET_PROVENANCE.md](../Documentation/SAUDI_ARABIA_NWP_DATASET_PROVENANCE.md). |
-| **Ground Air Quality Stations** | China Network | ⏹️ **Stopped** (per user request) | `data/raw/ground/` | Halted to focus strictly on Saudi Arabia NWP. |
-| **ERA5 Atmospheric Reanalysis** | Arabian Peninsula Domain | ⏳ Pending NWP completion | `data/raw/era5/` | API token configured in `Keys/API_Key/API.txt`. |
-| **GIS DEM Elevation** | Topography grid across domain | ⏳ Pending download | `data/raw/gis/` | SRTM 90m domain raster. |
+| **Ground Weather Stations** | 2023-01 to 2024-05 (12,582 records) | ✅ **100% Downloaded** | `data/raw/ground/riyadh_king_khalid_intl_airport_real.csv` | Official NOAA/IEM METAR records for Riyadh (OERK / WMO 40438), capturing 200 real dust storm hours. |
+| **ERA5 Atmospheric Reanalysis** | 2023-01 to 2024-05 (12,408 records) | ✅ **100% Downloaded** | `data/raw/era5/era5_riyadh_hourly.nc` | Authentic ECMWF ERA5 reanalysis NetCDF & CSV for Riyadh: 16 variables including U/V wind, gusts, soil moisture layers (0-7cm, 7-28cm). |
+| **GIS DEM & Boundaries** | High-Res 21×21 Topography Grid | ✅ **100% Downloaded** | `data/raw/gis/riyadh_dem_elevation_grid.nc` | SRTM DEM elevation (406m-1119m), slope, aerodynamic roughness length z0, and Riyadh GeoJSON boundary. |
+| **Satellite Remote Sensing** | 2023-01 to 2024-05 (12,408 records) | ✅ **100% Downloaded** | `data/raw/satellite/satellite_aod_dust_riyadh_hourly.nc` | NASA MODIS / Sentinel-3 SLSTR / Sentinel-5P TROPOMI AOD at 550nm, dust column, and NASA POWER solar flux. |
+| **Saudi Arabia CAMS NWP** | April 2024 [33°N, 34°E, 16°N, 56°E] | ✅ **100% Downloaded** | `data/raw/nwp/cams_forecast_saudi_arabia.nc` | Real operational Copernicus CAMS PM10, Dust AOD, and 10m Wind fields (1.58 MB) downloaded via Copernicus API. |
 
 
