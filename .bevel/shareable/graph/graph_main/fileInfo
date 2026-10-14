@@ -653,10 +653,10 @@
   }, {
     "path" : "scripts\\data_acquisition\\download_riyadh_satellite.py",
     "modificationInfo" : {
-      "contentHash" : 1027590804,
-      "lastModified" : 1791993474558
+      "contentHash" : 264184558,
+      "lastModified" : 1791998440445
     },
-    "linesOfCode" : 111
+    "linesOfCode" : 112
   }, {
     "path" : "scripts\\data_acquisition\\download_tigge_forecast.py",
     "modificationInfo" : {
