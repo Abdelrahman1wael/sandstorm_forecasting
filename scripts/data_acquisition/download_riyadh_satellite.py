@@ -25,8 +25,8 @@ out_dir.mkdir(parents=True, exist_ok=True)
 
 RIYADH_LAT = 24.7136
 RIYADH_LON = 46.6753
-START_DATE = "2023-01-01"
-END_DATE = "2024-05-31"
+START_DATE = "2020-01-01"
+END_DATE = "2024-12-31"
 
 def download_satellite_aod():
     print("=" * 70)

@@ -41,21 +41,45 @@ stations = [
         "lat": 29.6264,
         "lon": 43.4906,
         "elev": 449
+    },
+    {
+        "code": "OEDF",
+        "name": "King_Fahd_Intl_Airport_Dammam",
+        "role": "Eastern_Gulf_Inflow_Corridor",
+        "lat": 26.4712,
+        "lon": 49.7979,
+        "elev": 22
+    },
+    {
+        "code": "OEAH",
+        "name": "Al_Ahsa_Airport",
+        "role": "Southeastern_Inflow_Corridor",
+        "lat": 25.2853,
+        "lon": 49.4867,
+        "elev": 179
+    },
+    {
+        "code": "OEHL",
+        "name": "Hail_Regional_Airport",
+        "role": "North_Central_Nafud_Corridor",
+        "lat": 27.4380,
+        "lon": 41.6864,
+        "elev": 1015
     }
 ]
 
-start_year = 2023
-end_year = 2024
+START_DATE_STR = "2020-01-01"
+END_DATE_STR = "2024-12-31"
 
 def process_station(st):
     code = st["code"]
     name = st["name"]
-    print(f"\n[Ground Data] Fetching official records for {code} ({name})...")
+    print(f"\n[Ground Data] Fetching official 5-year records (2020-2024) for {code} ({name})...")
     
     url = (
         f"https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?"
         f"station={code}&data=tmpc&data=dwpc&data=drct&data=sknt&data=gust&data=vsby&data=mslp&data=wxcodes&data=feel"
-        f"&year1=2023&month1=1&day1=1&year2=2024&month2=5&day2=31"
+        f"&year1=2020&month1=1&day1=1&year2=2024&month2=12&day2=31"
         f"&tz=UTC&format=onlycomma&latlon=yes"
     )
     

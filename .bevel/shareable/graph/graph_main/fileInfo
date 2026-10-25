@@ -469,6 +469,20 @@
     },
     "linesOfCode" : 7
   }, {
+    "path" : "scripts\\build_final_riyadh_document.py",
+    "modificationInfo" : {
+      "contentHash" : -664912645,
+      "lastModified" : 1792093891007
+    },
+    "linesOfCode" : 237
+  }, {
+    "path" : "scripts\\build_full_riyadh_document.py",
+    "modificationInfo" : {
+      "contentHash" : -118387997,
+      "lastModified" : 1792094068227
+    },
+    "linesOfCode" : 800
+  }, {
     "path" : "scripts\\check_downloaded_data.py",
     "modificationInfo" : {
       "contentHash" : 1313830001,
@@ -625,8 +639,8 @@
   }, {
     "path" : "scripts\\data_acquisition\\download_riyadh_era5.py",
     "modificationInfo" : {
-      "contentHash" : 927738824,
-      "lastModified" : 1791991442741
+      "contentHash" : 533160488,
+      "lastModified" : 1792591072838
     },
     "linesOfCode" : 199
   }, {
@@ -639,10 +653,10 @@
   }, {
     "path" : "scripts\\data_acquisition\\download_riyadh_ground_data.py",
     "modificationInfo" : {
-      "contentHash" : -2027405188,
-      "lastModified" : 1791992981597
+      "contentHash" : 2075043715,
+      "lastModified" : 1792591001285
     },
-    "linesOfCode" : 153
+    "linesOfCode" : 177
   }, {
     "path" : "scripts\\data_acquisition\\download_riyadh_nwp.py",
     "modificationInfo" : {
@@ -653,8 +667,8 @@
   }, {
     "path" : "scripts\\data_acquisition\\download_riyadh_satellite.py",
     "modificationInfo" : {
-      "contentHash" : 264184558,
-      "lastModified" : 1791998440445
+      "contentHash" : 1274322895,
+      "lastModified" : 1792591086275
     },
     "linesOfCode" : 112
   }, {
@@ -685,6 +699,13 @@
       "lastModified" : 1791550843558
     },
     "linesOfCode" : 61
+  }, {
+    "path" : "scripts\\data_verification\\generate_provenance_docx.py",
+    "modificationInfo" : {
+      "contentHash" : -1029131842,
+      "lastModified" : 1792591510715
+    },
+    "linesOfCode" : 255
   }, {
     "path" : "scripts\\data_verification\\inspect_riyadh_datasets.py",
     "modificationInfo" : {
@@ -727,6 +748,13 @@
       "lastModified" : 1791550827332
     },
     "linesOfCode" : 24
+  }, {
+    "path" : "scripts\\extract_proposal_text.py",
+    "modificationInfo" : {
+      "contentHash" : 1932516251,
+      "lastModified" : 1792836183549
+    },
+    "linesOfCode" : 23
   }, {
     "path" : "scripts\\generate_standin_nwp.py",
     "modificationInfo" : {
@@ -784,6 +812,13 @@
     },
     "linesOfCode" : 203
   }, {
+    "path" : "scripts\\preprocessing\\merge_riyadh_multimodal_data.py",
+    "modificationInfo" : {
+      "contentHash" : 438485330,
+      "lastModified" : 1792594722796
+    },
+    "linesOfCode" : 261
+  }, {
     "path" : "scripts\\run_saudi_line_a_pipeline.py",
     "modificationInfo" : {
       "contentHash" : -1050834236,
@@ -797,6 +832,13 @@
       "lastModified" : 1791886393466
     },
     "linesOfCode" : 46
+  }, {
+    "path" : "scripts\\verify_docx.py",
+    "modificationInfo" : {
+      "contentHash" : -1401813046,
+      "lastModified" : 1792094109396
+    },
+    "linesOfCode" : 20
   } ],
   "appVersion" : "1.3.0"
 }

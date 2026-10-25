@@ -25,9 +25,9 @@ out_dir.mkdir(parents=True, exist_ok=True)
 RIYADH_LAT = 24.7136
 RIYADH_LON = 46.6753
 
-# Target period: 2023-01-01 to 2024-05-31 (aligning with ground station records)
-START_DATE = "2023-01-01"
-END_DATE = "2024-05-31"
+# Target period: 2020-01-01 to 2024-12-31 (5 full continuous years)
+START_DATE = "2020-01-01"
+END_DATE = "2024-12-31"
 
 def download_riyadh_era5_point():
     print("=" * 65)
@@ -58,7 +58,7 @@ def download_riyadh_era5_point():
     }
     
     print(f"Requesting ERA5 reanalysis from {START_DATE} to {END_DATE}...")
-    resp = requests.get(url, params=params, timeout=60)
+    resp = requests.get(url, params=params, timeout=120)
     resp.raise_for_status()
     data = resp.json()
     
@@ -110,13 +110,13 @@ def download_riyadh_era5_point():
 
 def download_riyadh_era5_spatial_grid():
     print("\n" + "=" * 65)
-    print("DOWNLOADING REAL ECMWF ERA5 SPATIAL GRID FOR GREATER RIYADH DOMAIN")
+    print("DOWNLOADING REAL ECMWF ERA5 REGIONAL SPATIAL GRID FOR LINE B")
     print("=" * 65)
     
-    # Define a 4x4 spatial grid covering Greater Riyadh Metropolitan & Outskirts
-    # Lat: 24.0, 24.5, 25.0, 25.5; Lon: 46.0, 46.5, 47.0, 47.5
-    lats = [24.0, 24.5, 25.0, 25.5]
-    lons = [46.0, 46.5, 47.0, 47.5]
+    # Define a 6x6 regional spatial grid covering Central Saudi Arabia / Riyadh Advection Corridor
+    # Lat: 22.0 to 27.0 (step 1.0 deg); Lon: 43.0 to 48.0 (step 1.0 deg)
+    lats = [22.0, 23.0, 24.0, 25.0, 26.0, 27.0]
+    lons = [43.0, 44.0, 45.0, 46.0, 47.0, 48.0]
     
     grid_lats = []
     grid_lons = []
@@ -125,9 +125,9 @@ def download_riyadh_era5_spatial_grid():
             grid_lats.append(la)
             grid_lons.append(lo)
             
-    # For spatial grid, sample spring 2024 active dust season (March 1 to April 30, 2024)
-    grid_start = "2024-03-01"
-    grid_end = "2024-04-30"
+    # For spatial grid, capture full two Spring seasons of active dust transport
+    grid_start = "2023-01-01"
+    grid_end = "2024-05-31"
     
     url = "https://archive-api.open-meteo.com/v1/era5"
     params = {
