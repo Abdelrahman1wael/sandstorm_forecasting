@@ -181,6 +181,30 @@ def run_pipeline():
     sm_inhibition = np.exp(-15.0 * df_merged["era5_soil_moisture_0_to_7cm"])
     df_merged["phys_saltation_emission_proxy"] = (u_star ** 3) * flux_ratio * sm_inhibition
 
+    # 3b. Connected Desert Corridors Inflow Projections (Distance & Direction to Riyadh)
+    # Desert angles (direction wind is blowing FROM toward Riyadh):
+    # - Al-Thumamah: 50 km, 60 deg (E/NE)
+    # - Ad-Dahna: 120 km, 45 deg (NE)
+    # - Nafud al-Thuwairat: 220 km, 325 deg (NW)
+    # - Tuwayq Escarpment: 180 km, 235 deg (SW)
+    # - Rub' al-Khali: 350 km, 145 deg (SE)
+    wind_dir_rad = np.radians(df_merged["drct"].fillna(0))
+    deserts = {
+        "al_thumamah": {"dist_km": 50, "angle_deg": 60},
+        "ad_dahna": {"dist_km": 120, "angle_deg": 45},
+        "nafud_al_thuwairat": {"dist_km": 220, "angle_deg": 325},
+        "tuwayq_escarpment": {"dist_km": 180, "angle_deg": 235},
+        "rub_al_khali": {"dist_km": 350, "angle_deg": 145}
+    }
+    for d_name, d_meta in deserts.items():
+        theta_d = np.radians(d_meta["angle_deg"])
+        # Wind directional alignment factor [0, 1]
+        align = np.maximum(0.0, np.cos(wind_dir_rad - theta_d))
+        df_merged[f"desert_inflow_align_{d_name}"] = align
+        # Distance-decayed transport proxy into Riyadh
+        decay = np.exp(-d_meta["dist_km"] / 300.0)
+        df_merged[f"desert_transport_proxy_{d_name}"] = align * df_merged["wind_speed_ms"] * df_merged["phys_saltation_emission_proxy"] * decay
+
     # 4. Temporal Cyclic Harmonics (Day-of-Year, Month, Hour)
     doy = df_merged["time"].dt.dayofyear
     month = df_merged["time"].dt.month

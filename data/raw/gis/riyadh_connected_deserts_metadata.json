@@ -1,0 +1,123 @@
+{
+  "target_receptor": {
+    "name": "Riyadh King Khalid International Airport (OERK)",
+    "latitude": 24.9252,
+    "longitude": 46.7213,
+    "elevation_m": 614,
+    "wmo_id": 40438
+  },
+  "connected_deserts": [
+    {
+      "id": "al_thumamah",
+      "name": "Al-Thumamah Desert Dunes",
+      "distance_km": 50,
+      "direction": "East / Northeast",
+      "azimuth_deg": 60,
+      "inflow_wind_direction_deg": 60,
+      "transport_lead_time_hours": {
+        "fast_gale_20ms": 0.7,
+        "strong_breeze_10ms": 1.4,
+        "moderate_breeze_5ms": 2.8
+      },
+      "connected_riyadh_governorates": ["Ar-Riyad", "Ad-Diriyah", "Rumah"]
+    },
+    {
+      "id": "ad_dahna",
+      "name": "Ad-Dahna Desert",
+      "distance_km": 120,
+      "direction": "Northeast",
+      "azimuth_deg": 45,
+      "inflow_wind_direction_deg": 45,
+      "transport_lead_time_hours": {
+        "fast_gale_20ms": 1.7,
+        "strong_breeze_10ms": 3.3,
+        "moderate_breeze_5ms": 6.7
+      },
+      "connected_riyadh_governorates": ["Rumah", "Al-Majmaah"]
+    },
+    {
+      "id": "nafud_al_thuwairat",
+      "name": "Nafud al-Thuwairat",
+      "distance_km": 220,
+      "direction": "Northwest",
+      "azimuth_deg": 325,
+      "inflow_wind_direction_deg": 325,
+      "transport_lead_time_hours": {
+        "fast_gale_20ms": 3.1,
+        "strong_breeze_10ms": 6.1,
+        "moderate_breeze_5ms": 12.2
+      },
+      "connected_riyadh_governorates": ["Az-Zulfi", "Al-Ghat", "Al-Majmaah"]
+    },
+    {
+      "id": "tuwayq_escarpment",
+      "name": "Tuwayq Escarpment",
+      "distance_km": 180,
+      "direction": "Southwest",
+      "azimuth_deg": 235,
+      "inflow_wind_direction_deg": 235,
+      "transport_lead_time_hours": {
+        "fast_gale_20ms": 2.5,
+        "strong_breeze_10ms": 5.0,
+        "moderate_breeze_5ms": 10.0
+      },
+      "connected_riyadh_governorates": ["Huraymila", "Thadiq", "Shaqra", "Duruma", "Al-Muzahimiyah", "Ad-Duwadimi"]
+    },
+    {
+      "id": "rub_al_khali",
+      "name": "Rub' al-Khali (Empty Quarter)",
+      "distance_km": 350,
+      "direction": "Southeast",
+      "azimuth_deg": 145,
+      "inflow_wind_direction_deg": 145,
+      "transport_lead_time_hours": {
+        "fast_gale_20ms": 4.9,
+        "strong_breeze_10ms": 9.7,
+        "moderate_breeze_5ms": 19.4
+      },
+      "connected_riyadh_governorates": ["Al-Kharj", "Al-Hariq", "Hawtat Bani Tamim", "Al-Aflaj", "As-Sulayyil", "Wadi Addawasir"]
+    }
+  ],
+  "associated_stations_in_riyadh_province": [
+    {
+      "code": "OERK",
+      "name": "Riyadh King Khalid International Airport",
+      "role": "Primary Receptor",
+      "latitude": 24.9252,
+      "longitude": 46.7213,
+      "distance_to_center_km": 0
+    },
+    {
+      "code": "OERY",
+      "name": "Riyadh Air Base",
+      "role": "Urban Center Receptor",
+      "latitude": 24.71,
+      "longitude": 46.73,
+      "distance_to_center_km": 24
+    },
+    {
+      "code": "OEPS",
+      "name": "Al-Kharj / Prince Sultan Air Base",
+      "role": "Southern Gateway to Dahna / Rub al-Khali",
+      "latitude": 24.06,
+      "longitude": 47.58,
+      "distance_to_center_km": 129
+    },
+    {
+      "code": "OEDM",
+      "name": "Ad-Duwadimi / Prince Salman Airport",
+      "role": "Western Plateau / Tuwayq Gateway",
+      "latitude": 24.45,
+      "longitude": 44.12,
+      "distance_to_center_km": 268
+    },
+    {
+      "code": "OEWD",
+      "name": "Wadi Al-Dawasir Airport",
+      "role": "Rub al-Khali Northern Margin",
+      "latitude": 20.50,
+      "longitude": 45.20,
+      "distance_to_center_km": 515
+    }
+  ]
+}

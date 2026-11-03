@@ -14,7 +14,7 @@
 | <span style="background-color:#D97706;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🟡 AMBER GOLD</span> | **Medium Scale Dynamics** | Mesoscale Haboobs ($2\text{--}2,000\text{ km}$), extended-range forecasting ($3\text{--}15\text{ days}$), and regional corridors. |
 | <span style="background-color:#B91C1C;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🔴 CRIMSON RED</span> | **Large Scale Dynamics** | Synoptic/Macroscale ($>2,000\text{ km}$), long-term seasonal trends ($>15\text{ days}$), and planetary teleconnections. |
 | <span style="background-color:#0284C7;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🔵 ELECTRIC BLUE</span> | **Research AI Line A (GBDT)** | Numerical bias correction, LightGBM/CatBoost/XGBoost, and quantile uncertainty envelopes ($P_{10}/P_{50}/P_{90}$). |
-| <span style="background-color:#4F46E5;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🔮 INDIGO / VIOLET</span> | **Research AI Line B (PINN & ST-GNN)** | Deep vision backbone (AI-GAMFS), directional transport graph networks, and Navier-Stokes/Owen PINN PDEs. |
+| <span style="background-color:#4F46E5;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🔮 INDIGO / VIOLET</span> | **Research AI Line B (Deep Learning)** | Long Short-Term Memory (LSTM), Multi-Head Self-Attention Transformers, and Spatio-Temporal Graph Neural Networks (ST-GNN). |
 | <span style="background-color:#0F766E;color:white;padding:4px 10px;border-radius:4px;font-weight:bold;">🩵 TEAL CYAN</span> | **Spatial & Socioeconomic Tri-Pillar** | GIS geostatistics (Kriging/LISA), SPSS data screening, and AMOS structural equation modeling (SEM/PADM). |
 
 </div>
@@ -69,7 +69,7 @@ flowchart TD
 
     Research --> LineA["🔵 MAIN LINE A: Machine Learning GBDT Post-Processing<br/>• LightGBM + CatBoost + XGBoost Ensembles<br/>• Monotonic Quantiles (P10, P50, P90 Envelopes)<br/>• Cost-Sensitive 5-Tier Hazard Classifier<br/>• Tree SHAP Feature Attribution Diagnostics"]:::resAClass
 
-    Research --> LineB["🔮 MAIN LINE B: Deep Spatiotemporal & Physics AI<br/>• Coupled AI-GAMFS Vision Backbone (5km Grid)<br/>• ST-GNN 14-Node Corridor Advection Graph<br/>• Physics-Informed Neural Network (PINN) Loss:<br/>  - Mass Conservation Continuity PDE<br/>  - Owen Aerodynamic Saltation Gate (u* &gt; u*t)<br/>• Dynamic Blending Line A + Line B"]:::resBClass
+    Research --> LineB["🔮 MAIN LINE B: Deep Spatiotemporal AI (LSTM + Transformer + GNN)<br/>• LSTM Recurrent Sequence Network (temporal memory)<br/>• Spatiotemporal Transformer (sub-seasonal self-attention)<br/>• ST-GNN 14-Node Corridor Advection Graph (directional Chebyshev)<br/>• Coupled AI-GAMFS Vision Backbone (5km Grid)"]:::resBClass
 
     Research --> TriPillar["🩵 Spatial & Socioeconomic Tri-Pillar<br/>• GIS Ordinary Kriging & LISA Clustering<br/>• IBM SPSS Data Hygiene & EFA Screening<br/>• AMOS Confirmatory Factor Analysis (CFA)<br/>• PADM Structural Equation Modeling (SEM)<br/>• Municipal 4-Tier Crisis Action Matrix"]:::triClass
 ```
@@ -262,9 +262,9 @@ She ingests and harmonizes **7 distinct data modalities** through a rigorous 5-s
 
 ---
 
-### 3.3 Main Line B: Deep Spatiotemporal & Physics-Informed Foundation Models
+### 3.3 Main Line B: Deep Spatiotemporal Models (LSTM, Transformer & GNN)
 
-* **Scientific Role:** End-to-end spatiotemporal sequence modeling that enforces fundamental physical conservation laws to eradicate "AI hallucinations."
+* **Scientific Role:** End-to-end spatiotemporal deep learning capturing non-linear temporal memory, long-range planetary teleconnection attention, and spatial corridor advection.
 
 <div align="center">
 
@@ -274,35 +274,40 @@ She ingests and harmonizes **7 distinct data modalities** through a rigorous 5-s
                                 ▼
   ┌──────────────────────────────────────────────────────────────────┐
   │ COUPLED AI-GAMFS DEEP VISION BACKBONE                            │
-  │ High-capacity 3D-CNN / Spatiotemporal Attention (PredRNN)        │
+  │ High-capacity 3D-CNN / Spatiotemporal Feature Learning (5km Grid) │
   └─────────────────────────────┬────────────────────────────────────┘
                                 │
-                                ▼
+            ┌───────────────────┴───────────────────┐
+            ▼                                       ▼
+  ┌───────────────────────────────────┐   ┌───────────────────────────────────┐
+  │ LONG SHORT-TERM MEMORY (LSTM)     │   │ SPATIOTEMPORAL TRANSFORMER        │
+  │ Recurrent temporal gating for     │   │ Multi-head self-attention         │
+  │ sequential dust accumulation      │   │ capturing sub-seasonal waves      │
+  └─────────────────┬─────────────────┘   └─────────────────┬─────────────────┘
+                    │                                       │
+                    └───────────────────┬───────────────────┘
+                                        ▼
   ┌──────────────────────────────────────────────────────────────────┐
   │ SPATIO-TEMPORAL GRAPH NEURAL NETWORK (ST-GNN)                    │
-  │ 14-Node Corridor Graph with 3-Support Asymmetric Chebyshev PDE   │
-  │ Models directional advection: Upstream Basins → Riyadh Corridor  │
-  └─────────────────────────────┬────────────────────────────────────┘
-                                │
-                                ▼
-  ┌──────────────────────────────────────────────────────────────────┐
-  │ PHYSICS-INFORMED NEURAL NETWORK (PINN) LOSS REGULARIZER          │
-  │ • Mass Conservation PDE: ∂C/∂t + ∇·(uC) = K∇²C + S - vd·C        │
-  │ • Owen Saltation Aerodynamic Gate: Fsalt ∝ u*³ · I(u* > u*t)     │
+  │ 14-Node Corridor Graph with 3-Support Asymmetric Chebyshev       │
+  │ Directional Advection: Ad-Dahna / An-Nafud → Greater Riyadh      │
   └──────────────────────────────────────────────────────────────────┘
 ```
 
 </div>
 
-* **Coupled AI-GAMFS Vision Backbone:**
-  Ingests continuous $5\text{ km}$ multi-channel tensors (`[B, 3, 32, 32]`: MODIS AOD, 10m U-wind, 10m V-wind) to capture spatial vortex dynamics and frontal boundary propagation.
-* **ST-GNN Directional Corridor Graph (14 Nodes):**
-  Represents dust transport across 14 monitoring nodes along primary wind corridors (e.g., Al-Jawf $\to$ Ha'il $\to$ Al-Qassim $\to$ Riyadh $\to$ Al-Kharj). Employs **asymmetric Chebyshev polynomial graph convolutions** to capture unidirectional advection driven by prevailing northwest Shamal winds:
+* **1. Long Short-Term Memory (LSTM):**
+  * Gated recurrent units ($f_t, i_t, o_t, c_t$) modeling consecutive multi-hour and multi-day particulate matter concentration accumulation.
+  * Bidirectional GRU/LSTM networks with temporal attention mechanisms isolating upstream precursor loading.
+* **2. Spatiotemporal Transformer & Self-Attention:**
+  * Multi-head self-attention mechanisms capturing long-range atmospheric teleconnections (e.g., ENSO, NAO, AO planetary wave trains).
+  * Effectively solves the vanishing gradient problem over extended 3–15 day forecast horizons.
+* **3. ST-GNN Directional Corridor Graph (14 Nodes):**
+  * Represents dust transport across 14 monitoring nodes along primary wind corridors (e.g., Al-Jawf $\to$ Ha'il $\to$ Al-Qassim $\to$ Riyadh $\to$ Al-Kharj).
+  * Employs **asymmetric Chebyshev polynomial graph convolutions** to capture unidirectional physical advection driven by prevailing northwest Shamal winds:
   $$\mathbf{Z} = \sum_{k=0}^{K-1} \left( \mathbf{T}_k(\mathbf{\tilde{A}}_{\text{fwd}}) \mathbf{X} \mathbf{W}_{k,1} + \mathbf{T}_k(\mathbf{\tilde{A}}_{\text{rev}}) \mathbf{X} \mathbf{W}_{k,2} \right)$$
-* **PINN Loss Function (Physics-Informed Regularization):**
-  $$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{data}}(\theta) + \lambda_{\text{mass}} \mathcal{L}_{\text{continuity}}(\theta) + \lambda_{\text{salt}} \mathcal{L}_{\text{Owen}}(\theta)$$
-  * **Mass Continuity Constraint:** Penalizes spatial dust generation that occurs without upstream influx or localized surface emission.
-  * **Owen Saltation Gating:** Enforces that surface dust flux $S_{\text{emission}}$ can only be strictly non-zero if surface friction velocity exceeds aerodynamic threshold ($u_* > u_{*t}$).
+* **4. Coupled AI-GAMFS Vision Backbone:**
+  * Ingests continuous $5\text{ km}$ multi-channel tensors (`[B, 3, 32, 32]`: MODIS AOD, 10m U-wind, 10m V-wind) to track spatial vortex dynamics and approaching Haboob convective boundaries.
 
 ---
 
@@ -371,7 +376,7 @@ She ingests and harmonizes **7 distinct data modalities** through a rigorous 5-s
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Spatial Span** | Grid: $9\text{--}50\text{ km}$ (coarse resolution). | $< 2\text{ km}$ (Microscale / Local). | $2\text{--}2,000\text{ km}$ (Mesoscale / Regional). | $> 2,000\text{ km}$ (Synoptic / Macroscale). | **Hybrid Multi-Scale:** $5\text{ km}$ AI-GAMFS Grid + 14-Node Transport Corridors + GIS 90m DEM. |
 | **Temporal Horizon** | High skill at $0\text{--}48\text{ h}$; collapses beyond $72\text{ h}$. | $0\text{--}72\text{ h}$ (Nowcasting / Short-Range). | $3\text{--}15\text{ days}$ (Sub-seasonal range). | $> 15\text{--}90+\text{ days}$ (Seasonal trends). | **Extended Focus ($3\text{--}15\text{ days}$)** with continuous hourly resolution down to +120h. |
-| **Physics vs. Data** | Pure hydrodynamic differential equations. | Boundary layer shear & roughness mechanics. | Density currents & convective downdraft fronts. | Rossby waves, baroclinic pressure gradients. | **PINN Hybridization:** Data-driven deep learning regularized by Navier-Stokes & Owen saltation PDEs. |
+| **Deep Architecture** | Pure hydrodynamic differential equations. | Boundary layer shear & roughness mechanics. | Density currents & convective downdraft fronts. | Rossby waves, baroclinic pressure gradients. | **LSTM + Transformer + GNN:** Sequence memory, multi-head self-attention, and directional graph advection. |
 | **Uncertainty Output** | Deterministic single run or expensive EPS ensembles. | Binary sensor alarm threshold. | Regional probability bounds. | Seasonal anomaly indices. | **Calibrated Quantile Envelopes:** Continuous $P_{10}$, $P_{50}$, and $P_{90}$ intervals via Pinball Loss. |
 | **Extreme Handling** | Underestimates sudden convective spikes. | Local sensor saturation / spike artifacts. | Misses sharp Haboob front onset. | Averages out extreme peak values. | **Cost-Sensitive Learning:** Focal Loss + SMOTE + 5-Tier Hazard Classifier targeting rare extremes. |
 | **Explainability** | High physical theory; poor diagnostic metrics. | Local aerodynamic drag formulas. | Synoptic streamline analysis. | Empirical teleconnection regressions. | **Tree SHAP & Attention Maps:** Exact mathematical feature attribution and spatial attention rollouts. |
@@ -385,11 +390,11 @@ She ingests and harmonizes **7 distinct data modalities** through a rigorous 5-s
 
 > [!NOTE]
 > **Breakthrough 1: Extending the Lyapunov Predictability Barrier**  
-> Traditional numerical weather prediction models diverge sharply after Day 3 ($72\text{ hours}$). By coupling machine learning tree ensembles (Line A) with deep spatiotemporal graph neural networks (Line B), her framework maintains skillful forecasts into the **$3\text{--}15\text{ day}$ extended-range window**.
+> Traditional numerical weather prediction models diverge sharply after Day 3 ($72\text{ hours}$). By coupling machine learning tree ensembles (Line A) with deep spatiotemporal sequence and graph models (Line B), her framework maintains skillful forecasts into the **$3\text{--}15\text{ day}$ extended-range window**.
 
 > [!TIP]
-> **Breakthrough 2: Eliminating AI Hallucinations via PINN Physics**  
-> Standard deep neural networks minimize empirical training loss and frequently generate unphysical sandstorms in calm air. Her architecture enforces **mass continuity PDEs** and **Owen's cubic friction velocity threshold** ($u_* > u_{*t}$) inside the loss function, ensuring strict physical compliance.
+> **Breakthrough 2: Multi-Scale Spatiotemporal Modeling (LSTM + Transformer + GNN)**  
+> Rather than relying on simple linear baselines, her deep architecture synthesizes: **LSTM** for sequential concentration memory, **Transformers** with multi-head self-attention for sub-seasonal planetary waves, and **Spatio-Temporal GNNs** for directional transport corridor advection.
 
 > [!IMPORTANT]
 > **Breakthrough 3: Directional Transport Corridor Modeling (ST-GNN)**  

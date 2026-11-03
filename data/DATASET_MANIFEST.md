@@ -69,14 +69,15 @@
 
 ---
 
-## 6. Live Dataset Acquisition Status (Riyadh Real Data Stream)
+## 6. Live Dataset Acquisition Status (Riyadh & Connected Deserts)
 
-| Dataset Modality | Target Files / Period | Status | Local Disk Path | Notes |
+| Dataset Modality | Target Domain / Period | Status | Local Disk Path | Notes |
 | :--- | :--- | :---: | :--- | :--- |
-| **Ground Weather Stations** | 2023-01 to 2024-05 (12,582 records) | ✅ **100% Downloaded** | `data/raw/ground/riyadh_king_khalid_intl_airport_real.csv` | Official NOAA/IEM METAR records for Riyadh (OERK / WMO 40438), capturing 200 real dust storm hours. |
-| **ERA5 Atmospheric Reanalysis** | 2023-01 to 2024-05 (12,408 records) | ✅ **100% Downloaded** | `data/raw/era5/era5_riyadh_hourly.nc` | Authentic ECMWF ERA5 reanalysis NetCDF & CSV for Riyadh: 16 variables including U/V wind, gusts, soil moisture layers (0-7cm, 7-28cm). |
-| **GIS DEM & Boundaries** | High-Res 21×21 Topography Grid | ✅ **100% Downloaded** | `data/raw/gis/riyadh_dem_elevation_grid.nc` | SRTM DEM elevation (406m-1119m), slope, aerodynamic roughness length z0, and Riyadh GeoJSON boundary. |
-| **Satellite Remote Sensing** | 2023-01 to 2024-05 (12,408 records) | ✅ **100% Downloaded** | `data/raw/satellite/satellite_aod_dust_riyadh_hourly.nc` | NASA MODIS / Sentinel-3 SLSTR / Sentinel-5P TROPOMI AOD at 550nm, dust column, and NASA POWER solar flux. |
-| **Saudi Arabia CAMS NWP** | April 2024 [33°N, 34°E, 16°N, 56°E] | ✅ **100% Downloaded** | `data/raw/nwp/cams_forecast_saudi_arabia.nc` | Real operational Copernicus CAMS PM10, Dust AOD, and 10m Wind fields (1.58 MB) downloaded via Copernicus API. |
+| **Ground Weather Stations** | 2020–2024 (216,174 records across 6 stations) | ✅ **100% Downloaded** | [`data/raw/ground/riyadh_and_connected_deserts_ground_master.csv`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/ground/riyadh_and_connected_deserts_ground_master.csv) | Riyadh KKIA (`OERK`), Riyadh Air Base (`OERY`), Al-Kharj (`OEPS`), Ad-Duwadimi (`OEDM`), Wadi Al-Dawasir (`OEWD`), Gassim (`OEGS`). |
+| **ERA5 Atmospheric Reanalysis** | 2020–2024 (43,848 h × 6 domains) | ✅ **100% Downloaded** | [`data/raw/era5/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/era5/) | ECMWF ERA5 reanalysis time-series for Riyadh Metropolitan, Al-Thumamah Dunes, Ad-Dahna Desert, Nafud al-Thuwairat, Tuwayq Escarpment, and Rub' al-Khali. |
+| **Satellite & AERONET** | 2020–2024 (AOD, Dust Mass, Solar Flux) | ✅ **100% Downloaded** | [`data/raw/satellite/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/satellite/) | Satellite AOD & dust column across all 5 deserts + NASA AERONET ground-truth optical depth for Solar Village ([`aeronet_solar_village_riyadh_aod.csv`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/satellite/aeronet_solar_village_riyadh_aod.csv)). |
+| **GIS DEM & Desert Geometry** | High-Res Topography & Spatial Polygons | ✅ **100% Downloaded** | [`data/raw/gis/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/gis/) | Connected Deserts GeoJSON (`riyadh_connected_deserts_geometry.geojson`), physics metadata, and DEM grid (`connected_deserts_dem_elevation_grid.csv`). |
+| **NWP Operational Forecasts** | 5-day CAMS & ECMWF IFS Forecasts | ✅ **100% Downloaded** | [`data/raw/nwp/`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/nwp/) | Point forecasts across all 5 desert corridors ([`cams_forecast_connected_deserts_and_riyadh.csv`](file:///c:/Users/hp/Desktop/sandstorm_forecasting/data/raw/nwp/cams_forecast_connected_deserts_and_riyadh.csv)) + regional CAMS grid. |
+
 
 

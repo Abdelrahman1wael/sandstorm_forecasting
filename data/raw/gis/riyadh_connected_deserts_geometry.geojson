@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Riyadh Connected Desert Systems & Dust Transport Corridors",
+    "target_receptor": "Riyadh Metropolitan (24.9252 N, 46.7213 E)",
+    "crs": "EPSG:4326",
+    "description": "Spatial geometries, distances, and corridor vectors of the 5 key desert systems directly affecting sandstorms in Riyadh"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "al_thumamah",
+        "name": "Al-Thumamah Desert Dunes",
+        "category": "Immediate Local Active Dunes",
+        "distance_km": 50,
+        "compass_direction": "East / Northeast",
+        "bearing_deg": 60,
+        "connected_governorates": ["Ar-Riyad", "Ad-Diriyah", "Rumah"],
+        "sand_type": "Active longitudinal dunes, fine quartz sand sheets",
+        "emission_mechanism": "High sensitivity to local wind gusts (>= 7 m/s) and diurnal thermal turbulence, producing fast local blowing dust and rapid visibility drops in northern and eastern Riyadh."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [46.85, 25.10],
+            [47.20, 25.35],
+            [47.35, 25.15],
+            [47.00, 24.95],
+            [46.85, 25.10]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ad_dahna",
+        "name": "Ad-Dahna Desert (Eastern Sand Sea)",
+        "category": "Regional Sand Sea Conveyor",
+        "distance_km": 120,
+        "compass_direction": "Northeast",
+        "bearing_deg": 45,
+        "connected_governorates": ["Rumah", "Al-Majmaah"],
+        "sand_type": "Iron-oxide coated reddish dunes (barchans and star dunes)",
+        "emission_mechanism": "Acts as the physical eastern sand bridge linking northern Nafud to southern Rub' al-Khali; funnels high concentrations of red silt/sand directly into central Riyadh under easterly or migrating Shamal wind vectors."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [47.05, 25.50],
+            [47.60, 26.20],
+            [48.10, 25.80],
+            [47.50, 25.10],
+            [47.05, 25.50]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nafud_al_thuwairat",
+        "name": "Nafud al-Thuwairat (Northern Sand Sea)",
+        "category": "Major High-Frequency Dust Source",
+        "distance_km": 220,
+        "compass_direction": "Northwest",
+        "bearing_deg": 325,
+        "connected_governorates": ["Az-Zulfi", "Al-Ghat", "Al-Majmaah"],
+        "sand_type": "Fine aeolian silts, unconsolidated dune sands",
+        "emission_mechanism": "Classified by the Saudi Regional SDS Center as one of the most active sand-emission hotspots; dominant northwesterly Shamal winds mobilize fine particulate matter that travels down the Al-Qassim/Al-Majmaah corridor straight into Riyadh."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [44.50, 26.30],
+            [45.30, 27.10],
+            [45.80, 26.70],
+            [45.00, 25.90],
+            [44.50, 26.30]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tuwayq_escarpment",
+        "name": "Tuwayq Escarpment",
+        "category": "Orographic & Convective Boundary Ridge",
+        "distance_km": 180,
+        "compass_direction": "Southwest",
+        "bearing_deg": 235,
+        "connected_governorates": ["Huraymila", "Thadiq", "Shaqra", "Duruma", "Al-Muzahimiyah", "Ad-Duwadimi"],
+        "sand_type": "Limestone plateau, talus slopes, desert wadi alluvial deposits",
+        "emission_mechanism": "800-km continuous cliff cuesta creating severe topographic wind channeling, thermal updrafts, and convective downdraft Haboobs that sweep dust walls into Riyadh."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [45.30, 24.30],
+            [46.10, 25.00],
+            [45.90, 24.00],
+            [45.10, 23.30],
+            [45.30, 24.30]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rub_al_khali",
+        "name": "Rub' al-Khali (The Empty Quarter)",
+        "category": "Megadesert Hyper-Arid Sand Basin",
+        "distance_km": 350,
+        "compass_direction": "Southeast",
+        "bearing_deg": 145,
+        "connected_governorates": ["Al-Kharj", "Al-Hariq", "Hawtat Bani Tamim", "Al-Aflaj", "As-Sulayyil", "Wadi Addawasir"],
+        "sand_type": "Massive transverse dunes, mega-barchans, hypersaline sabkhas",
+        "emission_mechanism": "World's largest sand sea; deep southerly thermal depressions and Khasif wind surges drive massive, regional dust plumes northward across southern Riyadh Province into the capital."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [47.50, 23.00],
+            [50.50, 23.50],
+            [52.00, 20.00],
+            [46.50, 19.50],
+            [47.50, 23.00]
+          ]
+        ]
+      }
+    }
+  ]
+}

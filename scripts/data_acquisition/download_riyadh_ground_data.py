@@ -1,10 +1,8 @@
+
 """
-Script to prepare official, real ground station data for Riyadh and its inflow corridor.
+Script to prepare official, real ground station data for Riyadh.
 Primary Station:
 - OERK: King Khalid International Airport, Riyadh (24.9252°N, 46.7213°E, Elev 614m)
-Upwind Corridor Stations:
-- OEGS: Gassim / Buraidah Airport (26.3028°N, 43.7744°E) - Northwest inflow to Riyadh
-- OERF: Rafha Airport (29.6264°N, 43.4906°E) - Northern boundary entrance corridor
 """
 
 import sys
@@ -25,46 +23,6 @@ stations = [
         "lat": 24.9252,
         "lon": 46.7213,
         "elev": 614
-    },
-    {
-        "code": "OEGS",
-        "name": "Gassim_Regional_Airport",
-        "role": "Northwest_Upwind_Corridor_to_Riyadh",
-        "lat": 26.3028,
-        "lon": 43.7744,
-        "elev": 648
-    },
-    {
-        "code": "OERF",
-        "name": "Rafha_Airport",
-        "role": "Northern_Shamal_Source_Corridor",
-        "lat": 29.6264,
-        "lon": 43.4906,
-        "elev": 449
-    },
-    {
-        "code": "OEDF",
-        "name": "King_Fahd_Intl_Airport_Dammam",
-        "role": "Eastern_Gulf_Inflow_Corridor",
-        "lat": 26.4712,
-        "lon": 49.7979,
-        "elev": 22
-    },
-    {
-        "code": "OEAH",
-        "name": "Al_Ahsa_Airport",
-        "role": "Southeastern_Inflow_Corridor",
-        "lat": 25.2853,
-        "lon": 49.4867,
-        "elev": 179
-    },
-    {
-        "code": "OEHL",
-        "name": "Hail_Regional_Airport",
-        "role": "North_Central_Nafud_Corridor",
-        "lat": 27.4380,
-        "lon": 41.6864,
-        "elev": 1015
     }
 ]
 
