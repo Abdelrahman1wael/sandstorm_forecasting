@@ -9,7 +9,7 @@ import time
 
 CDS_URL = "https://cds.climate.copernicus.eu/api"
 OUTPUT_DIR = r"C:\Users\LENOVO\Desktop\THESIS\data\era5"
-AREA = [34, 45, 20, 60]
+AREA = [25.25, 46.25, 24.25, 47.25]  # N, W, S, E - box around Riyadh (24.71N, 46.67E)
 HOURS_6H = ["00:00", "06:00", "12:00", "18:00"]
 
 SINGLE_LEVEL_VARS = [

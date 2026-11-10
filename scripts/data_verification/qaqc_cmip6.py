@@ -24,8 +24,8 @@ EXPECTED_MODELS = ["GISS-E2-1-G", "GISS-E2-1-H", "MIROC-ES2L", "MIROC6", "MRI-ES
 EXPECTED_EXPERIMENTS = ["historical", "ssp245", "ssp585"]
 
 # Arabian Gulf region for extraction
-AG_LAT_MIN, AG_LAT_MAX = 20.0, 34.0
-AG_LON_MIN, AG_LON_MAX = 45.0, 60.0
+AG_LAT_MIN, AG_LAT_MAX = 23.0, 26.0   # coarse CMIP6 grid: wider box around Riyadh
+AG_LON_MIN, AG_LON_MAX = 45.0, 48.0
 
 # Value range — only negatives are physically impossible
 VALUE_MIN = 0.0

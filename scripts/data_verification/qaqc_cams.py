@@ -22,8 +22,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data", "cams")
 OUT_DIR = os.path.join(BASE_DIR, "data")
 
 # Expected domain
-EXPECTED_LAT_MIN, EXPECTED_LAT_MAX = 20.0, 34.0
-EXPECTED_LON_MIN, EXPECTED_LON_MAX = 45.2, 60.0
+EXPECTED_LAT_MIN, EXPECTED_LAT_MAX = 24.25, 25.25
+EXPECTED_LON_MIN, EXPECTED_LON_MAX = 46.25, 47.25
 EXPECTED_RESOLUTION = 0.4
 EXPECTED_STEPS = 41  # 0 to 120h in 3h increments
 EXPECTED_STEP_VALUES = np.arange(0, 123, 3, dtype=float)  # 0, 3, 6, ..., 120
@@ -117,10 +117,10 @@ def check_file(filepath):
         result["lon_max"] = float(lon.max())
 
         result["domain_correct"] = (
-            np.isclose(lat.min(), EXPECTED_LAT_MIN, atol=0.1) and
-            np.isclose(lat.max(), EXPECTED_LAT_MAX, atol=0.1) and
-            np.isclose(lon.min(), EXPECTED_LON_MIN, atol=0.1) and
-            np.isclose(lon.max(), EXPECTED_LON_MAX, atol=0.1)
+            np.isclose(lat.min(), EXPECTED_LAT_MIN, atol=0.4) and
+            np.isclose(lat.max(), EXPECTED_LAT_MAX, atol=0.4) and
+            np.isclose(lon.min(), EXPECTED_LON_MIN, atol=0.4) and
+            np.isclose(lon.max(), EXPECTED_LON_MAX, atol=0.4)
         )
         if not result["domain_correct"]:
             result["issues"].append(

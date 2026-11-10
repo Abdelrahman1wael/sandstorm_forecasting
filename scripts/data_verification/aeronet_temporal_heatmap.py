@@ -18,14 +18,7 @@ FIG_DIR = r"C:\Users\LENOVO\Desktop\THESIS\figures"
 
 # Station definitions: (filename, tier, level folder)
 STATIONS = [
-    ("Mezaira_AOD20_allpoints.csv", "Tier 1", "level2"),
-    ("Masdar_Institute_AOD20_allpoints.csv", "Tier 1", "level2"),
-    ("Kuwait_University_AOD20_allpoints.csv", "Tier 2", "level2"),
-    ("Shagaya_Park_AOD20_allpoints.csv", "Tier 2", "level2"),
-    ("DEWA_ResearchCentre_AOD20_allpoints.csv", "Tier 2", "level2"),
     ("Riyadh_Airport_SDSC_AOD15_allpoints.csv", "Tier 3", "level15"),
-    ("Kuwait_University_2_AOD15_allpoints.csv", "Tier 3", "level15"),
-    ("Khalifa_University_AOD15_allpoints.csv", "Tier 3", "level15"),
 ]
 
 

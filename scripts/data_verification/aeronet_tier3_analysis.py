@@ -13,8 +13,6 @@ DATA_DIR = r"C:\Users\LENOVO\Desktop\THESIS\data\aeronet\level15"
 
 STATIONS = [
     "Riyadh_Airport_SDSC_AOD15_allpoints.csv",
-    "Kuwait_University_2_AOD15_allpoints.csv",
-    "Khalifa_University_AOD15_allpoints.csv",
 ]
 
 

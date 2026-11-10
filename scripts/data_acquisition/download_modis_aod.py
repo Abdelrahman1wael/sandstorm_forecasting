@@ -31,17 +31,11 @@ BASE = r"C:\Users\LENOVO\Desktop\THESIS"
 OUTPUT_DIR = os.path.join(BASE, "data", "modis")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-EARTHDATA_USER = "daone2028"
-EARTHDATA_PASS = "Realmadrid77@77"
+EARTHDATA_USER = os.environ["EARTHDATA_USER"]   # set in your shell, never hardcode
+EARTHDATA_PASS = os.environ["EARTHDATA_PASS"]
 
 STATIONS = {
-    "Kuwait_University":    {"lat": 29.325, "lon": 47.971},
-    "Shagaya_Park":         {"lat": 29.209, "lon": 47.061},
-    "Kuwait_University_2":  {"lat": 29.258, "lon": 47.897},
-    "Mezaira":              {"lat": 23.105, "lon": 53.755},
-    "Masdar_Institute":     {"lat": 24.442, "lon": 54.617},
-    "DEWA_ResearchCentre":  {"lat": 24.767, "lon": 55.369},
-    "Riyadh_Airport_SDSC":  {"lat": 24.926, "lon": 46.722},
+    "Riyadh": {"lat": 24.71, "lon": 46.67},
 }
 
 VARIABLES = {
@@ -52,9 +46,9 @@ VARIABLES = {
 SCALE_FACTOR = 0.001
 FILL_VALUE = -9999
 
-# Sub-region covering all stations: lat 20-34N, lon 45-60E
-Y1, Y2 = 55, 69    # lat 34N to 20N
-X1, X2 = 225, 240   # lon 45E to 60E
+# Sub-region around Riyadh: lat 23-25N (rows 64-66), lon 45-47E (cols 225-227)
+Y1, Y2 = 64, 66
+X1, X2 = 225, 227
 
 START_YEAR = 2015
 END_YEAR = 2024

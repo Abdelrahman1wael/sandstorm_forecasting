@@ -37,23 +37,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- Station definitions ---
 STATIONS = [
-    # Level 2.0
-    {"name": "DEWA_ResearchCentre", "lat": 24.766847, "lon": 55.369125,
-     "file": "level2/DEWA_ResearchCentre_AOD20_allpoints.csv", "level": "L2"},
-    {"name": "Kuwait_University", "lat": 29.325, "lon": 47.971,
-     "file": "level2/Kuwait_University_AOD20_allpoints.csv", "level": "L2"},
-    {"name": "Masdar_Institute", "lat": 24.4416, "lon": 54.6166,
-     "file": "level2/Masdar_Institute_AOD20_allpoints.csv", "level": "L2"},
-    {"name": "Mezaira", "lat": 23.10452, "lon": 53.75466,
-     "file": "level2/Mezaira_AOD20_allpoints.csv", "level": "L2"},
-    {"name": "Shagaya_Park", "lat": 29.209072, "lon": 47.060528,
-     "file": "level2/Shagaya_Park_AOD20_allpoints.csv", "level": "L2"},
-    # Level 1.5
-    {"name": "Khalifa_University", "lat": 24.418008, "lon": 54.501108,
-     "file": "level15/Khalifa_University_AOD15_allpoints.csv", "level": "L1.5"},
-    {"name": "Kuwait_University_2", "lat": 29.2576, "lon": 47.897,
-     "file": "level15/Kuwait_University_2_AOD15_allpoints.csv", "level": "L1.5"},
-    {"name": "Riyadh_Airport_SDSC", "lat": 24.925833, "lon": 46.72171,
+    {"name": "Riyadh_Airport_SDSC", "lat": 24.71, "lon": 46.67,
      "file": "level15/Riyadh_Airport_SDSC_AOD15_allpoints.csv", "level": "L1.5"},
 ]
 

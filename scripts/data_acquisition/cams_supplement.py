@@ -14,7 +14,7 @@ OUTPUT_DIR = r"C:\Users\LENOVO\Desktop\THESIS\data\cams"
 TEMP_DIR = os.path.join(OUTPUT_DIR, "temp")
 DATASET = "cams-global-atmospheric-composition-forecasts"
 
-AREA = [34, 45, 20, 60]
+AREA = [25.25, 46.25, 24.25, 47.25]  # N, W, S, E - box around Riyadh (24.71N, 46.67E)
 LEADTIMES = [str(h) for h in range(0, 121, 3)]
 MAX_WORKERS = 2
 

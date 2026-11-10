@@ -25,13 +25,7 @@ OUT_DIR = DATA_DIR / "meta_model"
 OUT_DIR.mkdir(exist_ok=True)
 
 STATION_COORDS = {
-    'DEWA_ResearchCentre': (24.767, 55.369),
-    'Kuwait_University': (29.326, 47.972),
-    'Kuwait_University_2': (29.326, 47.972),
-    'Masdar_Institute': (24.442, 54.617),
-    'Mezaira': (23.145, 53.779),
-    'Riyadh_Airport_SDSC': (24.712, 46.725),
-    'Shagaya_Park': (29.204, 47.070),
+    'Riyadh_Airport_SDSC': (24.71, 46.67),
 }
 
 # ─── Step 1: Load and aggregate collocated data per (station, date, lead_time) ───

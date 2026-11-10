@@ -19,7 +19,7 @@ else:
         "month": "01",
         "day": [f"{d:02d}" for d in range(1, 32)],
         "time": ["00:00", "06:00", "12:00", "18:00"],
-        "area": [34, 45, 20, 60],
+        "area": [25.25, 46.25, 24.25, 47.25],
         "data_format": "netcdf",
     }, filepath)
     size_mb = os.path.getsize(filepath) / (1024 * 1024)
