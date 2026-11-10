@@ -1,82 +1,86 @@
-# 🛠️ Operations & Utility Scripts Directory
-### Sand & Dust Storm Forecasting Platform (DustML)
+# 🛠️ Sandstorm Forecasting Pipeline: Scripts Directory
 
-This directory contains modular utility scripts for operational data retrieval, quality inspection, automated notebook generation, and machine learning pipeline execution.
+This directory contains the operational and development scripts for data acquisition, verification, preprocessing, machine learning execution, RAG system, presentation generation, and notebook creation.
 
----
-
-## 📂 Directory Layout
-
-```text
+```
 scripts/
-├── README.md                          # Documentation index of all operational utilities
-│
-├── data_acquisition/                 # 1. API downloaders & synthetic stand-in generators
-│   ├── download_riyadh_ground_data.py# Downloads real ground station observations for Riyadh (OERK) & corridors
-│   ├── download_riyadh_era5.py       # Downloads real ECMWF ERA5 hourly reanalysis & spatial grid for Riyadh
-│   ├── download_riyadh_gis.py        # Downloads real GIS DEM elevation grid, slope, roughness & GeoJSON boundaries
-│   ├── download_riyadh_satellite.py  # Downloads real satellite remote sensing AOD (MODIS/Sentinel) & NASA solar flux
-│   ├── download_nwp_saudi_arabia.py  # Primary Copernicus ADS downloader for Saudi Arabia CAMS NWP
-│   ├── download_cams_forecast.py     # Global CAMS atmospheric composition downloader
-│   ├── download_tigge_forecast.py    # ECMWF TIGGE extended-range downloader
-│   ├── generate_standin_nwp.py       # General testing synthetic NetCDF generator
-│   └── generate_standin_nwp_saudi.py # Domain-calibrated Saudi Arabia testing generator
-│
-├── data_verification/                # 2. Quality inspection & data integrity checkers
-│   ├── inspect_riyadh_datasets.py    # Master audit & inspection script for Riyadh real datasets (ERA5, GIS, Ground)
-│   ├── inspect_saudi_nwp.py          # NetCDF-4 metadata & GRIB parameter validator
-│   ├── check_downloaded_data.py      # Multi-source dataset integrity & completeness checker
-│   └── test_feature_pipeline.py      # Feature engineering calculation & Parquet export test
-│
-├── pipeline_runners/                  # 3. Operational Machine Learning execution
-│   └── run_saudi_line_a_pipeline.py  # Master runner: Line A models (Logistic, RF, XGB) across H3, H7, H15
-│
-└── notebook_generators/              # 4. Automated reproducible Jupyter notebook builders
-    ├── create_saudi_notebooks.py     # Builds Notebooks 01 (EDA) & 02 (Feature Engineering)
-    ├── create_line_a_notebook.py     # Builds Notebook 03 (HistGradientBoosting & Pinball Loss)
-    ├── create_notebook_04.py         # Builds Notebook 04 (Full 3-algorithm benchmark suite)
-    └── create_exploration_notebook.py# Builds general exploratory analysis notebook
+├── data_acquisition/       # Automated retrieval of raw ground, satellite, reanalysis & NWP data
+├── data_verification/      # Rigorous QC audits, file integrity, and data validation
+├── preprocessing/          # Data harmonization, multi-modal merging & feature engineering
+├── pipeline_runners/       # End-to-end ML training, threshold optimization & baseline benchmarking
+├── notebook_generators/    # Automated builders for analysis and pipeline Jupyter Notebooks
+├── rag/                    # Anthropogenic dust sources literature scraping, indexing & hybrid RAG
+├── doc_and_diagrams/       # Automated Word (.docx) document, PowerPoint, Excel, and Draw.io generators
+└── utils/                  # Project utility scripts and diagnostic calculators
 ```
 
 ---
 
-## 🚀 Execution Guide & CLI Examples
+## 📂 Subdirectory Inventory
 
-Always execute scripts using your Anaconda Python environment from the repository root:
+### 1. `data_acquisition/`
+Scripts responsible for fetching raw data from official meteorology and atmospheric providers:
+* `cams_big_batch.py`: Batch downloader for CAMS dust AOD in 6-month chunks.
+* `cams_supplement.py`: Supplementary download pipeline for CAMS forecasts (2020–2024).
+* `download_201501_pl.py`: Dedicated download handler for ERA5 pressure-level files.
+* `download_cams.py`: CAMS Global Dust AOD forecasts 10-day batch retrieval.
+* `download_cmip6.py`: ESGF retrieval for CMIP6 dust optical depth (`od550dust`).
+* `download_era5.py`: Monthly batch retrieval of ECMWF ERA5 reanalysis single- and pressure-levels.
+* `download_modis_aod.py`: NASA MODIS Deep Blue AOD (550nm) OPeNDAP extraction.
+* `era5_big_batch.py`: Bulk gap filler for ERA5 reanalysis datasets.
+* `era5_bulk_download.py`: High-throughput multi-field ERA5 bulk downloader.
+* `era5_optimized.py`: Combined multi-variable pressure-level ERA5 retrieval.
+* `era5_pl_quarterly.py`: Quarterly chunking engine for large ERA5 pressure-level queries.
+* `era5_supplement.py`: Supplementary downloader for ERA5 records.
+* `submit_all_cams.py`: Concurrent multi-worker job submission for CAMS ADS queues.
+* `submit_all_era5.py`: Concurrent multi-worker job submission for ERA5 CDS queues.
 
-### 1. Data Acquisition
-Download real operational CAMS atmospheric composition forecasts for the Kingdom of Saudi Arabia:
-```bash
-python scripts/data_acquisition/download_nwp_saudi_arabia.py
-```
-*Destination:* `data/raw/nwp/cams_forecast_saudi_arabia.nc`
+### 2. `data_verification/`
+Validation scripts ensuring file integrity and scientific rigor:
+* `aeronet_temporal_heatmap.py`: Station × month temporal coverage heatmap generator for AERONET Level 1.5 & 2.0.
+* `aeronet_tier3_analysis.py`: Detailed temporal and quality tier analysis for Tier 3 stations.
+* `qaqc_aeronet.py`: QA/QC validator for AERONET ground truth CSV archives.
+* `qaqc_cams.py`: QA/QC integrity and domain boundary checker for CAMS NetCDF forecasts.
+* `qaqc_cmip6.py`: QA/QC schema and value bounds validation for CMIP6 climate models.
+* `qaqc_era5.py`: Comprehensive QA/QC suite for ERA5 surface and pressure NetCDFs.
+* `qaqc_report.py`: Master QA/QC orchestrator producing a unified health and checklist report.
+* `three_way_validation.py`: Three-way cross-validation (MODIS vs AERONET vs CAMS) with scatter statistics.
 
-### 2. Data Verification
-Inspect and validate the NetCDF internal headers, GRIB parameters, and physical value ranges:
-```bash
-python scripts/data_verification/inspect_saudi_nwp.py
-```
+### 3. `preprocessing/`
+The core feature engineering, collocation, and multimodal coupling engine:
+* `build_meta_features.py`: Phase 2 Step 1 feature engineering coupling CAMS-AERONET error dynamics with ERA5 meteorology.
+* `collocate_cams_aeronet.py`: Spatio-temporal collocation aligning AERONET station observations with CAMS forecast timesteps.
+* `merge_cams.py`: Merges raw CAMS 10-day forecast windows into unified monthly archives.
 
-Verify the feature engineering pipeline and test Parquet generation:
-```bash
-python scripts/data_verification/test_feature_pipeline.py
-```
+### 4. `pipeline_runners/`
+End-to-end model training, threshold tuning, and benchmarking:
+* `train_meta_model.py`: Phase 2 Step 2 training pipeline for Random Forest, XGBoost, and Neural Network meta-models.
+* `benchmark_baselines.py`: Benchmarks meta-models against Climatology and Persistence baselines.
+* `optimize_threshold.py`: Precision-recall curve analysis and optimal F1 classification threshold tuning.
 
-### 3. Pipeline Runners
-Execute the complete Line A multi-algorithm machine learning benchmark:
-```bash
-python scripts/pipeline_runners/run_saudi_line_a_pipeline.py
-```
+### 5. `notebook_generators/`
+Generates clean, runnable Jupyter notebooks for presentations and analysis:
+* `generate_processing_notebooks.py`: Builds modular data processing notebooks in `notebooks/data_processing/`.
+* `create_exploration_notebook.py`: Builds exploratory data analysis notebooks.
+* `create_line_a_notebook.py` / `create_notebook_04.py`: Builds Machine Learning Line A model notebooks.
+* `create_saudi_notebooks.py`: Builds comprehensive Saudi Arabian domain NWP notebooks.
 
-### 4. Notebook Generators
-Rebuild reproducible Jupyter notebooks:
-```bash
-# Generate Notebooks 01 and 02
-python scripts/notebook_generators/create_saudi_notebooks.py
+### 6. `rag/`
+Retrieval-Augmented Generation system for anthropogenic and regional dust source literature:
+* `scrape_papers.py`: OpenAlex and Unpaywall academic paper harvester.
+* `build_rag.py`: PDF text extractor, semantic chunker, and ChromaDB vector store builder.
+* `query_rag.py`: Hybrid BM25 + dense vector search with re-ranking and LLM cited synthesis.
 
-# Generate Notebook 03 (Line A Tree Ensemble & Quantiles)
-python scripts/notebook_generators/create_line_a_notebook.py
+### 7. `doc_and_diagrams/`
+Automation utilities for presentation and publication deliverables:
+* `create_awards_excel.py`: Automated generation of structured research submission and awards tracking sheets.
+* `generate_complete_presentation.py`: Builds presentation slide assets.
+* `generate_drawio_diagram.py`: Programmatically generates XML architectural and pipeline diagrams.
+* `organize_documentation_folder.py`: Automated structure organizer for the `Documentation/` tree.
+* `render_sitemap_image_and_doc.py`: Renders diagrams and embeds them into final Word documents.
+* `verify_docx.py`: Validates Word document formatting and table layouts.
+* `extract_proposal_text.py` / `extracted_proposal.txt`: Extracts and indexes proposal specifications.
 
-# Generate Notebook 04 (Full 3-algorithm benchmark)
-python scripts/notebook_generators/create_notebook_04.py
-```
+### 8. `utils/`
+Utility tools and tracking scripts:
+* `usage_calc.py`: Token usage, context window, and interaction metrics calculator.
