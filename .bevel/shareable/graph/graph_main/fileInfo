@@ -1,5 +1,159 @@
 {
   "fileInfos" : [ {
+    "path" : ".venv\\Lib\\site-packages\\pip\\__main__.py",
+    "modificationInfo" : {
+      "contentHash" : -1422157918,
+      "lastModified" : 1794348715124
+    },
+    "linesOfCode" : 24
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\__pip-runner__.py",
+    "modificationInfo" : {
+      "contentHash" : 613963843,
+      "lastModified" : 1794348715125
+    },
+    "linesOfCode" : 50
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -1309720823,
+      "lastModified" : 1794348715129
+    },
+    "linesOfCode" : 19
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\cli\\command_context.py",
+    "modificationInfo" : {
+      "contentHash" : -2098239915,
+      "lastModified" : 1794348715159
+    },
+    "linesOfCode" : 27
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\cli\\progress_bars.py",
+    "modificationInfo" : {
+      "contentHash" : -1785494643,
+      "lastModified" : 1794348715167
+    },
+    "linesOfCode" : 68
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\cli\\status_codes.py",
+    "modificationInfo" : {
+      "contentHash" : 1906093263,
+      "lastModified" : 1794348715174
+    },
+    "linesOfCode" : 6
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\commands\\check.py",
+    "modificationInfo" : {
+      "contentHash" : -242932528,
+      "lastModified" : 1794348715181
+    },
+    "linesOfCode" : 54
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\models\\candidate.py",
+    "modificationInfo" : {
+      "contentHash" : 184619592,
+      "lastModified" : 1794348715261
+    },
+    "linesOfCode" : 34
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\resolution\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : 0,
+      "lastModified" : 1794348715358
+    },
+    "linesOfCode" : 0
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\resolution\\legacy\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : 0,
+      "lastModified" : 1794348715361
+    },
+    "linesOfCode" : 0
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\utils\\filetypes.py",
+    "modificationInfo" : {
+      "contentHash" : -74865038,
+      "lastModified" : 1794348715400
+    },
+    "linesOfCode" : 27
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_internal\\utils\\inject_securetransport.py",
+    "modificationInfo" : {
+      "contentHash" : 84989751,
+      "lastModified" : 1794348715405
+    },
+    "linesOfCode" : 35
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\caches\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -2139646498,
+      "lastModified" : 1794348715457
+    },
+    "linesOfCode" : 9
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : -1579494430,
+      "lastModified" : 1794348715461
+    },
+    "linesOfCode" : 4
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\chardet\\codingstatemachinedict.py",
+    "modificationInfo" : {
+      "contentHash" : 1590030951,
+      "lastModified" : 1794348715480
+    },
+    "linesOfCode" : 19
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\chardet\\langthaimodel.py",
+    "modificationInfo" : {
+      "contentHash" : -1334928914,
+      "lastModified" : 1794348715520
+    },
+    "linesOfCode" : 4380
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\colorama\\__init__.py",
+    "modificationInfo" : {
+      "contentHash" : 1528959555,
+      "lastModified" : 1794348715553
+    },
+    "linesOfCode" : 7
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\colorama\\tests\\utils.py",
+    "modificationInfo" : {
+      "contentHash" : 633014368,
+      "lastModified" : 1794348715590
+    },
+    "linesOfCode" : 49
+  }, {
+    "path" : ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\modeline.py",
+    "modificationInfo" : {
+      "contentHash" : -1599043352,
+      "lastModified" : 1794348715786
+    },
+    "linesOfCode" : 43
+  }, {
+    "path" : "scripts\\build_meta_features.py",
+    "modificationInfo" : {
+      "contentHash" : -1125509083,
+      "lastModified" : 1794347920200
+    },
+    "linesOfCode" : 202
+  }, {
+    "path" : "scripts\\cds_utils.py",
+    "modificationInfo" : {
+      "contentHash" : 1335648542,
+      "lastModified" : 1794342183640
+    },
+    "linesOfCode" : 66
+  }, {
+    "path" : "scripts\\collocate_cams_aeronet.py",
+    "modificationInfo" : {
+      "contentHash" : 297352650,
+      "lastModified" : 1794347924976
+    },
+    "linesOfCode" : 198
+  }, {
     "path" : "scripts\\data_acquisition\\download_cams.py",
     "modificationInfo" : {
       "contentHash" : -2002060864,
@@ -35,12 +189,174 @@
     },
     "linesOfCode" : 514
   }, {
+    "path" : "scripts\\download_cams.py",
+    "modificationInfo" : {
+      "contentHash" : -487222832,
+      "lastModified" : 1794347925760
+    },
+    "linesOfCode" : 98
+  }, {
+    "path" : "scripts\\download_era5.py",
+    "modificationInfo" : {
+      "contentHash" : 9820906,
+      "lastModified" : 1794347028805
+    },
+    "linesOfCode" : 252
+  }, {
+    "path" : "scripts\\download_modis_aod.py",
+    "modificationInfo" : {
+      "contentHash" : -1204345260,
+      "lastModified" : 1794347064568
+    },
+    "linesOfCode" : 318
+  }, {
+    "path" : "scripts\\era5_big_batch.py",
+    "modificationInfo" : {
+      "contentHash" : 644838428,
+      "lastModified" : 1794347094937
+    },
+    "linesOfCode" : 158
+  }, {
+    "path" : "scripts\\era5_bulk_download.py",
+    "modificationInfo" : {
+      "contentHash" : 784631725,
+      "lastModified" : 1794347112839
+    },
+    "linesOfCode" : 186
+  }, {
+    "path" : "scripts\\era5_optimized.py",
+    "modificationInfo" : {
+      "contentHash" : 661988844,
+      "lastModified" : 1794347130864
+    },
+    "linesOfCode" : 185
+  }, {
+    "path" : "scripts\\era5_pl_quarterly.py",
+    "modificationInfo" : {
+      "contentHash" : 1720944438,
+      "lastModified" : 1794347149292
+    },
+    "linesOfCode" : 158
+  }, {
+    "path" : "scripts\\era5_supplement.py",
+    "modificationInfo" : {
+      "contentHash" : -1686008151,
+      "lastModified" : 1794347168268
+    },
+    "linesOfCode" : 165
+  }, {
+    "path" : "scripts\\merge_cams.py",
+    "modificationInfo" : {
+      "contentHash" : -992143816,
+      "lastModified" : 1794347177857
+    },
+    "linesOfCode" : 80
+  }, {
+    "path" : "scripts\\optimize_threshold.py",
+    "modificationInfo" : {
+      "contentHash" : 1957156688,
+      "lastModified" : 1794347343192
+    },
+    "linesOfCode" : 162
+  }, {
     "path" : "scripts\\preprocessing\\build_meta_features.py",
     "modificationInfo" : {
       "contentHash" : -1603990773,
       "lastModified" : 1794326613099
     },
     "linesOfCode" : 253
+  }, {
+    "path" : "scripts\\qaqc_aeronet.py",
+    "modificationInfo" : {
+      "contentHash" : -1906359166,
+      " : 1794347366313
+    },
+    "linesOfCode" : 138
+  }, {
+    "path" : "scripts\\qaqc_cams.py",
+    "modificationInfo" : {
+      "contentHash" : -74447410,
+      "lastModified" : 1794347390525
+    },
+    "linesOfCode" : 126
+  }, {
+    "path" : "scripts\\qaqc_era5.py",
+    "modificationInfo" : {
+      "contentHash" : 834600264,
+      "lastModified" : 1794347410662
+    },
+    "linesOfCode" : 105
+  }, {
+    "path" : "scripts\\qaqc_report.py",
+    "modificationInfo" : {
+      "contentHash" : 1725900832,
+      "lastModified" : 1794347432389
+    },
+    "linesOfCode" : 151
+  }, {
+    "path" : "scripts\\query_rag.py",
+    "modificationInfo" : {
+      "contentHash" : 2083075306,
+      "lastModified" : 1794347468702
+    },
+    "linesOfCode" : 350
+  }, {
+    "path" : "scripts\\riyadh_common copy.py",
+    "modificationInfo" : {
+      "contentHash" : -570455801,
+      "lastModified" : 1794342183693
+    },
+    "linesOfCode" : 172
+  }, {
+    "path" : "scripts\\riyadh_common.py",
+    "modificationInfo" : {
+      "contentHash" : -1259704585,
+      "lastModified" : 1794347930425
+    },
+    "linesOfCode" : 171
+  }, {
+    "path" : "scripts\\scrape_papers.py",
+    "modificationInfo" : {
+      "contentHash" : -1030657190,
+      "lastModified" : 1794347478511
+    },
+    "linesOfCode" : 594
+  }, {
+    "path" : "scripts\\submit_all_cams.py",
+    "modificationInfo" : {
+      "contentHash" : 923079415,
+      "lastModified" : 1794347190261
+    },
+    "linesOfCode" : 107
+  }, {
+    "path" : "scripts\\submit_all_era5.py",
+    "modificationInfo" : {
+      "contentHash" : 811469221,
+      "lastModified" : 1794347076531
+    },
+    "linesOfCode" : 161
+  }, {
+    "path" : "scripts\\three_way_validation.py",
+    "modificationInfo" : {
+      "contentHash" : 2063897894,
+      "lastModified" : 1794347458379
+    },
+    "linesOfCode" : 333
+  }, {
+    "path" : "scripts\\train_meta_model.py",
+    "modificationInfo" : {
+      "contentHash" : -605337786,
+      "lastModified" : 1794347318741
+    },
+    "linesOfCode" : 270
+  }, {
+    "path" : "scripts\\usage_calc.py",
+    "modificationInfo" : {
+      "contentHash" : -1282447330,
+      "lastModified" : 1794347524258
+    },
+    "linesOfCode" : 102
   } ],
   "appVersion" : "1.3.0"
+} : "1.3.0"
 }

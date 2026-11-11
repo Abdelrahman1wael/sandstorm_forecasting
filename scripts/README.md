@@ -1,86 +1,74 @@
-# 🛠️ Sandstorm Forecasting Pipeline: Scripts Directory
+# 🌪️ Riyadh Sand & Dust Storms (SDS) Forecasting — Operational Scripts
 
-This directory contains the operational and development scripts for data acquisition, verification, preprocessing, machine learning execution, RAG system, presentation generation, and notebook creation.
+All executable pipeline scripts are organized strictly by their **chronological execution order** into structured stages, dedicated **100% to Riyadh Only** (Riyadh Airport SDSC station at $24.926^\circ\text{N}, 46.722^\circ\text{E}$ and its metropolitan grid $24.0^\circ\text{N}\text{--}25.5^\circ\text{N}, 46.0^\circ\text{E}\text{--}47.5^\circ\text{E}$). All external regional domains (such as Arabian Peninsula, Arabian Gulf, and Mesopotamian basins) have been completely removed.
 
-```
+---
+
+## 🏛️ Directory Architecture & Execution Flow
+
+```text
 scripts/
-├── data_acquisition/       # Automated retrieval of raw ground, satellite, reanalysis & NWP data
-├── data_verification/      # Rigorous QC audits, file integrity, and data validation
-├── preprocessing/          # Data harmonization, multi-modal merging & feature engineering
-├── pipeline_runners/       # End-to-end ML training, threshold optimization & baseline benchmarking
-├── notebook_generators/    # Automated builders for analysis and pipeline Jupyter Notebooks
-├── rag/                    # Anthropogenic dust sources literature scraping, indexing & hybrid RAG
-├── doc_and_diagrams/       # Automated Word (.docx) document, PowerPoint, Excel, and Draw.io generators
-└── utils/                  # Project utility scripts and diagnostic calculators
+├── riyadh_common.py                     # 00. Master common configuration, constants, optics formulas & credentials
+│
+├── 01_data_acquisition/                # STAGE 1: Multi-Modal Data Ingestion (Riyadh Only)
+│   ├── download_cams.py                 # Download CAMS numerical dust forecasts (duaod550, 0-120h)
+│   ├── download_era5.py                 # Download ERA5 reanalysis (pressure levels 850/700/500 + surface)
+│   ├── download_modis_aod.py            # Download MODIS Deep Blue AOD (550nm) at Riyadh Airport
+│   ├── submit_all_cams.py               # Batch parallel submitter for CAMS forecast windows
+│   ├── submit_all_era5.py               # Batch parallel submitter for ERA5 reanalysis slices
+│   ├── era5_bulk_download.py            # Multi-worker bulk download utility for ERA5
+│   ├── era5_big_batch.py                # Large-batch ERA5 archive filler
+│   ├── era5_optimized.py                # Optimized connection scheduler for CDS API
+│   ├── era5_pl_quarterly.py             # Quarterly pressure level chunk downloader
+│   └── era5_supplement.py              # Gap-filling and missing timestamp utility
+│
+├── 02_data_verification_qaqc/           # STAGE 2: Quality Assurance & Control (QA/QC)
+│   ├── qaqc_aeronet.py                  # QA/QC on AERONET ground truth at Riyadh Airport
+│   ├── qaqc_cams.py                     # QA/QC on CAMS numerical dust optical depth over Riyadh
+│   ├── qaqc_era5.py                     # QA/QC on ERA5 atmospheric levels and surface drivers over Riyadh
+│   ├── qaqc_cmip6.py                    # QA/QC on CMIP6 sub-seasonal climate models over Riyadh
+│   └── qaqc_report.py                   # Master audit report validating all Riyadh datasets
+│
+├── 03_collocation_and_features/         # STAGE 3: Spatiotemporal Alignment & Feature Engineering
+│   ├── merge_cams.py                    # Merges CAMS forecast windows into unified NetCDF
+│   ├── collocate_cams_aeronet.py        # Collocates CAMS forecasts with AERONET at Riyadh (+/-1.5h)
+│   ├── three_way_validation.py          # Independent 3-way validation: AERONET vs CAMS vs MODIS
+│   └── build_meta_features.py           # Generates multimodal tabular matrix and optical PM proxies
+│
+├── 04_model_training_and_tuning/        # STAGE 4: Machine Learning & Deep Learning
+│   ├── train_meta_model.py              # Trains RF, XGBoost, MLP with SMOTE & cost-sensitive weights
+│   └── optimize_threshold.py            # Calibrates optimal F1 precision-recall decision threshold
+│
+├── 05_literature_rag/                   # STAGE 5: Domain Knowledge & Literature RAG
+│   ├── scrape_papers.py                 # Harvester for Riyadh dust storm scientific literature
+│   └── query_rag.py                     # Hybrid BM25 + dense embedding literature query agent for Riyadh
+│
+└── 06_utils/                            # STAGE 6: Operational Utilities
+    └── usage_calc.py                    # Storage footprint, DCU hours, and API quota tracker
 ```
 
 ---
 
-## 📂 Subdirectory Inventory
+## ⚡ Execution Instructions
 
-### 1. `data_acquisition/`
-Scripts responsible for fetching raw data from official meteorology and atmospheric providers:
-* `cams_big_batch.py`: Batch downloader for CAMS dust AOD in 6-month chunks.
-* `cams_supplement.py`: Supplementary download pipeline for CAMS forecasts (2020–2024).
-* `download_201501_pl.py`: Dedicated download handler for ERA5 pressure-level files.
-* `download_cams.py`: CAMS Global Dust AOD forecasts 10-day batch retrieval.
-* `download_cmip6.py`: ESGF retrieval for CMIP6 dust optical depth (`od550dust`).
-* `download_era5.py`: Monthly batch retrieval of ECMWF ERA5 reanalysis single- and pressure-levels.
-* `download_modis_aod.py`: NASA MODIS Deep Blue AOD (550nm) OPeNDAP extraction.
-* `era5_big_batch.py`: Bulk gap filler for ERA5 reanalysis datasets.
-* `era5_bulk_download.py`: High-throughput multi-field ERA5 bulk downloader.
-* `era5_optimized.py`: Combined multi-variable pressure-level ERA5 retrieval.
-* `era5_pl_quarterly.py`: Quarterly chunking engine for large ERA5 pressure-level queries.
-* `era5_supplement.py`: Supplementary downloader for ERA5 records.
-* `submit_all_cams.py`: Concurrent multi-worker job submission for CAMS ADS queues.
-* `submit_all_era5.py`: Concurrent multi-worker job submission for ERA5 CDS queues.
+All scripts automatically import configuration and paths from [`scripts/riyadh_common.py`](riyadh_common.py).
 
-### 2. `data_verification/`
-Validation scripts ensuring file integrity and scientific rigor:
-* `aeronet_temporal_heatmap.py`: Station × month temporal coverage heatmap generator for AERONET Level 1.5 & 2.0.
-* `aeronet_tier3_analysis.py`: Detailed temporal and quality tier analysis for Tier 3 stations.
-* `qaqc_aeronet.py`: QA/QC validator for AERONET ground truth CSV archives.
-* `qaqc_cams.py`: QA/QC integrity and domain boundary checker for CAMS NetCDF forecasts.
-* `qaqc_cmip6.py`: QA/QC schema and value bounds validation for CMIP6 climate models.
-* `qaqc_era5.py`: Comprehensive QA/QC suite for ERA5 surface and pressure NetCDFs.
-* `qaqc_report.py`: Master QA/QC orchestrator producing a unified health and checklist report.
-* `three_way_validation.py`: Three-way cross-validation (MODIS vs AERONET vs CAMS) with scatter statistics.
+### Run Stage 2 (QA/QC Verification):
+```bash
+python scripts/02_data_verification_qaqc/qaqc_aeronet.py
+python scripts/02_data_verification_qaqc/qaqc_cams.py
+python scripts/02_data_verification_qaqc/qaqc_era5.py
+python scripts/02_data_verification_qaqc/qaqc_report.py
+```
 
-### 3. `preprocessing/`
-The core feature engineering, collocation, and multimodal coupling engine:
-* `build_meta_features.py`: Phase 2 Step 1 feature engineering coupling CAMS-AERONET error dynamics with ERA5 meteorology.
-* `collocate_cams_aeronet.py`: Spatio-temporal collocation aligning AERONET station observations with CAMS forecast timesteps.
-* `merge_cams.py`: Merges raw CAMS 10-day forecast windows into unified monthly archives.
+### Run Stage 3 (Collocation & Featurization):
+```bash
+python scripts/03_collocation_and_features/collocate_cams_aeronet.py
+python scripts/03_collocation_and_features/build_meta_features.py
+```
 
-### 4. `pipeline_runners/`
-End-to-end model training, threshold tuning, and benchmarking:
-* `train_meta_model.py`: Phase 2 Step 2 training pipeline for Random Forest, XGBoost, and Neural Network meta-models.
-* `benchmark_baselines.py`: Benchmarks meta-models against Climatology and Persistence baselines.
-* `optimize_threshold.py`: Precision-recall curve analysis and optimal F1 classification threshold tuning.
-
-### 5. `notebook_generators/`
-Generates clean, runnable Jupyter notebooks for presentations and analysis:
-* `generate_processing_notebooks.py`: Builds modular data processing notebooks in `notebooks/data_processing/`.
-* `create_exploration_notebook.py`: Builds exploratory data analysis notebooks.
-* `create_line_a_notebook.py` / `create_notebook_04.py`: Builds Machine Learning Line A model notebooks.
-* `create_saudi_notebooks.py`: Builds comprehensive Saudi Arabian domain NWP notebooks.
-
-### 6. `rag/`
-Retrieval-Augmented Generation system for anthropogenic and regional dust source literature:
-* `scrape_papers.py`: OpenAlex and Unpaywall academic paper harvester.
-* `build_rag.py`: PDF text extractor, semantic chunker, and ChromaDB vector store builder.
-* `query_rag.py`: Hybrid BM25 + dense vector search with re-ranking and LLM cited synthesis.
-
-### 7. `doc_and_diagrams/`
-Automation utilities for presentation and publication deliverables:
-* `create_awards_excel.py`: Automated generation of structured research submission and awards tracking sheets.
-* `generate_complete_presentation.py`: Builds presentation slide assets.
-* `generate_drawio_diagram.py`: Programmatically generates XML architectural and pipeline diagrams.
-* `organize_documentation_folder.py`: Automated structure organizer for the `Documentation/` tree.
-* `render_sitemap_image_and_doc.py`: Renders diagrams and embeds them into final Word documents.
-* `verify_docx.py`: Validates Word document formatting and table layouts.
-* `extract_proposal_text.py` / `extracted_proposal.txt`: Extracts and indexes proposal specifications.
-
-### 8. `utils/`
-Utility tools and tracking scripts:
-* `usage_calc.py`: Token usage, context window, and interaction metrics calculator.
+### Run Stage 4 (Model Training & Threshold Calibration):
+```bash
+python scripts/04_model_training_and_tuning/train_meta_model.py
+python scripts/04_model_training_and_tuning/optimize_threshold.py
+```
