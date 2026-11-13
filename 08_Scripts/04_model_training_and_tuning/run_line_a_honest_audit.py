@@ -41,14 +41,21 @@ def main():
         labels=[0, 1, 2, 3, 4]
     ).astype(int)
 
-    exclude = {
-        "time", "timestamp", "valid", "station", "station_id", "station_name", "role",
-        "wxcodes", "hazard_level", "year", "delta_pm10_bias", "target_residual_pm10",
-        "target_pm10_24h", "target_event_24h", "target_pm10_72h", "target_event_72h",
-        "target_pm10_120h", "target_event_120h", "target_pm10_168h", "target_event_168h",
-        "target_hazard_24h", pm10_col
-    }
-    feat_cols = [c for c in df.columns if c not in exclude and pd.api.types.is_numeric_dtype(df[c])]
+    # Strictly non-leaky predictors (NO contemporaneous visibility, is_dust_event, hazard_class, nwp_bias_proxy, or <24h PM10 lags)
+    NON_LEAKY_FEATURES = [
+        "tmpc", "dwpc", "mslp", "wind_speed_ms", "wind_gust_ms", "relative_humidity",
+        "era5_temperature_2m", "era5_dew_point_2m", "era5_surface_pressure",
+        "era5_wind_speed_10m", "era5_wind_gusts_10m",
+        "era5_10m_u_component_of_wind", "era5_10m_v_component_of_wind",
+        "era5_blh_m", "era5_wind_kinetic_energy", "era5_friction_velocity_proxy",
+        "era5_soil_temperature_0_to_7cm", "era5_soil_moisture_0_to_7cm",
+        "era5_soil_moisture_7_to_28cm", "phys_vpd_kpa", "phys_air_density_kgm3",
+        "dryness_wind_interaction", "era5_et0_fao_evapotranspiration",
+        "era5_shortwave_radiation", "sat_uv_index", "nwp_cams_pm10",
+        "sin_doy", "cos_doy", "sin_hour", "cos_hour",
+        "lag_pm10_calibrated_ugm3_24h", "roll_max_wind_24h",
+    ]
+    feat_cols = [c for c in NON_LEAKY_FEATURES if c in df.columns]
 
     train_idx = np.where(df["year"] <= 2022)[0]
     test_idx = np.where(df["year"] >= 2023)[0]
@@ -100,6 +107,38 @@ def main():
     for name, reg in a1_models.items():
         reg.fit(X_tr, y_bias_tr)
         corr = np.clip(nwp_te + reg.predict(X_te), 0.0, 2500.0)
+        rmse = float(np.sqrt(mean_squared_error(obs_te, corr)))
+        mae = float(mean_absolute_error(obs_te, corr))
+        r2 = float(r2_score(obs_te, corr))
+        red = 100.0 * (raw_rmse - rmse) / max(raw_rmse, 1e-6)
+        h_rmse = float(np.sqrt(mean_squared_error(obs_te[high_mask], corr[high_mask])))
+        h_mae = float(mean_absolute_error(obs_te[high_mask], corr[high_mask]))
+        h_red = 100.0 * (raw_high_rmse - h_rmse) / max(raw_high_rmse, 1e-6)
+        a1_rows.append({
+            "Model": name,
+            "RMSE": round(rmse, 2),
+            "MAE": round(mae, 2),
+            "R2": round(r2, 4),
+            "RMSE_Red_vs_Raw_CAMS_Pct": round(red, 2),
+            "N_High_PM10": int(high_mask.sum()),
+            "High_PM10_RMSE": round(h_rmse, 2),
+            "High_PM10_MAE": round(h_mae, 2),
+            "High_RMSE_Red_vs_Raw_CAMS_Pct": round(h_red, 2),
+        })
+
+    # Log1p NWP Post-Processing (learns nonlinear CAMS-to-ground calibration in log1p space)
+    y_obs_tr_log = np.log1p(np.clip(df.iloc[train_idx][pm10_col].values, 0.0, 2500.0))
+    for name, reg in [
+        ("LineA1_HistGB_log1p_NWP_PostProc", HistGradientBoostingRegressor(
+            loss="squared_error", max_iter=200, max_depth=5, learning_rate=0.04, max_features=0.40, l2_regularization=6.0, random_state=SEED
+        )),
+        ("LineA1_XGBoost_log1p_NWP_PostProc", XGBRegressor(
+            n_estimators=220, max_depth=5, learning_rate=0.04, subsample=0.80,
+            colsample_bytree=0.45, reg_lambda=8.0, random_state=SEED, n_jobs=-1, tree_method="hist"
+        )),
+    ]:
+        reg.fit(X_tr, y_obs_tr_log)
+        corr = np.clip(np.expm1(reg.predict(X_te)), 0.0, 2500.0)
         rmse = float(np.sqrt(mean_squared_error(obs_te, corr)))
         mae = float(mean_absolute_error(obs_te, corr))
         r2 = float(r2_score(obs_te, corr))
