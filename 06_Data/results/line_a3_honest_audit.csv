@@ -1,0 +1,4 @@
+Model,Accuracy,Balanced_Accuracy,Macro_F1,Weighted_F1,Recall_Tier1 (n=17162),Recall_Tier2 (n=156),Recall_Tier3 (n=26),Recall_Tier4 (n=8)
+Majority_Class_Baseline (Always Tier 1),0.9891,0.25,0.2486,0.9836,1.0,0.0,0.0,0.0
+LineA3_HistGB_5Tier_Hazard,0.9565,0.2896,0.2618,0.9676,0.9662,0.0769,0.1154,0.0
+LineA3_XGBoost_5Tier_Hazard,0.989,0.25,0.2486,0.9836,0.9999,0.0,0.0,0.0

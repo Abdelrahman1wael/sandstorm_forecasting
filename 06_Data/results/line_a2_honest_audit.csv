@@ -1,0 +1,4 @@
+Model,RMSE,MAE,R2,Mean_Width_80,PICP80_Pct,N_Storm_Hours,Storm_RMSE,Storm_MAE,Storm_Width_80,Storm_PICP80_Pct
+Trivial_Train_Median (53.7),57.78,5.61,-0.0095,,,190,548.04,391.81,,
+LineA2_HistGB_T+24h_Quantile_P50,57.78,5.61,-0.0095,194.36,98.0,190,548.04,391.81,219.03,26.3
+LineA2_XGBoost_T+24h_Forecaster,195.91,129.69,-10.6051,,,190,470.51,280.48,,
