@@ -1,7 +1,0 @@
-Model,R2,RMSE,MAE
-Trivial_Train_Mean,-0.3216,88.41,53.73
-Trivial_Train_Median,-0.0082,77.22,6.94
-LineA_XGBoost_log1p_Direct,-0.3041,87.82,44.17
-LineA_XGBoost_Hurdle_Calibrated,-0.8507,104.62,57.91
-LineB_PyTorch_LSTM_log1p_L1,-0.0118,77.36,8.53
-LineB_PyTorch_STGNN_log1p_L1,-0.0037,77.05,10.01

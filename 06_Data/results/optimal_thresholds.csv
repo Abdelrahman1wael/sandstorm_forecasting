@@ -1,4 +1,0 @@
-model,optimal_threshold,precision_at_opt,recall_at_opt,max_f1
-RandomForest,0.7,0.8812,0.7417,0.8054
-GradientBoosting,0.71,0.9252,0.825,0.8722
-NeuralNetwork,0.39,0.899,0.7417,0.8128

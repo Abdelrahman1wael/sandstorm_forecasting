@@ -1,4 +1,0 @@
-Model,N_Seeds,PR_AUC_Mean_SD,ROC_AUC_Mean_SD,Rec5_Mean_SD,Brier_Mean_SD,BSS_Mean_SD
-LineB_PyTorch_PINN,5,0.0191 +- 0.0019,0.6737 +- 0.0202,0.0424 +- 0.0407,0.0312 +- 0.0029,-1.7743 +- 0.2617
-LineB_Ablation_LSTM,5,0.0185 +- 0.0021,0.6707 +- 0.0321,0.0545 +- 0.0395,0.0275 +- 0.0043,-1.4478 +- 0.3809
-LineB_Ablation_Transformer,5,0.0284 +- 0.0166,0.6197 +- 0.0205,0.0788 +- 0.0166,0.0323 +- 0.0077,-1.8699 +- 0.6859

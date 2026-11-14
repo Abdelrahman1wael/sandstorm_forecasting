@@ -1,7 +1,0 @@
-task,rmse_ugm3,mae_ugm3,r2,extra_metric
-LineA1_HistGB_NWP_Bias_Correction,309.566,94.151,0.0491,Skill+24.0%
-LineA1_XGBoost_NWP_Bias_Correction,321.216,99.442,0.0452,Skill+21.2%
-LineA2_HistGB_T+24h_Quantile_P50,57.783,5.612,0.0,PICP80=97.3%
-LineA2_XGBoost_T+24h_Forecaster,191.704,125.513,0.0,XGBRegressor_Hist
-LineA3_HistGB_5Tier_Hazard_Classifier,,,0.9558,Weighted_F1=0.9673
-LineA3_XGBoost_5Tier_Hazard_Classifier,,,0.9891,Weighted_F1=0.9836

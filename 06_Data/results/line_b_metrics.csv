@@ -1,6 +1,0 @@
-model,input_shape,metric_primary,metric_secondary,accuracy_or_r2
-LineB_LSTM_Sequence_Classifier,"(11681, 8, 33)",AUC=0.6881,"F1=0.0645 (Prec=0.051, Rec=0.087)",0.9801
-LineB_Transformer_SelfAttention_Classifier,"(11681, 8, 33)",AUC=0.6270,"F1=0.0410 (Prec=0.022, Rec=0.261)",0.9037
-LineB_PINN_Physics_Informed_Classifier,"(11681, 8, 33)",AUC=0.6397,"F1=0.0354 (Prec=0.022, Rec=0.087)",0.9626
-LineB_Hybrid_LSTM_Transformer_PINN_Classifier,"(11681, 8, 33)",AUC=0.6532,"F1=0.0333 (Prec=0.027, Rec=0.043)",0.9801
-LineB_6Node_ST_GNN_LSTM_Transformer_Regressor,"Seq(400, 24, 6, 12)+NWP(400, 6, 16, 16)+Sat(400, 3, 32, 32)",RMSE=628.13,MAE=296.90,0.0003
