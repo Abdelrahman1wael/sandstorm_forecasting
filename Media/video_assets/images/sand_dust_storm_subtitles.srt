@@ -1,0 +1,299 @@
+1
+00:00:00,000 --> 00:00:13,142
+Imagine a massive sandstorm traveling hundreds of kilometers, reducing visibility, disrupting transportation, threatening public health, and affecting millions of people.
+
+2
+00:00:13,142 --> 00:00:26,285
+What if we could predict such an event not just a few hours in advance, but several days or even weeks before it happens? This is the central question behind our research, titled: Applying Machine Learning Algorithms to Improve the Accuracy of Medium- to Long-Term Sand and Dust Storm Forecasting.
+
+3
+00:00:26,285 --> 00:00:39,427
+This research explores how artificial intelligence and multi-source environmental data can help improve the accuracy, reliability, and lead time of sandstorm forecasting.
+
+4
+00:00:39,427 --> 00:00:47,683
+Sand and dust storms are among the major environmental hazards associated with extreme weather and climate events.
+
+5
+00:00:47,683 --> 00:00:55,939
+According to the research proposal, nearly 330 million people across 151 countries are affected by sandstorms worldwide.
+
+6
+00:00:55,939 --> 00:01:04,194
+In China, northern arid and semi-arid regions are major sources of dust.
+
+7
+00:01:04,194 --> 00:01:12,450
+However, these storms can travel long distances, affecting central, eastern, and even southern regions.
+
+8
+00:01:12,450 --> 00:01:20,705
+Their consequences include reduced visibility, transportation accidents, air pollution, respiratory and cardiovascular health risks, agricultural damage, and land degradation.
+
+9
+00:01:20,705 --> 00:01:28,961
+Traditional forecasting methods rely heavily on numerical weather prediction models that simulate atmospheric and physical processes.
+
+10
+00:01:28,961 --> 00:01:37,216
+Although these models are essential, they face challenges in computational cost, nonlinear interactions, and forecasting accuracy over extended time periods.
+
+11
+00:01:37,216 --> 00:01:45,472
+As the forecast lead time increases, predicting the timing, intensity, and trajectory of sandstorms becomes increasingly difficult.
+
+12
+00:01:45,472 --> 00:01:53,728
+This creates a critical need for intelligent forecasting systems that can provide earlier and more reliable warnings.
+
+13
+00:01:53,728 --> 00:02:02,844
+Machine learning provides a promising opportunity to address these challenges.
+
+14
+00:02:02,844 --> 00:02:11,960
+By learning patterns from historical observations, satellite imagery, climate reanalysis, and numerical forecasts, machine learning models can identify complex relationships that may be difficult to capture through conventional methods alone.
+
+15
+00:02:11,960 --> 00:02:21,076
+The research proposal highlights recent advances in artificial intelligence-based meteorological forecasting, including the AI-GAMFS system, as evidence of the growing potential of AI in environmental meteorology.
+
+16
+00:02:21,076 --> 00:02:30,192
+However, applying these technologies to medium- and long-term sandstorm prediction remains an important research challenge.
+
+17
+00:02:30,192 --> 00:02:39,307
+The significance of this study is both theoretical and practical.
+
+18
+00:02:39,307 --> 00:02:48,423
+Theoretically, it aims to improve our understanding of the environmental and atmospheric factors influencing sandstorm activity.
+
+19
+00:02:48,423 --> 00:02:57,539
+Practically, it aims to support disaster preparedness, public health protection, transportation planning, renewable energy management, and environmental governance.
+
+20
+00:02:57,539 --> 00:03:05,998
+Previous research has explored a wide range of machine learning techniques for sandstorm prediction.
+
+21
+00:03:05,998 --> 00:03:14,457
+Early studies used artificial neural networks and support vector machines to predict sandstorm occurrence based on meteorological observations.
+
+22
+00:03:14,457 --> 00:03:22,915
+Later research introduced methods such as Random Forest, AdaBoost, and synthetic minority oversampling to address the problem of imbalanced datasets, where sandstorm events are much less frequent than normal weather conditions.
+
+23
+00:03:22,915 --> 00:03:31,374
+With the development of deep learning, researchers began applying convolutional neural networks to extract spatial features from atmospheric data and satellite images.
+
+24
+00:03:31,374 --> 00:03:39,832
+Other studies explored transfer learning, ensemble learning, and hybrid architectures combining convolutional neural networks with long short-term memory networks.
+
+25
+00:03:39,832 --> 00:03:48,291
+These approaches have demonstrated improvements in short-term identification, classification, and sandstorm movement prediction.
+
+26
+00:03:48,291 --> 00:03:56,749
+In the broader meteorological field, models such as LSTM, Transformers, and Graph Neural Networks have also shown potential in capturing temporal dependencies and spatial relationships.
+
+27
+00:03:56,749 --> 00:04:05,208
+Nevertheless, the literature review identifies several important research gaps.
+
+28
+00:04:05,208 --> 00:04:13,666
+Most existing sandstorm studies focus on short-term forecasting.
+
+29
+00:04:13,666 --> 00:04:22,125
+Multi-source data fusion remains insufficiently developed, advanced spatiotemporal models require further investigation, and standardized datasets and evaluation frameworks are still lacking.
+
+30
+00:04:22,125 --> 00:04:30,584
+These gaps motivate the direction of the proposed research.
+
+31
+00:04:30,584 --> 00:04:39,075
+The primary objective of this study is to develop a machine learning framework that improves the accuracy of medium- to long-term sandstorm forecasting.
+
+32
+00:04:39,075 --> 00:04:47,566
+The research is organized into three main components.
+
+33
+00:04:47,566 --> 00:04:56,057
+First, the construction of a unified forecasting dataset by integrating numerical weather forecasts, climate reanalysis, satellite remote sensing, and surface environmental information.
+
+34
+00:04:56,057 --> 00:05:04,549
+Second, the development and comparison of machine learning models capable of predicting sandstorm risk probabilities and intensity.
+
+35
+00:05:04,549 --> 00:05:13,040
+Third, the validation and interpretation of these models through rigorous evaluation, representative case studies, and analysis of the physical factors influencing their predictions.
+
+36
+00:05:13,040 --> 00:05:21,531
+The target forecasting scales include three to fifteen days, as well as monthly and seasonal trends.
+
+37
+00:05:21,531 --> 00:05:28,695
+The proposed methodology consists of several interconnected stages.
+
+38
+00:05:28,695 --> 00:05:35,859
+The first stage is data collection and preprocessing.
+
+39
+00:05:35,859 --> 00:05:43,023
+The study will collect multi-model numerical weather forecasts, ERA5 reanalysis data, satellite observations such as MODIS, and surface environmental parameters.
+
+40
+00:05:43,023 --> 00:05:50,186
+These datasets will undergo quality control, missing-value handling, spatial and temporal alignment, and normalization.
+
+41
+00:05:50,186 --> 00:05:57,350
+The second stage is feature engineering.
+
+42
+00:05:57,350 --> 00:06:04,514
+Three categories of features will be constructed.
+
+43
+00:06:04,514 --> 00:06:11,677
+The first includes dust emission conditions, such as soil moisture, vegetation cover, snow cover, bare land proportion, and friction wind speed.
+
+44
+00:06:11,677 --> 00:06:18,841
+The second includes atmospheric dynamics and transport features, such as near-surface wind, wind shear, pressure fields, boundary layer height, and cold-air pathways.
+
+45
+00:06:18,841 --> 00:06:26,005
+The third includes historical sandstorm information, including upstream dust concentration, event persistence, and spatial neighborhood relationships.
+
+46
+00:06:26,005 --> 00:06:33,169
+The third stage is model development.
+
+47
+00:06:33,169 --> 00:06:40,332
+Two main modeling directions will be investigated.
+
+48
+00:06:40,332 --> 00:06:47,496
+The first is numerical weather prediction enhancement, using Random Forest, XGBoost, and other machine learning methods to correct systematic forecast errors.
+
+49
+00:06:47,496 --> 00:06:54,660
+The second is end-to-end sandstorm risk and intensity forecasting, using LSTM, temporal convolutional networks, Transformers, and Graph Neural Networks.
+
+50
+00:06:54,660 --> 00:07:01,823
+These models will be evaluated for their ability to capture temporal dependencies, spatial heterogeneity, and dust transport relationships.
+
+51
+00:07:01,823 --> 00:07:10,103
+An important challenge in sandstorm forecasting is the rarity of extreme events.
+
+52
+00:07:10,103 --> 00:07:18,382
+To address this issue, the study will investigate resampling techniques, SMOTE-based event augmentation, and cost-sensitive learning.
+
+53
+00:07:18,382 --> 00:07:26,662
+Probability calibration will also be applied to improve the reliability of the predicted risks.
+
+54
+00:07:26,662 --> 00:07:34,941
+Model evaluation will combine event-based verification, regression error analysis, and probabilistic metrics, including the area under the receiver operating characteristic curve, or AUC.
+
+55
+00:07:34,941 --> 00:07:43,221
+The proposed models will be compared against baseline numerical weather prediction systems.
+
+56
+00:07:43,221 --> 00:07:51,500
+In addition, one to two representative severe sandstorm events will be selected for detailed case studies.
+
+57
+00:07:51,500 --> 00:07:59,780
+Interpretability methods, including feature importance, SHAP analysis, and attention-weight visualization, will be used to investigate the factors contributing to model predictions.
+
+58
+00:07:59,780 --> 00:08:08,059
+The final outputs are expected to include sandstorm risk probability maps, intensity forecasts, and an assessment of forecast performance as lead time increases.
+
+59
+00:08:08,059 --> 00:08:16,802
+The proposed research aims to contribute in three main areas.
+
+60
+00:08:16,802 --> 00:08:25,544
+The first is multi-source data integration, creating a unified spatiotemporal dataset designed specifically for medium- to long-term sandstorm forecasting.
+
+61
+00:08:25,544 --> 00:08:34,286
+The second is advanced model development, combining numerical forecast post-processing with deep learning architectures and strategies for handling rare events.
+
+62
+00:08:34,286 --> 00:08:43,029
+The third is model interpretability and standardized evaluation, supporting more transparent and comparable forecasting results.
+
+63
+00:08:43,029 --> 00:08:51,771
+From an application perspective, the research could contribute to earlier sandstorm warnings and more proactive risk management.
+
+64
+00:08:51,771 --> 00:09:00,513
+Potential beneficiaries include meteorological departments, emergency management authorities, transportation operators, agricultural communities, renewable energy providers, and environmental protection agencies.
+
+65
+00:09:00,513 --> 00:09:09,255
+The ultimate aim is to support a transition from reactive emergency response toward earlier, data-driven disaster preparedness.
+
+66
+00:09:09,255 --> 00:09:17,295
+The research is planned across seven phases, from September 2025 to June 2027.
+
+67
+00:09:17,295 --> 00:09:25,334
+The initial phases focus on literature review, research preparation, and construction of the multi-source dataset.
+
+68
+00:09:25,334 --> 00:09:33,373
+From May to August 2026, the work focuses on baseline model development, preliminary experiments, and performance comparison.
+
+69
+00:09:33,373 --> 00:09:41,413
+From September to December 2026, the study advances to ensemble learning, Graph Neural Networks, and physics-informed modeling.
+
+70
+00:09:41,413 --> 00:09:49,452
+The subsequent phases cover case studies, interpretability analysis, manuscript preparation, dissertation completion, and pre-defense.
+
+71
+00:09:49,452 --> 00:09:57,491
+The final stage, scheduled for June 2027, is the dissertation defense and graduation.
+
+72
+00:09:57,491 --> 00:10:06,988
+In conclusion, this research seeks to combine machine learning, multi-source environmental data, and meteorological knowledge to address the challenges of medium- to long-term sandstorm forecasting.
+
+73
+00:10:06,988 --> 00:10:16,485
+By integrating advanced algorithms with physical and environmental information, the study aims to improve forecasting accuracy, extend warning lead times, and enhance the interpretability of intelligent forecasting systems.
+
+74
+00:10:16,485 --> 00:10:25,982
+Through these efforts, the research aspires to contribute to scientific understanding, environmental protection, and more effective disaster prevention and mitigation.
+
+75
+00:10:25,982 --> 00:10:35,479
+Thank you for watching.
